@@ -568,7 +568,6 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
 
 <script>
 window.DUNA_CONTENT = {
@@ -878,7 +877,7 @@ var chatOpen     = false;
 // ═══════════════════════════════════════════════════════
 var SB_URL = 'https://tjfqgwgyoomuycyadpam.supabase.co';
 var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqZnFnd2d5b29tdXljeWFkcGFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0Nzg5OTAsImV4cCI6MjA5ODA1NDk5MH0.tJSzog_u4S1R_Ix4tGNIl5elhMzOHQ9YdkNTlaehOa8';
-var DB = null;
+var DB = false; // true cuando la API REST responde OK
 var SID = (function() {
   var s = localStorage.getItem('duna_sid');
   if (!s) { s = 'sid_' + Math.random().toString(36).slice(2); localStorage.setItem('duna_sid', s); }
@@ -887,35 +886,81 @@ var SID = (function() {
 
 function initSupabase() {
   if (window.location.protocol === 'file:') {
-    console.warn('[Supabase] Protocolo file:// detectado — Supabase no puede conectar. Usando localStorage.');
+    console.warn('[Supabase] Protocolo file:// — usando datos embebidos.');
+    loadContentFromLocal();
     return;
   }
-  if (!window.supabase || !window.supabase.createClient) {
-    console.warn('[Supabase] SDK no cargó aún, reintentando...');
-    setTimeout(initSupabase, 500);
-    return;
-  }
-  try {
-    DB = window.supabase.createClient(SB_URL, SB_KEY);
-    console.log('[Supabase] ✅ Cliente conectado:', SB_URL);
+  // Verificar conexión con un ping simple a la API REST
+  fetch(SB_URL + '/rest/v1/noticias?select=count&limit=1', {
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    console.log('[Supabase] ✅ API REST conectada:', SB_URL);
+    DB = true; // señal de que podemos usar el REST
     loadFavsFromDB();
-  } catch (e) {
-    console.error('[Supabase] Error al crear cliente:', e);
-  }
+    loadContentFromDB();
+  })
+  .catch(function(e) {
+    console.warn('[Supabase] No se pudo conectar:', e.message, '— usando datos embebidos');
+    loadContentFromLocal();
+  });
+}
+
+// ── REST helpers ─────────────────────────────────────────
+function sbFetch(table, params) {
+  var url = SB_URL + '/rest/v1/' + table + '?' + params;
+  return fetch(url, {
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).then(function(r) {
+    if (!r.ok) return r.text().then(function(t){ throw new Error('HTTP '+r.status+': '+t); });
+    return r.json();
+  });
+}
+
+function sbInsert(table, body) {
+  return fetch(SB_URL + '/rest/v1/' + table, {
+    method: 'POST',
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(body)
+  }).then(function(r) {
+    if (!r.ok) return r.text().then(function(t){ throw new Error(t); });
+    return r.json();
+  });
+}
+
+function sbDelete(table, id) {
+  return fetch(SB_URL + '/rest/v1/' + table + '?id=eq.' + id, {
+    method: 'DELETE',
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY
+    }
+  });
 }
 
 function loadFavsFromDB() {
-  DB.from('favoritos').select('*').eq('session_id', SID).order('created_at', { ascending:false })
-    .then(function(r) {
-      if (r.error) { console.warn('[Supabase] Error cargando favoritos:', r.error.message); return; }
-      console.log('[Supabase] Favoritos cargados:', r.data.length);
-      FAVS = r.data.map(function(f) {
+  sbFetch('favoritos', 'select=*&session_id=eq.' + encodeURIComponent(SID) + '&order=created_at.desc')
+    .then(function(data) {
+      console.log('[Supabase] Favoritos cargados:', data.length);
+      FAVS = data.map(function(f) {
         return { id:f.id, tipo:f.tipo, titulo:f.titulo, fecha:new Date(f.created_at).toLocaleDateString('es-CL') };
       });
       localStorage.setItem('duna_favs', JSON.stringify(FAVS));
       updateMetrics();
       if (document.getElementById('v-favs').classList.contains('active')) renderFavs();
-    });
+    })
+    .catch(function(e) { console.warn('[Supabase] Error cargando favoritos:', e.message); });
 }
 
 // Player real Mediastream — sin simulación de audio
@@ -926,22 +971,53 @@ var MS_LOADED = false;
 var P = { playing:false, requestId:0 };
 
 // ═══════════════════════════════════════════════════════
-// CARGA DE DATOS DESDE JSON
+// CARGA DE DATOS — Supabase primero, fallback a DUNA_CONTENT
 // ═══════════════════════════════════════════════════════
 function loadContent() {
-  console.log('[App] Cargando contenido embebido (DUNA_CONTENT)...');
-  var data = window.DUNA_CONTENT || {};
-  console.log('[App] Noticias:',    data.noticias    ? data.noticias.length    : 0);
-  console.log('[App] Entrevistas:', data.entrevistas ? data.entrevistas.length : 0);
-  console.log('[App] Podcasts:',    data.podcasts    ? data.podcasts.length    : 0);
-  console.log('[App] Programas:',   data.programas   ? data.programas.length   : 0);
+  if (DB) {
+    console.log('[App] Cargando contenido desde Supabase...');
+    loadContentFromDB();
+  } else {
+    console.log('[App] Supabase no disponible — usando datos embebidos');
+    loadContentFromLocal();
+  }
+}
 
+function loadContentFromDB() {
+  var pending = 4;
+
+  function done() {
+    pending--;
+    if (pending === 0) {
+      console.log('[Supabase] ✅ Contenido cargado desde la base de datos');
+      renderAll();
+    }
+  }
+
+  sbFetch('noticias', 'select=*&active=eq.true&order=published_at.desc&limit=6')
+    .then(function(data) { console.log('[Supabase] Noticias:', data.length); _noticias = data; done(); })
+    .catch(function(e) { console.warn('[Supabase] Error en noticias:', e.message); done(); });
+
+  sbFetch('entrevistas', 'select=*&active=eq.true&order=published_at.desc&limit=3')
+    .then(function(data) { console.log('[Supabase] Entrevistas:', data.length); _entrevistas = data; done(); })
+    .catch(function(e) { console.warn('[Supabase] Error en entrevistas:', e.message); done(); });
+
+  sbFetch('podcasts', 'select=*&active=eq.true&order=published_at.desc&limit=4')
+    .then(function(data) { console.log('[Supabase] Podcasts:', data.length); _podcasts = data; done(); })
+    .catch(function(e) { console.warn('[Supabase] Error en podcasts:', e.message); done(); });
+
+  sbFetch('programas', 'select=*&active=eq.true&order=id.asc')
+    .then(function(data) { console.log('[Supabase] Programas:', data.length); _programas = data; done(); })
+    .catch(function(e) { console.warn('[Supabase] Error en programas:', e.message); done(); });
+}
+
+function loadContentFromLocal() {
+  var data     = window.DUNA_CONTENT || {};
   _streaming   = data.streaming   || {};
   _noticias    = data.noticias    || [];
   _entrevistas = data.entrevistas || [];
   _podcasts    = data.podcasts    || [];
   _programas   = data.programas   || [];
-
   renderAll();
 }
 
@@ -1242,16 +1318,17 @@ function saveFav(tipo) {
   toast('Guardado en favoritos ♥');
 
   if (DB) {
-    DB.from('favoritos').insert([{ session_id:SID, tipo:labels[tipo], titulo:titulo, referencia_id:null, metadata:{} }])
-      .select().single()
-      .then(function(r) {
-        if (r.error) { console.warn('[Supabase] Error guardando favorito:', r.error.message); return; }
-        console.log('[Supabase] Favorito guardado:', r.data.id);
-        rec.id = r.data.id; // reemplaza el ID local por el real de la DB
-        localStorage.setItem('duna_favs', JSON.stringify(FAVS));
-      });
+    sbInsert('favoritos', { session_id:SID, tipo:labels[tipo], titulo:titulo, referencia_id:null, metadata:{} })
+      .then(function(data) {
+        if (data && data[0]) {
+          console.log('[Supabase] Favorito guardado:', data[0].id);
+          rec.id = data[0].id;
+          localStorage.setItem('duna_favs', JSON.stringify(FAVS));
+        }
+      })
+      .catch(function(e) { console.warn('[Supabase] Error guardando favorito:', e.message); });
   } else {
-    console.warn('[Supabase] No conectado — favorito solo guardado en localStorage');
+    console.warn('[Supabase] No conectado — favorito solo en localStorage');
   }
 }
 
@@ -1263,10 +1340,9 @@ function rmFav(id) {
   toast('Eliminado de favoritos');
 
   if (DB && String(id).indexOf('local_') !== 0) {
-    DB.from('favoritos').delete().eq('id', id).then(function(r) {
-      if (r.error) console.warn('[Supabase] Error eliminando favorito:', r.error.message);
-      else console.log('[Supabase] Favorito eliminado de la DB:', id);
-    });
+    sbDelete('favoritos', id)
+      .then(function() { console.log('[Supabase] Favorito eliminado:', id); })
+      .catch(function(e) { console.warn('[Supabase] Error eliminando favorito:', e.message); });
   }
 }
 
@@ -1369,14 +1445,13 @@ function pubNote() {
   localStorage.setItem('duna_notas', JSON.stringify(NOTAS));
 
   if (DB) {
-    DB.from('notas').insert([{
+    sbInsert('notas', {
       titular: tit, bajada: baj, cuerpo: bod,
       autor_nombre: jSess ? jSess.nombre : 'Editor',
       publicado: true
-    }]).then(function(r) {
-      if (r.error) console.warn('[Supabase] Error publicando nota:', r.error.message);
-      else console.log('[Supabase] Nota publicada en la base de datos');
-    });
+    })
+    .then(function() { console.log('[Supabase] Nota publicada en la base de datos'); })
+    .catch(function(e) { console.warn('[Supabase] Error publicando nota:', e.message); });
   } else {
     console.warn('[Supabase] No conectado — nota solo guardada en localStorage');
   }
@@ -1419,8 +1494,8 @@ function switchTab(el, id) {
 // PLAYER REAL — Mediastream
 // ═══════════════════════════════════════════════════════
 function playerInit() {
-  fetchNowPlaying();
-  setInterval(fetchNowPlaying, 15000);
+  var isDuna = window.location.hostname === 'duna.cl' || window.location.hostname.endsWith('.duna.cl');
+  if (isDuna) { fetchNowPlaying(); setInterval(fetchNowPlaying, 15000); }
 }
 
 function togglePlay() {
@@ -1514,7 +1589,7 @@ function fetchNowPlaying() {
       var ct = j && j.data && j.data.getPlayerLive && j.data.getPlayerLive.currentTrack;
       if (ct && ct.title) console.log('[Mediastream] Canción real al aire:', ct.title, '-', ct.artist);
     })
-    .catch(function(e){ console.warn('[Player] No se pudo obtener metadata real:', e); });
+    .catch(function(){ /* CORS bloqueado fuera de duna.cl — ignorado */ });
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1603,13 +1678,13 @@ document.addEventListener('DOMContentLoaded', function() {
   playerInit();
   updateMetrics();
 
-  // Cargar contenido desde JSON
-  loadContent();
+  // Mostrar datos embebidos inmediatamente (no hay pantalla en blanco)
+  loadContentFromLocal();
 
-  // Conectar Supabase (favoritos y notas en la nube)
+  // Conectar Supabase — reemplaza los datos con los reales de la DB
   initSupabase();
 
-  // Renderizar iconos Lucide (navegación, player, favoritos, IA, dashboard)
+  // Renderizar iconos Lucide
   if (window.lucide) lucide.createIcons();
 });
 
