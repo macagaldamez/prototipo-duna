@@ -994,15 +994,15 @@ function loadContentFromDB() {
     }
   }
 
-  sbFetch('noticias', 'select=*&active=eq.true&order=published_at.desc&limit=6')
+  sbFetch('noticias', 'select=*&active=eq.true&order=created_at.desc&limit=6')
     .then(function(data) { console.log('[Supabase] Noticias:', data.length); _noticias = data; done(); })
     .catch(function(e) { console.warn('[Supabase] Error en noticias:', e.message); done(); });
 
-  sbFetch('entrevistas', 'select=*&active=eq.true&order=published_at.desc&limit=3')
+  sbFetch('entrevistas', 'select=*&active=eq.true&order=created_at.desc&limit=3')
     .then(function(data) { console.log('[Supabase] Entrevistas:', data.length); _entrevistas = data; done(); })
     .catch(function(e) { console.warn('[Supabase] Error en entrevistas:', e.message); done(); });
 
-  sbFetch('podcasts', 'select=*&active=eq.true&order=published_at.desc&limit=4')
+  sbFetch('podcasts', 'select=*&active=eq.true&order=created_at.desc&limit=4')
     .then(function(data) { console.log('[Supabase] Podcasts:', data.length); _podcasts = data; done(); })
     .catch(function(e) { console.warn('[Supabase] Error en podcasts:', e.message); done(); });
 
@@ -1012,7 +1012,28 @@ function loadContentFromDB() {
 }
 
 function loadContentFromLocal() {
-  var data     = window.DUNA_CONTENT || {};
+  var data = window.DUNA_CONTENT || {};
+  // Normalize local data to match DB column names
+  if (data.noticias) data.noticias = data.noticias.map(function(n){ return {
+    id:n.id, titulo:n.title||n.titulo, bajada:n.bajada, cuerpo:n.body||n.cuerpo,
+    categoria:n.category||n.categoria||'General', autor:n.author||n.autor||'Redacción Duna',
+    imagen_url:n.imagen_url||null, active:true, created_at:new Date().toISOString()
+  };});
+  if (data.entrevistas) data.entrevistas = data.entrevistas.map(function(e){ return {
+    id:e.id, titulo:e.title||e.titulo, bajada:e.bajada, descripcion:e.description||e.descripcion,
+    programa:e.program||e.programa||'Radio Duna', fecha:e.date||e.duration||e.fecha,
+    cuerpo:e.body||e.cuerpo, imagen_url:e.imagen_url||null, active:true, created_at:new Date().toISOString()
+  };});
+  if (data.podcasts) data.podcasts = data.podcasts.map(function(p){ return {
+    id:p.id, titulo:p.title||p.titulo, programa:p.program||p.programa,
+    descripcion:p.summary||p.descripcion, duracion:p.duration||p.duracion,
+    imagen_url:p.imagen_url||null, active:true, created_at:new Date().toISOString()
+  };});
+  if (data.programas) data.programas = data.programas.map(function(p){ return {
+    id:p.id, titulo:p.name||p.titulo, horario:p.schedule||p.horario,
+    dias:p.dias||'Lun–Vie', conductor:p.hosts ? (Array.isArray(p.hosts) ? p.hosts.map(function(h){return h[1]||h;}).join(', ') : p.conductor) : p.conductor,
+    descripcion:p.description||p.descripcion, imagen_url:p.imagen_url||null, active:true
+  };});
   _streaming   = data.streaming   || {};
   _noticias    = data.noticias    || [];
   _entrevistas = data.entrevistas || [];
@@ -1035,13 +1056,17 @@ function renderNoticias() {
   var el = document.getElementById('h-news');
   if (!_noticias.length) { el.innerHTML = '<div class="estado"><i class="ti ti-inbox"></i><p>No hay noticias disponibles</p></div>'; return; }
   el.innerHTML = _noticias.map(function(a, i) {
-    var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '33,' + (a.color||'#85a9dd') + '66)';
+    var color = '#85a9dd';
+    var bg = a.imagen_url
+      ? 'url(' + a.imagen_url + ') center/cover'
+      : 'linear-gradient(135deg,' + color + '33,' + color + '66)';
+    var fecha = a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '';
     return '<div class="nc" onclick="openArt(' + i + ')">' +
-      '<div class="nc-img" style="background:' + bg + '"><i class="ti ti-news" style="color:' + (a.color||'#85a9dd') + '"></i></div>' +
-      '<div class="nc-bod"><div class="nc-cat">' + (a.category||'') + '</div>' +
-      '<h3 class="nc-ttl">' + a.title + '</h3>' +
+      '<div class="nc-img" style="background:' + bg + '">' + (a.imagen_url ? '' : '<i class="ti ti-news" style="color:' + color + '"></i>') + '</div>' +
+      '<div class="nc-bod"><div class="nc-cat">' + (a.categoria||'General') + '</div>' +
+      '<h3 class="nc-ttl">' + (a.titulo||'') + '</h3>' +
       '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
-      '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.reading_time||'') + ' · ' + (a.date||'') + '</div>' +
+      '<div class="nc-meta"><i class="ti ti-user"></i>' + (a.autor||'Redacción Duna') + ' · ' + fecha + '</div>' +
       '</div></div>';
   }).join('');
 }
@@ -1130,13 +1155,14 @@ var LIST_CONFIG = {
     subtitle: 'Las últimas noticias de Radio Duna 89.7',
     getItems: function(){ return _noticias; },
     render: function(a, i) {
-      var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '33,' + (a.color||'#85a9dd') + '66)';
+      var bg = a.imagen_url ? 'url(' + a.imagen_url + ') center/cover' : 'linear-gradient(135deg,#85a9dd33,#85a9dd66)';
+      var fecha = a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '';
       return '<div class="nc" onclick="openArt(' + i + ')">' +
-        '<div class="nc-img" style="background:' + bg + '"><i class="ti ti-news" style="color:' + (a.color||'#85a9dd') + '"></i></div>' +
-        '<div class="nc-bod"><div class="nc-cat">' + (a.category||'') + '</div>' +
-        '<h3 class="nc-ttl">' + a.title + '</h3>' +
+        '<div class="nc-img" style="background:' + bg + '">' + (a.imagen_url ? '' : '<i class="ti ti-news" style="color:#85a9dd"></i>') + '</div>' +
+        '<div class="nc-bod"><div class="nc-cat">' + (a.categoria||'General') + '</div>' +
+        '<h3 class="nc-ttl">' + (a.titulo||'') + '</h3>' +
         '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
-        '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.reading_time||'') + ' · ' + (a.date||'') + '</div></div></div>';
+        '<div class="nc-meta"><i class="ti ti-user"></i>' + (a.autor||'Redacción Duna') + ' · ' + fecha + '</div></div></div>';
     }
   },
   entrevistas: {
@@ -1145,15 +1171,15 @@ var LIST_CONFIG = {
     subtitle: 'Conversaciones completas con los protagonistas de la actualidad',
     getItems: function(){ return _entrevistas; },
     render: function(a, i) {
-      var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '44,' + (a.color||'#85a9dd') + '22)';
+      var bg = a.imagen_url ? 'url(' + a.imagen_url + ') center/cover' : 'linear-gradient(135deg,#85a9dd44,#85a9dd22)';
       return '<div class="nc" onclick="openEntrevista(' + i + ')">' +
         '<div class="iv-thumb" style="background:' + bg + '">' +
-        '<i class="bgi ti ti-video" style="color:' + (a.color||'#85a9dd') + '"></i>' +
+        (a.imagen_url ? '' : '<i class="bgi ti ti-video" style="color:#85a9dd"></i>') +
         '<div class="iv-play"><i class="ti ti-player-play"></i></div></div>' +
-        '<div class="nc-bod"><div class="nc-cat">' + (a.category||'Entrevista') + '</div>' +
-        '<h3 class="nc-ttl">' + a.title + '</h3>' +
-        '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
-        '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.duration||'') + '</div></div></div>';
+        '<div class="nc-bod"><div class="nc-cat">Entrevista</div>' +
+        '<h3 class="nc-ttl">' + (a.titulo||'') + '</h3>' +
+        '<p class="nc-sub">' + (a.bajada||a.descripcion||'') + '</p>' +
+        '<div class="nc-meta"><i class="ti ti-radio"></i>' + (a.programa||'') + ' · ' + (a.fecha||'') + '</div></div></div>';
     }
   },
   podcast: {
@@ -1163,11 +1189,13 @@ var LIST_CONFIG = {
     getItems: function(){ return _podcasts; },
     gridClass: 'pg',
     render: function(p, i) {
+      var fecha = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CL') : '';
+      var art = p.imagen_url ? '<img src="' + p.imagen_url + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">' : '<i class="ti ti-microphone"></i>';
       return '<div class="podc" onclick="openPod(' + i + ')">' +
-        '<div class="podc-art" style="background:' + (p.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
-        '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + p.title + '</div>' +
-        '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + (p.program||'') + '</div>' +
-        '<div style="font-size:11px;color:var(--cm)">' + (p.date||'') + ' · ' + (p.duration||'') + '</div></div>';
+        '<div class="podc-art" style="background:' + (p.imagen_url ? '#edeef2' : 'linear-gradient(135deg,var(--cp),var(--ca))') + '">' + art + '</div>' +
+        '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + (p.titulo||'') + '</div>' +
+        '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + (p.programa||'') + '</div>' +
+        '<div style="font-size:11px;color:var(--cm)">' + fecha + (p.duracion ? ' · ' + p.duracion : '') + '</div></div>';
     }
   },
   programas: {
@@ -1177,12 +1205,13 @@ var LIST_CONFIG = {
     getItems: function(){ return _programas; },
     gridClass: 'prg',
     render: function(p, i) {
-      var hosts = Array.isArray(p.hosts) ? p.hosts.map(function(h){ return h[1]||h; }).join(' · ') : '';
+      var sched = [p.dias, p.horario].filter(Boolean).join(' · ');
+      var bg = p.imagen_url ? 'url(' + p.imagen_url + ') center/cover' : 'linear-gradient(135deg,var(--cp),var(--ca))';
       return '<div class="prc" onclick="openProg(' + i + ')">' +
-        '<div class="prc-img" style="background:' + (p.color||'var(--cp)') + '">' + (p.emoji||'🎙') +
-        '<span class="prc-sched">' + (p.schedule||'') + '</span></div>' +
-        '<div class="prc-bod"><div class="prc-name">' + p.name + '</div>' +
-        '<div class="prc-hosts">' + hosts + '</div></div></div>';
+        '<div class="prc-img" style="background:' + bg + '">' + (p.imagen_url ? '' : '🎙') +
+        '<span class="prc-sched">' + sched + '</span></div>' +
+        '<div class="prc-bod"><div class="prc-name">' + (p.titulo||p.name||'') + '</div>' +
+        '<div class="prc-hosts">' + (p.conductor||p.descripcion||'') + '</div></div></div>';
     }
   }
 };
@@ -1236,42 +1265,51 @@ function startTV() {
 
 function openArt(i) {
   var a = _noticias[i]; if (!a) return;
-  document.getElementById('a-cat').textContent  = a.category || '';
-  document.getElementById('a-ttl').textContent  = a.title;
+  document.getElementById('a-cat').textContent  = a.categoria || 'General';
+  document.getElementById('a-ttl').textContent  = a.titulo || '';
   document.getElementById('a-baj').textContent  = a.bajada || '';
-  document.getElementById('a-auth').textContent = a.author || 'Redacción Duna';
-  document.getElementById('a-time').textContent = a.reading_time || '';
-  document.getElementById('a-date').textContent = a.date || '';
-  document.getElementById('a-body').innerHTML   = a.body || '<p>' + (a.bajada||'') + '</p>';
+  document.getElementById('a-auth').textContent = a.autor || 'Redacción Duna';
+  document.getElementById('a-time').textContent = '';
+  document.getElementById('a-date').textContent = a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '';
+  document.getElementById('a-body').innerHTML   = a.cuerpo ? '<p>' + a.cuerpo.replace(/\n/g,'</p><p>') + '</p>' : '<p>' + (a.bajada||'') + '</p>';
   var hero = document.getElementById('art-hero');
-  hero.style.background = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '55,' + (a.color||'#85a9dd') + '22)';
+  hero.style.background = a.imagen_url ? 'url(' + a.imagen_url + ') center/cover' : 'linear-gradient(135deg,#85a9dd55,#85a9dd22)';
   go('v-art');
 }
 
 function openEntrevista(i) {
   var a = _entrevistas[i]; if (!a) return;
-  document.getElementById('a-cat').textContent  = a.category || 'Entrevista';
-  document.getElementById('a-ttl').textContent  = a.title;
-  document.getElementById('a-baj').textContent  = a.bajada || '';
-  document.getElementById('a-auth').textContent = a.author || 'Redacción Duna';
-  document.getElementById('a-time').textContent = a.duration || '';
-  document.getElementById('a-date').textContent = '';
-  document.getElementById('a-body').innerHTML   = a.body || '<p>' + (a.bajada||'') + '</p>';
+  document.getElementById('a-cat').textContent  = 'Entrevista';
+  document.getElementById('a-ttl').textContent  = a.titulo || '';
+  document.getElementById('a-baj').textContent  = a.bajada || a.descripcion || '';
+  document.getElementById('a-auth').textContent = a.programa || 'Radio Duna';
+  document.getElementById('a-time').textContent = a.fecha || '';
+  document.getElementById('a-date').textContent = a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '';
+  document.getElementById('a-body').innerHTML   = a.cuerpo ? '<p>' + a.cuerpo.replace(/\n/g,'</p><p>') + '</p>' : '<p>' + (a.descripcion||a.bajada||'') + '</p>';
   var hero = document.getElementById('art-hero');
-  hero.style.background = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '55,' + (a.color||'#85a9dd') + '22)';
+  hero.style.background = a.imagen_url ? 'url(' + a.imagen_url + ') center/cover' : 'linear-gradient(135deg,#85a9dd55,#85a9dd22)';
   go('v-art');
 }
 
 function openProg(i) {
   var p = _programas[i]; if (!p) return;
-  document.getElementById('pr-name').textContent = p.name;
-  document.getElementById('pr-sch').textContent  = p.schedule || '';
-  document.getElementById('pr-desc').textContent = p.description || '';
-  document.getElementById('pr-img').style.background = p.color || 'var(--cp)';
-  document.getElementById('pr-img').textContent  = p.emoji || '🎙';
-  document.getElementById('pr-hosts').innerHTML  = Array.isArray(p.hosts) ? p.hosts.map(function(h) {
-    return '<div class="hchip"><div class="hav">' + (h[0]||'') + '</div><span style="font-size:13px;font-weight:500">' + (h[1]||h) + '</span></div>';
-  }).join('') : '';
+  var nombre = p.titulo || p.name || '';
+  var sched = [p.dias, p.horario].filter(Boolean).join(' · ');
+  var initials = nombre.split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase();
+  document.getElementById('pr-name').textContent = nombre;
+  document.getElementById('pr-sch').textContent  = sched;
+  document.getElementById('pr-desc').textContent = p.descripcion || p.description || '';
+  var imgEl = document.getElementById('pr-img');
+  if (p.imagen_url) {
+    imgEl.style.background = 'url(' + p.imagen_url + ') center/cover';
+    imgEl.textContent = '';
+  } else {
+    imgEl.style.background = 'linear-gradient(135deg,var(--cp),var(--ca))';
+    imgEl.textContent = '🎙';
+  }
+  document.getElementById('pr-hosts').innerHTML = p.conductor
+    ? '<div class="hchip"><div class="hav">' + initials + '</div><span style="font-size:13px;font-weight:500">' + p.conductor + '</span></div>'
+    : '';
   document.getElementById('pr-eps').innerHTML = _podcasts.map(function(pod, i) {
     return '<div class="podc" onclick="openPod(' + i + ')">' +
       '<div class="podc-art" style="background:' + (pod.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
@@ -1290,11 +1328,19 @@ function openProg(i) {
 
 function openPod(i) {
   var p = _podcasts[i]; if (!p) return;
-  document.getElementById('pod-prog').textContent = p.program || '';
-  document.getElementById('pod-ttl').textContent  = p.title;
-  document.getElementById('pod-date').textContent = (p.date||'') + (p.duration ? ' · ' + p.duration : '');
-  document.getElementById('pod-sum').textContent  = p.summary || '';
-  document.getElementById('pod-art').style.background = p.color || 'var(--cp)';
+  var fecha = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CL') : '';
+  document.getElementById('pod-prog').textContent = p.programa || '';
+  document.getElementById('pod-ttl').textContent  = p.titulo || '';
+  document.getElementById('pod-date').textContent = fecha + (p.duracion ? ' · ' + p.duracion : '');
+  document.getElementById('pod-sum').textContent  = p.descripcion || '';
+  var artEl = document.getElementById('pod-art');
+  if (p.imagen_url) {
+    artEl.style.background = '#edeef2';
+    artEl.innerHTML = '<img src="' + p.imagen_url + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px">';
+  } else {
+    artEl.style.background = 'linear-gradient(135deg,var(--cp),var(--ca))';
+    artEl.innerHTML = '<i class="ti ti-microphone"></i>';
+  }
   go('v-pod');
 }
 
