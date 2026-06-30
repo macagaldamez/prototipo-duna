@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Duna 89.7</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+:root{--cp:#85a9dd;--cs:#b3d0f2;--ca:#5e6ac0;--cd:#0e1826;--cm:#79828c;--cn:#edeef2;--cv:#fff;--cb:#e2e4ea;--cp2:#c5aadc;--cpe:#fcb78e;--f:'Inter',-apple-system,sans-serif}
+.lucide{width:20px;height:20px;stroke:#626270;stroke-width:1.75;fill:none;vertical-align:middle;flex-shrink:0}
+.lucide-sm{width:18px;height:18px}
+.lucide-lg{width:22px;height:22px}
+.lucide-white{stroke:#fff}
+.lucide-accent{stroke:var(--ca)}
+.lucide-red{stroke:#e74c3c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--cn);color:var(--cd);font-size:15px;line-height:1.5;overflow-x:hidden}
+.view{display:none}.view.active{display:block}
+/* HEADER */
+.hdr{background:var(--cv);border-bottom:1px solid var(--cb);position:sticky;top:0;z-index:100}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;max-width:1280px;margin:0 auto;gap:16px}
+.hdr-nav{border-top:1px solid var(--cb)}
+.nav-inn{display:flex;align-items:center;padding:0 32px;max-width:1280px;margin:0 auto}
+.nav-item{display:flex;align-items:center;gap:6px;padding:11px 15px;font-size:12px;font-weight:600;color:var(--cm);cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;transition:color .15s,border-color .15s}
+.nav-item:hover{color:var(--cd)}.nav-item.on{color:var(--ca);border-bottom-color:var(--ca)}
+.ldot{width:6px;height:6px;background:#e74c3c;border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+/* SEARCH */
+.sbox{display:flex;align-items:center;background:var(--cn);border:1px solid var(--cb);border-radius:999px;padding:8px 14px;gap:8px;flex:1;max-width:400px}
+.sbox input{border:none;background:transparent;outline:none;font-family:var(--f);font-size:14px;color:var(--cd);width:100%}
+.sbox input::placeholder{color:var(--cm)}.sbox i{color:var(--cm)}
+/* DUNA IA BTN */
+.btn-ia{display:flex;align-items:center;gap:6px;background:var(--ca);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn-ia:hover{background:#4a56a8}
+/* PLAYER */
+.player{background:var(--cd);padding:0 32px;position:sticky;top:103px;z-index:90}
+.p-inn{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 0}
+.p-art{width:44px;height:44px;border-radius:6px;background:linear-gradient(135deg,var(--cp),var(--ca));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.p-art i{font-size:20px;color:#fff}
+.p-info{flex:1;min-width:0}
+.p-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+.p-trk{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-art2{font-size:12px;color:rgba(255,255,255,.55)}
+.p-controls{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.pbtn{width:40px;height:40px;border-radius:50%;border:none;background:var(--ca);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,transform .1s}
+.pbtn:hover{background:#4a56a8;transform:scale(1.05)}.pbtn i{font-size:18px;pointer-events:none}
+.p-bar-wrap{width:180px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;cursor:pointer}
+.p-bar-fill{height:100%;background:var(--ca);border-radius:2px;transition:width .5s linear}
+.pvol{display:flex;align-items:center;gap:6px}
+.pvol i{color:rgba(255,255,255,.4);font-size:15px}
+input.vslide{-webkit-appearance:none;width:70px;height:3px;border-radius:2px;background:rgba(255,255,255,.2);outline:none}
+input.vslide::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--ca);cursor:pointer}
+.live-badge{background:#e74c3c;color:#fff;font-size:10px;font-weight:700;letter-spacing:.07em;padding:3px 10px;border-radius:999px;display:flex;align-items:center;gap:4px;flex-shrink:0}
+/* PAGE */
+.page{max-width:1280px;margin:0 auto;padding:32px}
+.sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+.st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--cm)}
+.sl{font-size:12px;font-weight:600;color:var(--ca);cursor:pointer;display:flex;align-items:center;gap:4px}
+.sl:hover{text-decoration:underline}
+hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
+/* GRIDS */
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* NEWS CARD */
+.nc{background:var(--cv);border-radius:8px;border:1px solid var(--cb);overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.nc:hover{box-shadow:0 6px 20px rgba(14,24,38,.12);transform:translateY(-2px)}
+.nc-img{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.nc-img i{font-size:36px;color:rgba(255,255,255,.5)}
+.nc-bod{padding:14px 16px}
+.nc-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ca);margin-bottom:5px}
+.nc-ttl{font-size:15px;font-weight:600;line-height:1.35;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nc-sub{font-size:13px;color:var(--cm);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+.nc-meta{font-size:11px;color:var(--cm);display:flex;align-items:center;gap:5px}
+/* INTERVIEW */
+.iv-thumb{position:relative;width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.iv-play{position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(94,106,192,.88);display:flex;align-items:center;justify-content:center}
+.iv-play i{font-size:22px;color:#fff}
+.iv-thumb .bgi{font-size:48px;color:rgba(255,255,255,.4)}
+/* PODCAST */
+.podc{background:var(--cv);border-radius:8px;border:1px solid var(--cb);padding:16px;cursor:pointer;text-align:center;transition:box-shadow .2s}
+.podc:hover{box-shadow:0 6px 20px rgba(14,24,38,.12)}
+.podc-art{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.podc-art i{font-size:32px;color:#fff}
+/* PROGRAM */
+.prc{background:var(--cv);border-radius:8px;border:1px solid var(--cb);overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.prc:hover{box-shadow:0 6px 20px rgba(14,24,38,.12);transform:translateY(-2px)}
+.prc-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;font-size:36px}
+.prc-sched{position:absolute;bottom:8px;left:8px;background:rgba(14,24,38,.75);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px}
+.prc-bod{padding:11px 14px}.prc-name{font-size:14px;font-weight:600;margin-bottom:2px}.prc-hosts{font-size:12px;color:var(--cm)}
+/* FOOTER */
+.footer{background:var(--cd);color:rgba(255,255,255,.65);padding:48px 32px 24px;margin-top:60px}
+.f-inn{max-width:1280px;margin:0 auto}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.f-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:12px}
+.f-col ul{list-style:none}.f-col li{margin-bottom:7px}
+.f-col a{font-size:13px;color:rgba(255,255,255,.6);cursor:pointer}.f-col a:hover{color:#fff}
+.f-contact p{font-size:13px;display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.f-contact i{color:var(--cp);font-size:14px;flex-shrink:0;margin-top:2px}
+.socials{display:flex;gap:8px;margin-top:16px}
+.soc{width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.6);text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+.soc:hover{background:rgba(255,255,255,.1);color:#fff}
+.f-btm{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-btm p{font-size:12px;color:rgba(255,255,255,.3)}
+.btn-j{display:flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:6px;padding:7px 14px;font-family:var(--f);font-size:12px;font-weight:500;cursor:pointer}
+.btn-j:hover{background:rgba(255,255,255,.08);color:#fff}
+/* DETAIL VIEWS */
+.art-hero{width:100%;min-height:220px;display:flex;align-items:center;justify-content:center}
+.art-hero i{font-size:64px;color:rgba(255,255,255,.3)}
+.art-wrap{max-width:760px;margin:0 auto;padding:32px 32px 60px}
+.art-cat{display:inline-flex;background:rgba(94,106,192,.1);color:var(--ca);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.art-ttl{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:12px}
+.art-baj{font-size:18px;color:var(--cm);line-height:1.5;border-left:3px solid var(--cp);padding-left:16px;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--cm);padding:13px 0;border-top:1px solid var(--cb);border-bottom:1px solid var(--cb);margin-bottom:20px}
+.art-txt p{font-size:16px;line-height:1.75;margin-bottom:18px}
+.art-actions{display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--cb);flex-wrap:wrap}
+.prog-hero{background:linear-gradient(135deg,var(--cd),#1a2a3e);padding:44px 32px;color:#fff}
+.prog-hero-in{max-width:1280px;margin:0 auto;display:flex;gap:28px;align-items:flex-start}
+.prog-img-h{width:190px;height:190px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:60px}
+.prog-hero-info h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.hosts-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.hchip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:999px;padding:5px 12px}
+.hav{width:26px;height:26px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.pod-player{background:var(--cv);border:1px solid var(--cb);border-radius:8px;padding:24px;max-width:720px;margin:0 auto 28px;display:flex;gap:20px;align-items:flex-start}
+.pod-art-lg{width:110px;height:110px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pod-art-lg i{font-size:44px;color:rgba(255,255,255,.7)}
+/* TV EN VIVO */
+.tv-hero{background:linear-gradient(135deg,var(--cd),#1a2a3e);padding:40px 32px 36px;color:#fff}
+.tv-hero-in{max-width:1280px;margin:0 auto}
+.tv-hero h1{font-size:30px;font-weight:700;margin-bottom:6px}
+.tv-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+.tv-frame-wrap{max-width:900px;margin:0 auto;border-radius:12px;overflow:hidden;background:var(--cd);box-shadow:0 12px 40px rgba(14,24,38,.18)}
+.tv-frame-wrap iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+.tv-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a2a3e,var(--cd));color:#fff}
+.tv-placeholder i{font-size:56px;color:rgba(255,255,255,.3);margin-bottom:12px}
+.tv-placeholder p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:4px}
+
+/* LIST VIEW */
+.list-hero{background:linear-gradient(135deg,var(--cd),#1a2a3e);padding:40px 32px 36px;color:#fff}
+.list-hero-in{max-width:1280px;margin:0 auto}
+.list-icon{width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:24px}
+.list-hero h1{font-size:30px;font-weight:700;margin-bottom:6px}
+.list-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+.list-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.list-sort{display:flex;align-items:center;gap:6px}
+
+/* MISC */
+.fav-view,.sv{padding:32px;max-width:1280px;margin:0 auto}
+.ri{background:var(--cv);border:1px solid var(--cb);border-radius:8px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.ri.click{cursor:pointer}.ri.click:hover{box-shadow:0 2px 8px rgba(14,24,38,.07)}
+.empty{text-align:center;padding:60px 20px}
+.empty i{font-size:48px;color:var(--cb);display:block;margin-bottom:14px}
+.empty h3{font-size:16px;font-weight:600;color:var(--cm)}
+.estado{text-align:center;padding:40px;grid-column:1/-1}
+.estado i{font-size:36px;color:var(--cb);display:block;margin-bottom:10px}
+/* LOGIN */
+.lw{min-height:100vh;background:var(--cd);display:flex;align-items:center;justify-content:center;padding:32px}
+.lc{background:var(--cv);border-radius:12px;padding:44px 38px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fl{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.fi{width:100%;border:1px solid var(--cb);border-radius:6px;padding:10px 14px;font-family:var(--f);font-size:14px;color:var(--cd);outline:none;transition:border-color .15s}
+.fi:focus{border-color:var(--cp);box-shadow:0 0 0 3px rgba(133,169,221,.18)}
+.pw-wr{position:relative}
+.pw-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--cm);display:flex}
+.lerr{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.3);border-radius:6px;padding:10px 14px;font-size:13px;color:#c0392b;margin-bottom:14px;display:none;align-items:center;gap:8px}
+.btn-login{width:100%;background:var(--ca);color:#fff;border:none;border-radius:6px;padding:12px;font-family:var(--f);font-size:14px;font-weight:600;cursor:pointer;margin-top:4px}
+.btn-login:hover{background:#4a56a8}
+/* DASHBOARD */
+.dash{background:var(--cn);min-height:100vh}
+.dh{background:var(--cv);border-bottom:1px solid var(--cb);padding:13px 32px;display:flex;align-items:center;justify-content:space-between}
+.dtabs{display:flex;border-bottom:1px solid var(--cb);padding:0 32px;background:var(--cv)}
+.dtab{padding:11px 18px;font-size:13px;font-weight:500;color:var(--cm);cursor:pointer;border-bottom:2px solid transparent}
+.dtab.on{color:var(--ca);border-bottom-color:var(--ca)}.dtab:hover{color:var(--cd)}
+.dbody{padding:32px;max-width:1280px;margin:0 auto}
+.ecard{background:var(--cv);border-radius:8px;border:1px solid var(--cb);padding:28px}
+.el{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--cm);margin-bottom:6px}
+.ei{width:100%;border:1px solid var(--cb);border-radius:6px;padding:10px 14px;font-family:var(--f);font-size:15px;color:var(--cd);outline:none}
+.ei:focus{border-color:var(--cp)}
+.eta{width:100%;border:1px solid var(--cb);border-radius:6px;padding:12px 14px;font-family:var(--f);font-size:15px;line-height:1.65;color:var(--cd);outline:none;resize:vertical;min-height:200px}
+.eta:focus{border-color:var(--cp)}
+.photo-drop{border:2px dashed var(--cb);border-radius:8px;padding:28px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+.photo-drop:hover{border-color:var(--cp);background:rgba(133,169,221,.04)}
+.photo-drop i{font-size:30px;color:var(--cp);display:block;margin-bottom:8px}
+.btn-pub{display:inline-flex;align-items:center;gap:6px;background:var(--ca);color:#fff;border:none;border-radius:6px;padding:10px 22px;font-family:var(--f);font-size:14px;font-weight:600;cursor:pointer}
+.btn-pub:hover{background:#4a56a8}.btn-pub:disabled{background:var(--cm);cursor:not-allowed}
+.btn-dl{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--cd);border:1px solid var(--cb);border-radius:6px;padding:10px 18px;font-family:var(--f);font-size:14px;cursor:pointer}
+.btn-dl:hover{background:var(--cn)}
+.pub-ok{background:rgba(197,170,220,.15);border:1px solid rgba(197,170,220,.5);border-radius:6px;padding:12px 16px;font-size:14px;color:#6b4fa0;display:none;align-items:center;gap:8px;margin-top:10px}
+.met-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.mcard{background:var(--cv);border-radius:8px;padding:18px;border:1px solid var(--cb)}
+.mlbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--cm);margin-bottom:6px}
+.mval{font-size:28px;font-weight:700;margin-bottom:3px}
+.mdelta{font-size:12px;color:#2ecc71;display:flex;align-items:center;gap:4px}
+.ccard{background:var(--cv);border-radius:8px;border:1px solid var(--cb);padding:22px}
+.ccard h3{font-size:14px;font-weight:600;margin-bottom:16px}
+.br{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.brl{font-size:12px;width:150px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brt{flex:1;height:20px;background:var(--cn);border-radius:999px;overflow:hidden}
+.brf{height:100%;border-radius:999px;background:var(--ca)}
+.brv{font-size:12px;font-weight:600;color:var(--cm);width:40px;text-align:right}
+/* AI */
+.ai-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:none}
+.ai-wrap.on{display:block}
+.ai-box{width:340px;background:var(--cv);border-radius:12px;border:1px solid var(--cb);box-shadow:0 8px 32px rgba(14,24,38,.18);display:flex;flex-direction:column;max-height:480px;overflow:hidden}
+.ai-hdr{background:var(--ca);color:#fff;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ai-av{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+.ai-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:180px}
+.ai-m{max-width:86%;padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.5}
+.ai-m.b{background:var(--cn);color:var(--cd);align-self:flex-start;border-bottom-left-radius:2px}
+.ai-m.u{background:var(--ca);color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.ai-irow{padding:10px 13px;border-top:1px solid var(--cb);display:flex;gap:8px;align-items:center}
+.ai-tin{flex:1;border:1px solid var(--cb);border-radius:999px;padding:8px 13px;font-family:var(--f);font-size:13px;color:var(--cd);outline:none}
+.ai-tin:focus{border-color:var(--cp)}
+.ai-send{width:32px;height:32px;border-radius:50%;background:var(--ca);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.ai-send:hover{background:#4a56a8}
+/* BUTTONS */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--cm);font-size:13px;cursor:pointer;margin-bottom:20px;background:none;border:none;padding:0;font-family:var(--f)}
+.back:hover{color:var(--cd)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;border:none}
+.bp{background:var(--ca);color:#fff}.bp:hover{background:#4a56a8}
+.bs{background:var(--cn);color:var(--cd)}.bs:hover{background:var(--cb)}
+.bo{background:transparent;color:var(--cd);border:1px solid var(--cb)}.bo:hover{background:var(--cn)}
+.bspot{background:#1DB954;color:#fff}.byt{background:#FF0000;color:#fff}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--cd);color:#fff;padding:10px 20px;border-radius:999px;font-size:13px;font-weight:500;z-index:400;display:none;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2);white-space:nowrap}
+.toast.on{display:flex}
+@media(max-width:900px){.ng{grid-template-columns:repeat(2,1fr)}.pg,.prg{grid-template-columns:repeat(2,1fr)}.met-grid{grid-template-columns:repeat(2,1fr)}.f-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.hdr-top{padding:10px 16px}.ng,.pg,.prg{grid-template-columns:1fr}.page{padding:20px 16px}.f-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"><i class="ti ti-check"></i><span id="tmsg"></span></div>
+
+<!-- HOME -->
+<div class="view active" id="v-home">
+  <header class="hdr">
+    <div class="hdr-top">
+      <div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div>
+      <div class="sbox"><i data-lucide="search" class="lucide lucide-sm"></i><input id="s1" type="text" placeholder="Buscar programas, podcast, noticias..." onkeydown="if(event.key==='Enter')doSearch(this.value)"></div>
+      <button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button>
+    </div>
+    <nav class="hdr-nav"><div class="nav-inn">
+      <div class="nav-item on" onclick="navTo(this,'home')"><span class="ldot"></span>Live</div>
+      <div class="nav-item" onclick="openTV()"><i data-lucide="tv" class="lucide lucide-sm"></i>En Vivo TV</div>
+      <div class="nav-item" onclick="navTo(this,'programas')"><i data-lucide="calendar-days" class="lucide lucide-sm"></i>Programación</div>
+      <div class="nav-item" onclick="navTo(this,'podcast')"><i data-lucide="mic" class="lucide lucide-sm"></i>Podcast</div>
+      <div class="nav-item" onclick="navTo(this,'entrevistas')"><i data-lucide="video" class="lucide lucide-sm"></i>Entrevistas</div>
+      <div class="nav-item" onclick="goFavs()"><i data-lucide="heart" class="lucide lucide-sm"></i>Favoritos</div>
+    </div></nav>
+  </header>
+
+  <!-- PLAYER -->
+  <div class="player">
+    <div class="p-inn">
+      <div class="p-art"><i class="ti ti-music"></i></div>
+      <div class="p-info">
+        <div class="p-lbl">Ahora en vivo · 89.7 FM</div>
+        <div class="p-trk" id="p-trk">Radio Duna</div>
+        <div class="p-art2" id="p-art2">Presiona play para escuchar</div>
+      </div>
+      <div class="p-controls">
+        <button class="pbtn" id="playbtn" onclick="togglePlay()"><i data-lucide="play" id="playic" class="lucide lucide-sm lucide-white"></i></button>
+        <div class="pvol"><i data-lucide="volume-2" class="lucide lucide-sm lucide-white"></i><input type="range" class="vslide" id="vol" min="0" max="100" value="80" oninput="setVol(this.value)"></div>
+      </div>
+      <div class="live-badge"><span class="ldot"></span>EN VIVO</div>
+    </div>
+    <!-- Mediastream Lightning Player — se inyecta dinámicamente al presionar Play -->
+    <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none"></div>
+  </div>
+
+  <main class="page">
+    <div class="sh"><h2 class="st">Noticias</h2><span class="sl" onclick="openList('noticias')">Ver más <i class="ti ti-arrow-right"></i></span></div>
+    <div class="ng" id="h-news"><div class="estado"><i class="ti ti-loader"></i><p>Cargando noticias...</p></div></div>
+    <hr class="div">
+    <div class="sh"><h2 class="st" id="s-ent">Entrevistas</h2><span class="sl" onclick="openList('entrevistas')">Ver más <i class="ti ti-arrow-right"></i></span></div>
+    <div class="ng" id="h-ivs"><div class="estado"><i class="ti ti-loader"></i><p>Cargando entrevistas...</p></div></div>
+    <hr class="div">
+    <div class="sh"><h2 class="st" id="s-pod">Podcast</h2><span class="sl" onclick="openList('podcast')">Ver más <i class="ti ti-arrow-right"></i></span></div>
+    <div class="pg" id="h-pods"><div class="estado"><i class="ti ti-loader"></i><p>Cargando podcast...</p></div></div>
+    <hr class="div">
+    <div class="sh"><h2 class="st" id="s-prg">Programación Radio</h2><span class="sl" onclick="openList('programas')">Ver más <i class="ti ti-arrow-right"></i></span></div>
+    <div class="prg" id="h-prgs"><div class="estado"><i class="ti ti-loader"></i><p>Cargando programas...</p></div></div>
+  </main>
+
+  <footer class="footer"><div class="f-inn">
+    <div class="f-grid">
+      <div class="f-col"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zNyI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogI2UxYTI4MDsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNiMDhiNjg7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjOGU4MDdjOwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogI2IyOTc2YTsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiYTk5N2I7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTEwNC4zOS4xYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjFoMjkuMjFaTTg2LjUsNjAuNjdoMTguNDRjOS43OCwwLDE3Ljk3LTEuODQsMjMuMTItNS4zOCw2LjgzLTQuODUsMTAuNTEtMTIuNTgsMTAuNTEtMjIuNTEsMC0xMC44MS00LjUxLTE5LjA2LTEyLjY1LTIzLjE0LTUuMS0yLjYxLTkuMTUtMy4xNy0yMC45OC0zLjE3aC0xOC40NHY1NC4yMi0uMDJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMTY0Ljk2LjF2MzkuOWMwLDYuMTkuMTcsNy4zMy42Nyw5LjcyLDIuMzUsNy44OSwxMC45OCwxMi4zMywyNC4wNiwxMi4zMywxMCwwLDE4LjQxLTMuMTcsMjEuOTMtOC4wNiwxLjU4LTIuMiwyLjUtNS40OCwyLjctOS4wM1YuMWgxMS4xOXYzOS42NmMwLDYuMzEtLjA2LDguNTUtLjk0LDExLjQzLTMuMjgsMTEuMjMtMTUuMzYsMTcuMTgtMzQuODgsMTcuMTgtMTYuMSwwLTI3LjY5LTQuMjgtMzIuNzMtMTEuOTMtMS44NS0yLjgyLTIuOTYtNi45LTIuOTgtMTEuMDItLjE5LTEuNjItLjE5LTMuNDktLjE5LTUuNjdWLjFoMTEuMTdaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMzA4Ljc3LDY3LjA4aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xaDEwLjk1bDU0Ljc0LDU0LjQ0Vi4xaDEwLjg5djY2Ljk5aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMzkyLjY1LDY3LjA4aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMWgxMC40M2wzNy40LDY2Ljk5aC4wMVpNMzQ5LjYzLDkuOTdsLTE1LjE1LDI4Ljg4aDMwLjhzLTE1LjY1LTI4Ljg4LTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDYiIHkxPSIxNi44NSIgeTI9Ii4xIi8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9Ii4xIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMSIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHg9IjMzLjM4IiB5PSIuMSIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEiIHg9IjUwLjEzIiB5PSIuMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDYiIHkxPSIzMy41MyIgeTI9IjE2Ljg1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDgiIHk9IjE2Ljg1IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NSIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODUiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMiIgeD0iNTAuMTMiIHk9IjE2Ljg1IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0NiIgeTE9IjUwLjIzIiB5Mj0iMzMuNTMiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTQiIHk9IjMzLjUzIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE1IiB4PSIxNi43IiB5PSIzMy41MyIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41MyIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHg9IjUwLjEzIiB5PSIzMy41MyIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0NiIgeTE9IjY2Ljk3IiB5Mj0iNTAuMjMiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MyIgeT0iNTAuMjMiIHdpZHRoPSIxNi43IiBoZWlnaHQ9IjE2Ljc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSI1MC4yMyIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2Ljc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEzIiB4PSIzMy4zOCIgeT0iNTAuMjMiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QyIiB4PSI1MC4xMyIgeT0iNTAuMjMiIHdpZHRoPSIxNi43OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgPC9nPgogICAgPGc+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0zNzIuNjQsMTMuODJoLTEuMThWLjU5aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTloMFoiLz4KICAgICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTM4OC43OSwxMy44MlYyLjdoMGwtMi41MiwxMS4xMmgtMS4zOWwtMi41My0xMS4xMmgtLjA1YzAsMS4yNS4wNSwyLjkyLjA1LDMuMjd2Ny44NmgtMS4yVi41OWgxLjhsMi42NSwxMS4xNmguMTNsMi42NS0xMS4xNmgxLjd2MTMuMjNoLTEuMjlaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTQyMy4xNCwyNS4zMmMtMi4yNi0xLjc5LTMuNTUtNC4yMi0zLjU1LTcuMzksMC0yLjc4LjkxLTUuMTcsMi43NS03LjIsMS44NC0yLjA2LDQuNjktMy4xNSw4LjczLTMuMTVzNy4wNywxLjA5LDksMy4xNWMxLjkzLDIuMDMsMi45Niw0LjM0LDIuOTYsNi43OCwwLDIuOTItMS4wNiw1LjI4LTMuMDgsNy4zMy0yLjA3LDIuMDItNC45NCwzLTguNjgsMy0zLjEyLDAtNS44MS0uNzUtOC4xMy0yLjUzaDBaTTQyMS4xMSw1Ny4wMWMtMi4yMy0yLjU5LTMuMzYtNS41My0zLjM2LTksMC0zLjk2LDEuMjYtNy4xNCwzLjgtOS4zOSwyLjQyLTIuMyw1Ljc1LTMuMzgsOS43My0zLjM4czcuNDcsMS4wOCwxMC4wMywzLjM4YzIuNjgsMi4xOSwzLjk2LDUuNDQsMy45Niw5LjY5cy0xLjI1LDcuMjgtMy44NCw5LjM0Yy0yLjUyLDIuMDgtNS42OSwzLjEzLTkuNTQsMy4xMy00LjksMC04LjQ3LTEuMjQtMTAuNzctMy43N2gtLjAxWk00MTEuNDEsMzcuNjVjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTR2LS4wMloiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik00NjcuNzYsMzMuMDFjLTIuMDctMi41My0zLjA4LTUuOTktMy4wOC0xMC4yOSwwLTQuNTgsMS4xNy04LjI2LDMuNTEtMTEuMDEsMi40OC0yLjc0LDUuNjQtNC4wNyw5LjcxLTQuMDdzNi45NywxLjE4LDkuMzUsMy42MmMyLjQ3LDIuMzgsMy43MSw1Ljk2LDMuNzEsMTAuODUsMCw1LjQ1LTEuMzIsOS4yNS00LjA0LDExLjQ0LTIuNzYsMi4yMi01Ljc1LDMuMjQtOS4xMSwzLjI0LTQuNTksMC03LjkyLTEuMTYtMTAuMDQtMy43NnYtLjAyWk00NjEuOCw2My4yM2MzLjM2LDMuNDQsOC4yNyw1LjE0LDE0Ljc1LDUuMTQsOS43MywwLDE2LjU4LTUuMjcsMjAuNjEtMTUuNTksMi40LTYuMzEsMy42OS0xMy41NSwzLjY5LTIxLjY2LDAtNy4yMi0xLjA2LTEzLjI1LTMuMTItMTcuOTYtMy43Mi04LjgtMTAuMzctMTMuMDktMTkuOTQtMTMuMDktNy4yNywwLTEyLjYzLDIuMjUtMTYuMjgsNi44My0zLjY4LDQuNTctNS41NSw5Ljg3LTUuNTUsMTUuOXMxLjg3LDExLjM2LDUuNTksMTUuMzRjMy42NywzLjk2LDguNzMsNi4wOCwxNS4xNCw2LjA4LDMuMTksMCw2LjA3LS42Myw4Ljg3LTEuODQsMi43Mi0xLjE0LDQuOTctMy4xNSw2Ljg5LTYuMi0xLjE3LDEwLjEyLTMuMjEsMTYuOTMtNi4wNCwyMC4yNy0yLjgyLDMuMTgtNi4xOCw0Ljk1LTEwLjIxLDQuOTUtMi4wOSwwLTMuOTUtLjQ3LTUuNzItMS40My0zLjMxLTEuNjktNC45OC00LjgzLTUuMzMtOS40NWgtOC40MmMwLDUuMDgsMS42OCw5LjM4LDUuMDYsMTIuNzJoMFoiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik01MDcuODMsNjYuNDh2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNNTIzLjgsMS4yN2g0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjdaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:24px;width:auto;cursor:pointer" onclick="go('v-home')">
+        <p style="margin-top:14px;font-size:13px;line-height:1.6">La radio de Chile que conecta música, información y cultura. 89.7 FM.</p>
+        <div class="socials">
+          <a class="soc" href="https://www.instagram.com/radioduna/" target="_blank" rel="noopener" aria-label="Instagram Radio Duna"><i class="ti ti-brand-instagram"></i></a>
+          <a class="soc" href="https://www.facebook.com/RadioDuna" target="_blank" rel="noopener" aria-label="Facebook Radio Duna"><i class="ti ti-brand-facebook"></i></a>
+          <a class="soc" href="https://x.com/RadioDuna" target="_blank" rel="noopener" aria-label="X Radio Duna"><i class="ti ti-brand-x"></i></a>
+          <a class="soc" href="https://www.youtube.com/channel/UC2dUjKdv0sezxuflNK4w8Pg" target="_blank" rel="noopener" aria-label="YouTube Radio Duna"><i class="ti ti-brand-youtube"></i></a>
+          <a class="soc" href="https://linktr.ee/RadioDuna" target="_blank" rel="noopener" aria-label="Linktree Radio Duna"><i class="ti ti-link"></i></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Contenido</h4><ul>
+        <li><a onclick="navTo(null,'programas')">Programación</a></li>
+        <li><a onclick="navTo(null,'podcast')">Podcast</a></li>
+        <li><a onclick="navTo(null,'entrevistas')">Entrevistas</a></li>
+      </ul></div>
+      <div class="f-col f-contact"><h4>Contacto</h4>
+        <p><i class="ti ti-map-pin"></i>Av. Providencia 2594, Piso 12, Santiago</p>
+        <p><i class="ti ti-mail"></i>contacto@duna.cl</p>
+        <p><i class="ti ti-phone"></i>+56 2 2793 9797</p>
+      </div>
+    </div>
+    <div class="f-btm">
+      <p>© 2026 Radio Duna 89.7 FM · Todos los derechos reservados</p>
+      <button class="btn-j" onclick="go('v-login')"><i data-lucide="lock" class="lucide lucide-sm lucide-white"></i>Acceso periodistas</button>
+    </div>
+  </div></footer>
+</div>
+
+<!-- ARTICLE / ENTREVISTA -->
+<div class="view" id="v-art">
+  <header class="hdr"><div class="hdr-top"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div><button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button></div></header>
+  <div class="art-hero" id="art-hero"><i class="ti ti-photo"></i></div>
+  <div class="art-wrap">
+    <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button>
+    <div class="art-cat" id="a-cat"></div>
+    <h1 class="art-ttl" id="a-ttl"></h1>
+    <p class="art-baj" id="a-baj"></p>
+    <div class="art-meta"><span><i class="ti ti-user"></i><span id="a-auth"></span></span><span><i class="ti ti-clock"></i><span id="a-time"></span></span><span><i class="ti ti-calendar"></i><span id="a-date"></span></span></div>
+    <div class="art-txt" id="a-body"></div>
+    <div class="art-actions">
+      <button class="btn bp" onclick="saveFav('article')"><i data-lucide="heart" class="lucide lucide-sm lucide-white"></i>Guardar</button>
+      <button class="btn bs" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
+      <button class="btn bspot" onclick="toast('Abriendo en Spotify...')"><i class="ti ti-brand-spotify"></i>Spotify</button>
+      <button class="btn byt" onclick="toast('Abriendo en YouTube...')"><i class="ti ti-brand-youtube"></i>YouTube</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<div class="view" id="v-prog">
+  <header class="hdr"><div class="hdr-top"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div><button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button></div></header>
+  <div class="prog-hero"><div class="prog-hero-in">
+    <div class="prog-img-h" id="pr-img"></div>
+    <div class="prog-hero-info">
+      <div style="font-size:13px;color:var(--cs);display:flex;align-items:center;gap:6px;margin-bottom:5px"><i class="ti ti-clock"></i><span id="pr-sch"></span></div>
+      <h1 id="pr-name"></h1>
+      <p style="color:rgba(255,255,255,.6);font-size:14px;margin-top:5px;margin-bottom:12px" id="pr-desc"></p>
+      <div class="hosts-row" id="pr-hosts"></div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn bp" onclick="saveFav('program')"><i data-lucide="heart" class="lucide lucide-sm lucide-white"></i>Guardar</button>
+        <button class="btn bo" style="border-color:rgba(255,255,255,.3);color:#fff" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="page">
+    <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button>
+    <div class="sh"><h2 class="st">Últimos episodios</h2></div><div class="pg" id="pr-eps"></div>
+    <hr class="div">
+    <div class="sh"><h2 class="st">Noticias relacionadas</h2></div><div class="ng" id="pr-news"></div>
+  </div>
+</div>
+
+<!-- PODCAST -->
+<div class="view" id="v-pod">
+  <header class="hdr"><div class="hdr-top"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div><button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button></div></header>
+  <div class="page">
+    <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button>
+    <div class="pod-player">
+      <div class="pod-art-lg" id="pod-art"><i class="ti ti-microphone"></i></div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:700;color:var(--ca);margin-bottom:3px" id="pod-prog"></div>
+        <h1 style="font-size:20px;font-weight:700;margin-bottom:5px" id="pod-ttl"></h1>
+        <div style="font-size:12px;color:var(--cm);margin-bottom:14px" id="pod-date"></div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <button class="btn bp" onclick="saveFav('podcast')"><i data-lucide="heart" class="lucide lucide-sm lucide-white"></i>Guardar</button>
+          <button class="btn bspot" onclick="toast('Abriendo en Spotify...')"><i class="ti ti-brand-spotify"></i>Spotify</button>
+          <button class="btn byt" onclick="toast('Abriendo en YouTube...')"><i class="ti ti-brand-youtube"></i>YouTube</button>
+          <button class="btn bo" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:720px;margin:0 auto"><h2 style="font-size:16px;font-weight:600;margin-bottom:10px">Resumen</h2><p id="pod-sum" style="font-size:15px;line-height:1.75"></p></div>
+  </div>
+</div>
+
+<!-- LIST VIEW (Noticias / Entrevistas / Podcast / Programas) -->
+<div class="view" id="v-list">
+  <header class="hdr">
+    <div class="hdr-top">
+      <div onclick="go('v-home')" style="cursor:pointer"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div>
+      <div class="sbox"><i data-lucide="search" class="lucide lucide-sm"></i><input id="s3" type="text" placeholder="Buscar..." onkeydown="if(event.key==='Enter')doSearch(this.value)"></div>
+      <button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button>
+    </div>
+    <nav class="hdr-nav"><div class="nav-inn">
+      <div class="nav-item" onclick="navTo(this,'home')"><span class="ldot"></span>Live</div>
+      <div class="nav-item" id="lnav-programas" onclick="openList('programas')"><i data-lucide="calendar-days" class="lucide lucide-sm"></i>Programación</div>
+      <div class="nav-item" id="lnav-podcast" onclick="openList('podcast')"><i data-lucide="mic" class="lucide lucide-sm"></i>Podcast</div>
+      <div class="nav-item" id="lnav-entrevistas" onclick="openList('entrevistas')"><i data-lucide="video" class="lucide lucide-sm"></i>Entrevistas</div>
+      <div class="nav-item" onclick="goFavs()"><i data-lucide="heart" class="lucide lucide-sm"></i>Favoritos</div>
+    </div></nav>
+  </header>
+
+  <div class="list-hero" id="list-hero">
+    <div class="list-hero-in">
+      <button class="back" onclick="go('v-home')" style="color:rgba(255,255,255,.7);margin-bottom:14px"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
+      <div class="list-icon" id="list-icon"><i class="ti ti-news"></i></div>
+      <h1 id="list-title">Noticias</h1>
+      <p id="list-subtitle">Las últimas noticias de Radio Duna 89.7</p>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="list-toolbar">
+      <span id="list-count" style="font-size:13px;color:var(--cm)"></span>
+      <div class="list-sort">
+        <i class="ti ti-arrows-sort" style="color:var(--cm);font-size:14px"></i>
+        <span style="font-size:12px;color:var(--cm)">Más recientes primero</span>
+      </div>
+    </div>
+    <div id="list-grid" class="ng"></div>
+  </div>
+
+  <footer class="footer"><div class="f-inn">
+    <div class="f-btm" style="border-top:none;padding-top:0;justify-content:center">
+      <p>© 2026 Radio Duna 89.7 FM · Todos los derechos reservados</p>
+    </div>
+  </div></footer>
+</div>
+
+<!-- TV EN VIVO -->
+<div class="view" id="v-tv">
+  <header class="hdr">
+    <div class="hdr-top">
+      <div onclick="go('v-home')" style="cursor:pointer"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div>
+      <button class="btn-ia" onclick="toggleAI()"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i>Duna IA</button>
+    </div>
+  </header>
+
+  <div class="tv-hero">
+    <div class="tv-hero-in">
+      <button class="back" onclick="go('v-home')" style="color:rgba(255,255,255,.7);margin-bottom:14px"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span class="live-badge"><span class="ldot"></span>EN VIVO</span>
+        <span style="font-size:12px;color:rgba(255,255,255,.5)">Transmisión en tiempo real</span>
+      </div>
+      <h1>Duna TV — Señal en Vivo</h1>
+      <p>Mira en directo lo que está ocurriendo en cabina, entrevistas y programas especiales.</p>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="tv-frame-wrap" id="tv-frame-wrap">
+      <div class="tv-placeholder" id="tv-placeholder">
+        <i class="ti ti-player-play-filled"></i>
+        <p>Presiona play para ver la señal en vivo</p>
+        <button class="btn bp" onclick="startTV()" style="margin-top:14px"><i class="ti ti-player-play"></i>Reproducir video en vivo</button>
+      </div>
+    </div>
+
+    <div style="max-width:760px;margin:28px auto 0">
+      <h2 style="font-size:16px;font-weight:600;margin-bottom:10px">Sobre esta transmisión</h2>
+      <p style="font-size:14px;line-height:1.7;color:var(--cm)">La señal de Duna TV transmite en vivo desde los estudios de Radio Duna 89.7, mostrando la cabina en acción, entrevistas en video y momentos especiales de la programación diaria.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAVORITES -->
+<div class="view" id="v-favs">
+  <header class="hdr"><div class="hdr-top"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div></div></header>
+  <div class="fav-view"><button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button><h1 style="font-size:22px;font-weight:700;margin-bottom:20px">Mis favoritos</h1><div id="fav-list"></div></div>
+</div>
+
+<!-- SEARCH -->
+<div class="view" id="v-search">
+  <header class="hdr"><div class="hdr-top"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div><div class="sbox"><i data-lucide="search" class="lucide lucide-sm"></i><input id="s2" type="text" placeholder="Buscar..." onkeydown="if(event.key==='Enter')doSearch(this.value)"></div></div></header>
+  <div class="sv"><button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button><p id="s-ttl" style="font-size:18px;font-weight:700;margin-bottom:18px"></p><div id="s-list"></div></div>
+</div>
+
+<!-- LOGIN -->
+<div class="view" id="v-login">
+  <div class="lw"><div class="lc">
+    <div style="margin-bottom:24px"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zOCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzg5NzY2MDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogIzhmODA2YTsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogIzY2ODBhODsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNlMWEyODA7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjYjA4YjY4OwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogIzhlODA3YzsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiMjk3NmE7CiAgICAgIH0KCiAgICAgIC5zdDE3IHsKICAgICAgICBmaWxsOiAjYmE5OTdiOwogICAgICB9CgogICAgICAuc3QxOCB7CiAgICAgICAgZmlsbDogI2E5OGU2YzsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBkPSJNMTA0LjM5LjExYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjExaDI5LjIxWk04Ni41LDYwLjY4aDE4LjQ0YzkuNzgsMCwxNy45Ny0xLjg0LDIzLjEyLTUuMzgsNi44My00Ljg1LDEwLjUxLTEyLjU4LDEwLjUxLTIyLjUxLDAtMTAuODEtNC41MS0xOS4wNi0xMi42NS0yMy4xNC01LjEtMi42MS05LjE1LTMuMTctMjAuOTgtMy4xN2gtMTguNDR2NTQuMjJaIi8+CiAgICA8cGF0aCBkPSJNMTY0Ljk2LjExdjM5LjljMCw2LjE5LjE3LDcuMzMuNjcsOS43MiwyLjM1LDcuODksMTAuOTgsMTIuMzMsMjQuMDYsMTIuMzMsMTAsMCwxOC40MS0zLjE3LDIxLjkzLTguMDYsMS41OC0yLjIsMi41LTUuNDgsMi43LTkuMDNWLjExaDExLjE5djM5LjY2YzAsNi4zMS0uMDYsOC41NS0uOTQsMTEuNDMtMy4yOCwxMS4yMy0xNS4zNiwxNy4xOC0zNC44OCwxNy4xOC0xNi4xLDAtMjcuNjktNC4yOC0zMi43My0xMS45My0xLjg1LTIuODItMi45Ni02LjktMi45OC0xMS4wMi0uMTktMS42Mi0uMTktMy40OS0uMTktNS42N1YuMTFoMTEuMTdaIi8+CiAgICA8cGF0aCBkPSJNMzA4Ljc3LDY3LjA5aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xMWgxMC45NWw1NC43NCw1NC40NFYuMTFoMTAuODl2NjYuOTlaIi8+CiAgICA8cGF0aCBkPSJNMzkyLjY1LDY3LjA5aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMTFoMTAuNDNsMzcuNCw2Ni45OVpNMzQ5LjYzLDkuOThsLTE1LjE1LDI4Ljg4aDMwLjhsLTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDEyIiB5MT0iMTYuODYiIHkyPSIuMTEiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NSIgeT0iLjExIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMTEiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q2IiB4PSIzMy4zOCIgeT0iLjExIiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MSIgeD0iNTAuMTMiIHk9Ii4xMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDgiIHkxPSIzMy41NCIgeTI9IjE2Ljg2Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NiIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODYiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMyIgeD0iNTAuMTMiIHk9IjE2Ljg2IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MyIgeTE9IjUwLjI0IiB5Mj0iMzMuNTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHk9IjMzLjU0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSIzMy41NCIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTYiIHg9IjUwLjEzIiB5PSIzMy41NCIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0MTgiIHkxPSI2Ni45OCIgeTI9IjUwLjI0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNyIgeD0iMTYuNyIgeT0iNTAuMjQiIHdpZHRoPSIxNi42OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxNCIgeD0iMzMuMzgiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzUiIGhlaWdodD0iMTYuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MiIgeD0iNTAuMTMiIHk9IjUwLjI0IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNzQiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cGF0aCBkPSJNMzcyLjY0LDEzLjgzaC0xLjE4Vi42aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTlaIi8+CiAgICAgIDxwYXRoIGQ9Ik0zODguNzksMTMuODNWMi43MWgwbC0yLjUyLDExLjEyaC0xLjM5bC0yLjUzLTExLjEyaC0uMDVjMCwxLjI1LjA1LDIuOTIuMDUsMy4yN3Y3Ljg2aC0xLjJWLjZoMS44bDIuNjUsMTEuMTZoLjEzbDIuNjUtMTEuMTZoMS43djEzLjIzaC0xLjI4WiIvPgogICAgPC9nPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik00MjMuMTQsMjUuMzNjLTIuMjYtMS43OS0zLjU1LTQuMjItMy41NS03LjM5LDAtMi43OC45MS01LjE3LDIuNzUtNy4yLDEuODQtMi4wNiw0LjY5LTMuMTUsOC43My0zLjE1czcuMDcsMS4wOSw5LDMuMTVjMS45MywyLjAzLDIuOTYsNC4zNCwyLjk2LDYuNzgsMCwyLjkyLTEuMDYsNS4yOC0zLjA4LDcuMzMtMi4wNywyLjAyLTQuOTQsMy04LjY4LDMtMy4xMiwwLTUuODEtLjc1LTguMTMtMi41M1pNNDIxLjExLDU3LjAyYy0yLjIzLTIuNTktMy4zNi01LjUzLTMuMzYtOSwwLTMuOTYsMS4yNi03LjE0LDMuOC05LjM5LDIuNDItMi4zLDUuNzUtMy4zOCw5LjczLTMuMzhzNy40NywxLjA4LDEwLjAzLDMuMzhjMi42OCwyLjE5LDMuOTYsNS40NCwzLjk2LDkuNjlzLTEuMjUsNy4yOC0zLjg0LDkuMzRjLTIuNTIsMi4wOC01LjY5LDMuMTMtOS41NCwzLjEzLTQuOSwwLTguNDctMS4yNC0xMC43Ny0zLjc3Wk00MTEuNDEsMzcuNjZjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTRaIi8+CiAgICA8cGF0aCBkPSJNNDY3Ljc2LDMzLjAyYy0yLjA3LTIuNTMtMy4wOC01Ljk5LTMuMDgtMTAuMjksMC00LjU4LDEuMTctOC4yNiwzLjUxLTExLjAxLDIuNDgtMi43NCw1LjY0LTQuMDcsOS43MS00LjA3czYuOTcsMS4xOCw5LjM1LDMuNjJjMi40NywyLjM4LDMuNzEsNS45NiwzLjcxLDEwLjg1LDAsNS40NS0xLjMyLDkuMjUtNC4wNCwxMS40NC0yLjc2LDIuMjItNS43NSwzLjI0LTkuMTEsMy4yNC00LjU5LDAtNy45Mi0xLjE2LTEwLjA0LTMuNzZaTTQ2MS44LDYzLjI0YzMuMzYsMy40NCw4LjI3LDUuMTQsMTQuNzUsNS4xNCw5LjczLDAsMTYuNTgtNS4yNywyMC42MS0xNS41OSwyLjQtNi4zMSwzLjY5LTEzLjU1LDMuNjktMjEuNjYsMC03LjIyLTEuMDYtMTMuMjUtMy4xMi0xNy45Ni0zLjcyLTguOC0xMC4zNy0xMy4wOS0xOS45NC0xMy4wOS03LjI3LDAtMTIuNjMsMi4yNS0xNi4yOCw2LjgzLTMuNjgsNC41Ny01LjU1LDkuODctNS41NSwxNS45czEuODcsMTEuMzYsNS41OSwxNS4zNGMzLjY3LDMuOTYsOC43Myw2LjA4LDE1LjE0LDYuMDgsMy4xOSwwLDYuMDctLjYzLDguODctMS44NCwyLjcyLTEuMTQsNC45Ny0zLjE1LDYuODktNi4yLTEuMTcsMTAuMTItMy4yMSwxNi45My02LjA0LDIwLjI3LTIuODIsMy4xOC02LjE4LDQuOTUtMTAuMjEsNC45NS0yLjA5LDAtMy45NS0uNDctNS43Mi0xLjQzLTMuMzEtMS42OS00Ljk4LTQuODMtNS4zMy05LjQ1aC04LjQyYzAsNS4wOCwxLjY4LDkuMzgsNS4wNiwxMi43MloiLz4KICAgIDxwYXRoIGQ9Ik01MDcuODMsNjYuNDl2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBkPSJNNTIzLjgsMS4yOGg0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjhaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:30px;width:auto;cursor:pointer" onclick="go('v-home')"></div>
+    <h1 style="font-size:22px;font-weight:700;margin-bottom:4px">Acceso periodistas</h1>
+    <p style="font-size:14px;color:var(--cm);margin-bottom:26px">Ingresa con tus credenciales editoriales.</p>
+    <div class="lerr" id="lerr"><i class="ti ti-alert-circle"></i><span id="lerr-msg"></span></div>
+    <div style="margin-bottom:14px"><label class="fl">Usuario</label><input class="fi" type="text" id="lu" placeholder="periodista" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div style="margin-bottom:8px"><label class="fl">Contraseña</label>
+      <div class="pw-wr"><input class="fi" type="password" id="lp" placeholder="••••••••" style="padding-right:40px" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="pw-eye" onclick="togglePw()"><i data-lucide="eye" id="pwic" class="lucide lucide-sm"></i></button></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer"><input type="checkbox" style="accent-color:var(--ca)">Mantener sesión</label>
+      <a style="font-size:12px;color:var(--ca);cursor:pointer">Olvidé mi contraseña</a>
+    </div>
+    <button class="btn-login" onclick="doLogin()">Ingresar</button>
+    <a style="display:block;text-align:center;margin-top:14px;font-size:12px;color:var(--cm);cursor:pointer" onclick="go('v-home')">← Volver al sitio</a>
+    <div style="margin-top:16px;padding:10px;background:var(--cn);border-radius:6px;font-size:12px;color:var(--cm)">Demo · usuario: <code>periodista</code> · contraseña: <code>demo1234</code></div>
+  </div></div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="view" id="v-dash">
+  <div class="dash">
+    <div class="dh">
+      <div style="display:flex;align-items:center;gap:14px"><div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OS45OSA2OC4zNyI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDMwLjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS40IEJ1aWxkIDMpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogIzk0YjVkZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2NiYjBhNjsKICAgICAgfQoKICAgICAgLnN0MiB7CiAgICAgICAgZmlsbDogIzk2Nzk0ZjsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogI2QwYWM3ZDsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogIzdmOWZkMjsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogIzdhOThjOTsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogI2EzOWNiMzsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgZmlsbDogI2FmYWJkNDsKICAgICAgfQoKICAgICAgLnN0MTAgewogICAgICAgIGZpbGw6ICNkMGI1ODA7CiAgICAgIH0KCiAgICAgIC5zdDExIHsKICAgICAgICBmaWxsOiAjYzE5YThmOwogICAgICB9CgogICAgICAuc3QxMiB7CiAgICAgICAgZmlsbDogI2UxYTI4MDsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGZpbGw6ICNiMDhiNjg7CiAgICAgIH0KCiAgICAgIC5zdDE0IHsKICAgICAgICBmaWxsOiAjOGU4MDdjOwogICAgICB9CgogICAgICAuc3QxNSB7CiAgICAgICAgZmlsbDogI2IyOTc2YTsKICAgICAgfQoKICAgICAgLnN0MTYgewogICAgICAgIGZpbGw6ICNiYTk5N2I7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTEwNC4zOS4xYzE2LjI4LDAsMjUuMzIsMS41NywzMi40MSw1Ljg3LDguOTMsNS40NywxNC4wMSwxNS4xNCwxNC4wMSwyNi40OCwwLDEzLjk0LTcuNjcsMjUuMy0yMC41MiwzMC42MS02LjIsMi40NS0xNS43NCw0LjAyLTI1LjksNC4wMmgtMjkuMjFWLjFoMjkuMjFaTTg2LjUsNjAuNjdoMTguNDRjOS43OCwwLDE3Ljk3LTEuODQsMjMuMTItNS4zOCw2LjgzLTQuODUsMTAuNTEtMTIuNTgsMTAuNTEtMjIuNTEsMC0xMC44MS00LjUxLTE5LjA2LTEyLjY1LTIzLjE0LTUuMS0yLjYxLTkuMTUtMy4xNy0yMC45OC0zLjE3aC0xOC40NHY1NC4yMi0uMDJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMTY0Ljk2LjF2MzkuOWMwLDYuMTkuMTcsNy4zMy42Nyw5LjcyLDIuMzUsNy44OSwxMC45OCwxMi4zMywyNC4wNiwxMi4zMywxMCwwLDE4LjQxLTMuMTcsMjEuOTMtOC4wNiwxLjU4LTIuMiwyLjUtNS40OCwyLjctOS4wM1YuMWgxMS4xOXYzOS42NmMwLDYuMzEtLjA2LDguNTUtLjk0LDExLjQzLTMuMjgsMTEuMjMtMTUuMzYsMTcuMTgtMzQuODgsMTcuMTgtMTYuMSwwLTI3LjY5LTQuMjgtMzIuNzMtMTEuOTMtMS44NS0yLjgyLTIuOTYtNi45LTIuOTgtMTEuMDItLjE5LTEuNjItLjE5LTMuNDktLjE5LTUuNjdWLjFoMTEuMTdaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMzA4Ljc3LDY3LjA4aC0xMC44OWwtNTQuNzQtNTQuNDF2NTQuNDFoLTEwLjk1Vi4xaDEwLjk1bDU0Ljc0LDU0LjQ0Vi4xaDEwLjg5djY2Ljk5aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMzkyLjY1LDY3LjA4aC0xMi4wNWwtMTEuNy0yMS42NmgtMzguMDhsLTExLjE5LDIxLjY2aC0xMi4wOEwzNDQuODEuMWgxMC40M2wzNy40LDY2Ljk5aC4wMVpNMzQ5LjYzLDkuOTdsLTE1LjE1LDI4Ljg4aDMwLjhzLTE1LjY1LTI4Ljg4LTE1LjY1LTI4Ljg4WiIvPgogICAgPGc+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDYiIHkxPSIxNi44NSIgeTI9Ii4xIi8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDQiIHk9Ii4xIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIxNi43IiB5PSIuMSIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHg9IjMzLjM4IiB5PSIuMSIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEiIHg9IjUwLjEzIiB5PSIuMSIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2Ljc1Ii8+CiAgICAgIDxsaW5lIGNsYXNzPSJzdDYiIHkxPSIzMy41MyIgeTI9IjE2Ljg1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDgiIHk9IjE2Ljg1IiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIxNi43IiB5PSIxNi44NSIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjY4Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEwIiB4PSIzMy4zOCIgeT0iMTYuODUiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi42OCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMiIgeD0iNTAuMTMiIHk9IjE2Ljg1IiB3aWR0aD0iMTYuNzgiIGhlaWdodD0iMTYuNjgiLz4KICAgICAgPGxpbmUgY2xhc3M9InN0NiIgeTE9IjUwLjIzIiB5Mj0iMzMuNTMiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTQiIHk9IjMzLjUzIiB3aWR0aD0iMTYuNyIgaGVpZ2h0PSIxNi43Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE1IiB4PSIxNi43IiB5PSIzMy41MyIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTEiIHg9IjMzLjM4IiB5PSIzMy41MyIgd2lkdGg9IjE2Ljc1IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTUiIHg9IjUwLjEzIiB5PSIzMy41MyIgd2lkdGg9IjE2Ljc4IiBoZWlnaHQ9IjE2LjciLz4KICAgICAgPGxpbmUgY2xhc3M9InN0NiIgeTE9IjY2Ljk3IiB5Mj0iNTAuMjMiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MyIgeT0iNTAuMjMiIHdpZHRoPSIxNi43IiBoZWlnaHQ9IjE2Ljc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDE2IiB4PSIxNi43IiB5PSI1MC4yMyIgd2lkdGg9IjE2LjY4IiBoZWlnaHQ9IjE2Ljc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEzIiB4PSIzMy4zOCIgeT0iNTAuMjMiIHdpZHRoPSIxNi43NSIgaGVpZ2h0PSIxNi43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QyIiB4PSI1MC4xMyIgeT0iNTAuMjMiIHdpZHRoPSIxNi43OCIgaGVpZ2h0PSIxNi43NCIvPgogICAgPC9nPgogICAgPGc+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0zNzIuNjQsMTMuODJoLTEuMThWLjU5aDYuNHYxLjU1aC01LjIydjQuMTNoNC41OXYxLjU1aC00LjU5djUuOTloMFoiLz4KICAgICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTM4OC43OSwxMy44MlYyLjdoMGwtMi41MiwxMS4xMmgtMS4zOWwtMi41My0xMS4xMmgtLjA1YzAsMS4yNS4wNSwyLjkyLjA1LDMuMjd2Ny44NmgtMS4yVi41OWgxLjhsMi42NSwxMS4xNmguMTNsMi42NS0xMS4xNmgxLjd2MTMuMjNoLTEuMjlaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTQyMy4xNCwyNS4zMmMtMi4yNi0xLjc5LTMuNTUtNC4yMi0zLjU1LTcuMzksMC0yLjc4LjkxLTUuMTcsMi43NS03LjIsMS44NC0yLjA2LDQuNjktMy4xNSw4LjczLTMuMTVzNy4wNywxLjA5LDksMy4xNWMxLjkzLDIuMDMsMi45Niw0LjM0LDIuOTYsNi43OCwwLDIuOTItMS4wNiw1LjI4LTMuMDgsNy4zMy0yLjA3LDIuMDItNC45NCwzLTguNjgsMy0zLjEyLDAtNS44MS0uNzUtOC4xMy0yLjUzaDBaTTQyMS4xMSw1Ny4wMWMtMi4yMy0yLjU5LTMuMzYtNS41My0zLjM2LTksMC0zLjk2LDEuMjYtNy4xNCwzLjgtOS4zOSwyLjQyLTIuMyw1Ljc1LTMuMzgsOS43My0zLjM4czcuNDcsMS4wOCwxMC4wMywzLjM4YzIuNjgsMi4xOSwzLjk2LDUuNDQsMy45Niw5LjY5cy0xLjI1LDcuMjgtMy44NCw5LjM0Yy0yLjUyLDIuMDgtNS42OSwzLjEzLTkuNTQsMy4xMy00LjksMC04LjQ3LTEuMjQtMTAuNzctMy43N2gtLjAxWk00MTEuNDEsMzcuNjVjLTEuOTIsMi45LTIuODYsNi4yOS0yLjg2LDEwLjI1LDAsNi43NSwyLjI1LDExLjcyLDYuNzQsMTUuMiw0LjQ0LDMuNTYsOS44OSw1LjI3LDE2LjM3LDUuMjcsNy4xNiwwLDEyLjY4LTIuMDMsMTYuNjUtNi4wNywzLjkyLTQuMDMsNS44NC05LjAyLDUuODQtMTQuOSwwLTQuODUtMS40OS04LjkzLTQuMzgtMTEuOTctMS41Ni0xLjY2LTMuNzItMy4xNi02LjUyLTQuNDEsMi42LTEuMzMsNC4zMS0yLjc2LDUuNDctNC4yMiwyLjA3LTIuNTcsMy4xMy01Ljg1LDMuMTMtMTAuMSwwLTQuNDktMS43LTguMzgtNS4zNC0xMS42NS0zLjY3LTMuNDMtOC42NS01LjA1LTE0Ljk1LTUuMDVzLTExLjcyLDEuNzctMTUuMjUsNS4zMmMtMy42OCwzLjUxLTUuMzksNy43Ny01LjM5LDEyLjY5LDAsMy45NywxLjE3LDcuMTgsMy41Niw5LjYzLDEuMzYsMS4zNiwzLjE4LDIuNTIsNS40MiwzLjQ5LTMuNywxLjUxLTYuNTEsMy43OC04LjQ5LDYuNTR2LS4wMloiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik00NjcuNzYsMzMuMDFjLTIuMDctMi41My0zLjA4LTUuOTktMy4wOC0xMC4yOSwwLTQuNTgsMS4xNy04LjI2LDMuNTEtMTEuMDEsMi40OC0yLjc0LDUuNjQtNC4wNyw5LjcxLTQuMDdzNi45NywxLjE4LDkuMzUsMy42MmMyLjQ3LDIuMzgsMy43MSw1Ljk2LDMuNzEsMTAuODUsMCw1LjQ1LTEuMzIsOS4yNS00LjA0LDExLjQ0LTIuNzYsMi4yMi01Ljc1LDMuMjQtOS4xMSwzLjI0LTQuNTksMC03LjkyLTEuMTYtMTAuMDQtMy43NnYtLjAyWk00NjEuOCw2My4yM2MzLjM2LDMuNDQsOC4yNyw1LjE0LDE0Ljc1LDUuMTQsOS43MywwLDE2LjU4LTUuMjcsMjAuNjEtMTUuNTksMi40LTYuMzEsMy42OS0xMy41NSwzLjY5LTIxLjY2LDAtNy4yMi0xLjA2LTEzLjI1LTMuMTItMTcuOTYtMy43Mi04LjgtMTAuMzctMTMuMDktMTkuOTQtMTMuMDktNy4yNywwLTEyLjYzLDIuMjUtMTYuMjgsNi44My0zLjY4LDQuNTctNS41NSw5Ljg3LTUuNTUsMTUuOXMxLjg3LDExLjM2LDUuNTksMTUuMzRjMy42NywzLjk2LDguNzMsNi4wOCwxNS4xNCw2LjA4LDMuMTksMCw2LjA3LS42Myw4Ljg3LTEuODQsMi43Mi0xLjE0LDQuOTctMy4xNSw2Ljg5LTYuMi0xLjE3LDEwLjEyLTMuMjEsMTYuOTMtNi4wNCwyMC4yNy0yLjgyLDMuMTgtNi4xOCw0Ljk1LTEwLjIxLDQuOTUtMi4wOSwwLTMuOTUtLjQ3LTUuNzItMS40My0zLjMxLTEuNjktNC45OC00LjgzLTUuMzMtOS40NWgtOC40MmMwLDUuMDgsMS42OCw5LjM4LDUuMDYsMTIuNzJoMFoiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik01MDcuODMsNjYuNDh2LTEwLjE2aDkuNTN2MTAuMTZoLTkuNTNaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNNTIzLjgsMS4yN2g0Ni4xOXY3LjI3Yy0yLjIsMi4wMi00Ljk2LDUuNjUtOC41MSwxMC44NS0zLjY4LDUuMS02LjcsMTAuNTMtOS40OCwxNi40OS0yLjU5LDUuOC00LjY5LDExLjA0LTYuMTQsMTUuODMtLjgyLDMuMDgtMS45OSw3LjkxLTMuMzcsMTQuNzdoLTkuMjRjMi4wNy0xMi42NCw2Ljc1LTI1LjI1LDEzLjg5LTM3Ljg0LDQuMjYtNy4yOCw4LjYzLTEzLjY0LDEzLjM2LTE4Ljk3aC0zNi43VjEuMjdaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Radio Duna 89.7" style="height:24px;width:auto;cursor:pointer" onclick="go('v-home')"></div><span style="font-size:15px;font-weight:600">Panel editorial · <span id="d-name">Editor Duna</span></span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:13px;color:var(--cm)">Sesión: <strong id="d-timer">8h</strong></span>
+        <button class="btn bo" onclick="go('v-home')"><i data-lucide="home" class="lucide lucide-sm"></i>Ver sitio</button>
+        <button class="btn bs" onclick="doLogout()"><i data-lucide="log-out" class="lucide lucide-sm"></i>Salir</button>
+      </div>
+    </div>
+    <div class="dtabs">
+      <div class="dtab on" onclick="switchTab(this,'tab-ed')">Redactar nota</div>
+      <div class="dtab" onclick="switchTab(this,'tab-met')">Métricas</div>
+    </div>
+    <div class="dbody" id="tab-ed">
+      <div class="ecard">
+        <h2 style="font-size:18px;font-weight:700;margin-bottom:20px">Nueva nota</h2>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="photo-drop" onclick="fakeUpload()"><i data-lucide="image-plus" id="upic" class="lucide lucide-lg" style="display:block;margin:0 auto 8px"></i><p id="utxt">Subir fotografía de portada</p><small>JPG o PNG · máx. 5 MB</small></div>
+          <div><label class="el">Titular (máx. 120 caracteres)</label><input class="ei" type="text" id="ed-t" maxlength="120" placeholder="Escribe el titular..." oninput="cntT()"><div style="text-align:right;font-size:11px;margin-top:3px" id="tcnt">0 / 120</div></div>
+          <div><label class="el">Bajada</label><input class="ei" type="text" id="ed-b" placeholder="Resumen breve..."></div>
+          <div><label class="el">Cuerpo del texto</label><textarea class="eta" id="ed-c" placeholder="Redacta el cuerpo de la nota..."></textarea></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <button class="btn-pub" id="pbtn" onclick="pubNote()"><i data-lucide="send" class="lucide lucide-sm lucide-white"></i>Publicar nota</button>
+            <button class="btn-dl" onclick="dlWord()"><i data-lucide="file-text" class="lucide lucide-sm"></i>Descargar Word</button>
+          </div>
+          <div class="pub-ok" id="pub-ok"><i data-lucide="check-circle-2" class="lucide" style="stroke:#6b4fa0"></i>Nota publicada exitosamente.</div>
+        </div>
+      </div>
+    </div>
+    <div class="dbody" id="tab-met" style="display:none">
+      <div class="met-grid">
+        <div class="mcard"><div class="mlbl">Visitas hoy</div><div class="mval">24,837</div><div class="mdelta"><i data-lucide="trending-up" class="lucide lucide-sm" style="stroke:#2ecc71"></i>+12% vs ayer</div></div>
+        <div class="mcard"><div class="mlbl">Tiempo promedio</div><div class="mval">6:42</div><div class="mdelta"><i data-lucide="trending-up" class="lucide lucide-sm" style="stroke:#2ecc71"></i>+0:32 min</div></div>
+        <div class="mcard"><div class="mlbl">Podcast guardados</div><div class="mval" id="m-pods">0</div><div class="mdelta"><i data-lucide="trending-up" class="lucide lucide-sm" style="stroke:#2ecc71"></i>Esta sesión</div></div>
+        <div class="mcard"><div class="mlbl">Total favoritos</div><div class="mval" id="m-favs">0</div><div class="mdelta"><i data-lucide="trending-up" class="lucide lucide-sm" style="stroke:#2ecc71"></i>Guardados</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="ccard"><h3>Programas más escuchados</h3>
+          <div class="br"><div class="brl">Hablemos en Off</div><div class="brt"><div class="brf" style="width:92%"></div></div><div class="brv">9.2k</div></div>
+          <div class="br"><div class="brl">Música &amp; Algo Más</div><div class="brt"><div class="brf" style="width:78%;background:var(--cp2)"></div></div><div class="brv">7.8k</div></div>
+          <div class="br"><div class="brl">Economía Duna</div><div class="brt"><div class="brf" style="width:65%;background:var(--cp)"></div></div><div class="brv">6.5k</div></div>
+          <div class="br"><div class="brl">Mundo Duna</div><div class="brt"><div class="brf" style="width:54%;background:var(--cpe)"></div></div><div class="brv">5.4k</div></div>
+          <div class="br"><div class="brl">Tarde Duna</div><div class="brt"><div class="brf" style="width:41%;background:var(--cm)"></div></div><div class="brv">4.1k</div></div>
+        </div>
+        <div class="ccard"><h3>Notas publicadas</h3>
+          <div id="pub-notes"><p style="color:var(--cm);font-size:13px">No hay notas aún.</p></div>
+          <button onclick="toast('Descargando PDF...')" style="margin-top:14px;display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--ca);border:1px solid var(--ca);border-radius:6px;padding:8px 14px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer"><i data-lucide="file-down" class="lucide lucide-sm" style="stroke:var(--ca)"></i>Descargar PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI CHAT -->
+<div class="ai-wrap" id="ai-wrap">
+  <div class="ai-box">
+    <div class="ai-hdr">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="ai-av"><i data-lucide="sparkles" class="lucide lucide-sm lucide-white"></i></div>
+        <div><div style="font-size:14px;font-weight:600">Duna IA</div><div style="font-size:11px;opacity:.7">Asistente de Radio Duna</div></div>
+      </div>
+      <button onclick="toggleAI()" style="background:none;border:none;color:#fff;cursor:pointer;opacity:.75;display:flex;align-items:center"><i data-lucide="x" class="lucide lucide-sm lucide-white"></i></button>
+    </div>
+    <div class="ai-msgs" id="ai-msgs"><div class="ai-m b">¡Hola! Soy el asistente de Radio Duna. Puedo ayudarte con programas, noticias, podcast y más. ¿En qué te ayudo?</div></div>
+    <div class="ai-irow">
+      <input class="ai-tin" id="ai-in" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter')sendAI()">
+      <button class="ai-send" onclick="sendAI()"><i data-lucide="send" class="lucide lucide-sm lucide-white"></i></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+
+<script>
+window.DUNA_CONTENT = {
+  "streaming": {
+    "nombre": "Radio Duna En Vivo",
+    "streamUrl": "https://cl-a9-p-e-pt11-audio.cdn.mdstrm.com/live-audio-aw/67f42f96e464d19a6eda3c7d/playlist.m3u8",
+    "streamId": "67f42f96e464d19a6eda3c7d",
+    "gqlEndpoint": "https://next.mediastream.co/graphql"
+  },
+  "noticias": [
+    {
+      "id": 1,
+      "category": "Política",
+      "title": "Bettina Horst y no pago de contribuciones para mayores de 65 años",
+      "bajada": "\"Los alcaldes plantean que va a haber una crisis de financiamiento y las cifras no pueden avalar eso, está absolutamente descartado\"",
+      "author": "Redacción Duna",
+      "reading_time": "3 min de lectura",
+      "date": "26 de junio, 2026",
+      "color": "#b3d0f2",
+      "body": "<p>La directora ejecutiva de Libertad y Desarrollo, Bettina Horst, abordó el debate en torno a la propuesta de eximir del pago de contribuciones a los adultos mayores de 65 años, descartando que la medida genere un impacto significativo en las finanzas municipales.</p><p>Horst respondió a las advertencias realizadas por algunos alcaldes respecto de una eventual disminución de ingresos para los municipios, asegurando que los antecedentes disponibles no respaldan ese escenario.</p><p>Asimismo, sostuvo que el impacto de la medida variará dependiendo de cada comuna, aunque aseguró que en la mayoría de los casos los efectos serían mínimos.</p>"
+    },
+    {
+      "id": 2,
+      "category": "Economía",
+      "title": "Banco Central mantiene tasa en 5% y señala que inflación sigue dentro del rango esperado",
+      "bajada": "El consejo del instituto emisor decidió por unanimidad mantener la tasa de política monetaria luego de evaluar los últimos indicadores.",
+      "author": "Economía Duna",
+      "reading_time": "4 min de lectura",
+      "date": "26 de junio, 2026",
+      "color": "#fcb78e",
+      "body": "<p>El Consejo del Banco Central de Chile acordó mantener la Tasa de Política Monetaria (TPM) en 5,0% anual, en un contexto en que la inflación continúa convergiendo hacia la meta del 3%.</p><p>La decisión se tomó por unanimidad y refleja la evaluación de que el escenario macroeconómico está evolucionando de acuerdo con lo previsto en el último Informe de Política Monetaria.</p>"
+    },
+    {
+      "id": 3,
+      "category": "Internacional",
+      "title": "Elecciones en Argentina: resultados preliminares dan ventaja a la coalición opositora",
+      "bajada": "Las primeras cifras del escrutinio provisorio apuntan a una disputa reñida en el balotaje de noviembre.",
+      "author": "Mundo Duna",
+      "reading_time": "5 min de lectura",
+      "date": "26 de junio, 2026",
+      "color": "#c5aadc",
+      "body": "<p>Los primeros resultados del escrutinio provisorio muestran una ventaja de la coalición opositora sobre el oficialismo en varias provincias clave, aunque la diferencia no es suficiente para determinar un ganador definitivo.</p><p>La participación ciudadana fue elevada, superando el 72% del padrón electoral.</p>"
+    },
+    {
+      "id": 4,
+      "category": "Sociedad",
+      "title": "Reforma previsional avanza en la comisión del Senado con respaldo transversal",
+      "bajada": "El proyecto que busca mejorar las pensiones obtuvo votos de distintas coaliciones en la instancia legislativa.",
+      "author": "Redacción Duna",
+      "reading_time": "3 min de lectura",
+      "date": "25 de junio, 2026",
+      "color": "#85a9dd",
+      "body": "<p>La Comisión de Trabajo del Senado aprobó en general el proyecto de reforma previsional con votos de senadores de diferentes coaliciones, permitiendo que el texto avance hacia la Sala.</p>"
+    },
+    {
+      "id": 5,
+      "category": "Cultura",
+      "title": "Festival Santiago a Mil anuncia programación 2026 con compañías de 14 países",
+      "bajada": "El evento internacional de artes escénicas presenta su grilla con más de 60 funciones entre enero y febrero.",
+      "author": "Cultura Duna",
+      "reading_time": "2 min de lectura",
+      "date": "25 de junio, 2026",
+      "color": "#c5aadc",
+      "body": "<p>El Festival Internacional Santiago a Mil presentó su programación para 2026 con espectáculos de teatro, danza y circo de 14 países de América Latina, Europa y Asia.</p>"
+    },
+    {
+      "id": 6,
+      "category": "Tecnología",
+      "title": "Chile avanza en regulación de inteligencia artificial con nuevo proyecto de ley",
+      "bajada": "La iniciativa busca establecer un marco normativo para el uso ético y transparente de sistemas de IA.",
+      "author": "Tecnología Duna",
+      "reading_time": "4 min de lectura",
+      "date": "24 de junio, 2026",
+      "color": "#85a9dd",
+      "body": "<p>El Ministerio de Ciencia ingresó al Congreso un proyecto de ley que regula el desarrollo, uso e implementación de sistemas de IA en Chile, con principios de transparencia y supervisión humana.</p>"
+    }
+  ],
+  "entrevistas": [
+    {
+      "id": 1,
+      "category": "Economía",
+      "title": "Felipe Larraín: \"Chile necesita un pacto fiscal que sea sostenible y creíble\"",
+      "bajada": "El ex ministro de Hacienda analizó el escenario macroeconómico del país y los desafíos para la próxima década.",
+      "duration": "18:24 min",
+      "author": "Economía Duna",
+      "color": "#fcb78e",
+      "body": "<p>El ex ministro de Hacienda, Felipe Larraín, señaló que Chile enfrenta un momento clave para definir su política fiscal de largo plazo.</p>"
+    },
+    {
+      "id": 2,
+      "category": "Política",
+      "title": "Camila Vallejo sobre reforma de pensiones: \"Es un avance histórico para las futuras generaciones\"",
+      "bajada": "La ministra Portavoz explicó los alcances del proyecto que está en trámite en el Senado.",
+      "duration": "24:10 min",
+      "author": "Redacción Duna",
+      "color": "#85a9dd",
+      "body": "<p>La ministra portavoz, Camila Vallejo, defendió el proyecto de reforma previsional y respondió a las críticas de la oposición.</p>"
+    },
+    {
+      "id": 3,
+      "category": "Cultura",
+      "title": "Nona Fernández: \"La literatura chilena está viviendo un momento de gran efervescencia creativa\"",
+      "bajada": "La escritora y dramaturga habló sobre su nueva novela y el panorama de las letras en el país.",
+      "duration": "31:55 min",
+      "author": "Cultura Duna",
+      "color": "#c5aadc",
+      "body": "<p>La reconocida escritora Nona Fernández presentó su nueva novela y reflexionó sobre el papel de la literatura en tiempos de crisis.</p>"
+    }
+  ],
+  "podcasts": [
+    {
+      "id": 1,
+      "title": "La Crisis del Sistema de Salud Público",
+      "program": "Hablemos en Off",
+      "duration": "42 min",
+      "date": "26 jun 2026",
+      "summary": "Analizamos el estado del sistema de salud público en Chile, los desafíos de las listas de espera y las propuestas de reforma que se discuten en el Congreso.",
+      "color": "linear-gradient(135deg,#b3d0f2,#85a9dd)"
+    },
+    {
+      "id": 2,
+      "title": "Los 100 mejores álbumes del rock chileno",
+      "program": "Música & Algo Más",
+      "duration": "58 min",
+      "date": "25 jun 2026",
+      "summary": "Un recorrido histórico por los discos que definieron el rock nacional desde los 70 hasta hoy.",
+      "color": "linear-gradient(135deg,#c5aadc,#85a9dd)"
+    },
+    {
+      "id": 3,
+      "title": "Impacto de la IA en el mercado laboral chileno",
+      "program": "Economía Duna",
+      "duration": "35 min",
+      "date": "24 jun 2026",
+      "summary": "Expertos analizan cómo la inteligencia artificial está transformando el empleo en Chile.",
+      "color": "linear-gradient(135deg,#fcb78e,#c5aadc)"
+    },
+    {
+      "id": 4,
+      "title": "Geopolítica 2026: tensiones en el Indo-Pacífico",
+      "program": "Mundo Duna",
+      "duration": "47 min",
+      "date": "23 jun 2026",
+      "summary": "Un análisis de las tensiones geopolíticas en Asia-Pacífico y su impacto en América Latina.",
+      "color": "linear-gradient(135deg,#85a9dd,#0e1826)"
+    }
+  ],
+  "programas": [
+    {
+      "id": 1,
+      "name": "Hablemos en Off",
+      "schedule": "Lun–Vie · 7:00–9:00",
+      "description": "El espacio de análisis político y entrevistas de la mañana de Duna.",
+      "hosts": [
+        [
+          "MR",
+          "Matías del Río"
+        ],
+        [
+          "NV",
+          "Nicolás Vergara"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#b3d0f2,#85a9dd)",
+      "emoji": "🎙"
+    },
+    {
+      "id": 2,
+      "name": "Música & Algo Más",
+      "schedule": "Lun–Vie · 9:00–13:00",
+      "description": "La mejor música con contexto cultural y artístico.",
+      "hosts": [
+        [
+          "CR",
+          "Catalina Rojas"
+        ],
+        [
+          "FM",
+          "Felipe Maturana"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#c5aadc,#85a9dd)",
+      "emoji": "🎵"
+    },
+    {
+      "id": 3,
+      "name": "Economía Duna",
+      "schedule": "Lun–Vie · 13:00–15:00",
+      "description": "Análisis económico con los mejores expertos del país.",
+      "hosts": [
+        [
+          "RC",
+          "Rodrigo Cerda"
+        ],
+        [
+          "PR",
+          "Paula Recabarren"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#fcb78e,#c5aadc)",
+      "emoji": "📊"
+    },
+    {
+      "id": 4,
+      "name": "Mundo Duna",
+      "schedule": "Lun–Vie · 15:00–17:00",
+      "description": "La actualidad internacional y geopolítica global.",
+      "hosts": [
+        [
+          "CH",
+          "Constanza Hola"
+        ],
+        [
+          "JM",
+          "Jorge Morales"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#85a9dd,#5e6ac0)",
+      "emoji": "🌍"
+    },
+    {
+      "id": 5,
+      "name": "Tarde Duna",
+      "schedule": "Lun–Vie · 17:00–20:00",
+      "description": "Música y entretenimiento para el cierre de la tarde.",
+      "hosts": [
+        [
+          "DJ",
+          "Diego Jara"
+        ],
+        [
+          "CS",
+          "Camila Soto"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#0e1826,#5e6ac0)",
+      "emoji": "🎸"
+    },
+    {
+      "id": 6,
+      "name": "Noche de Radio",
+      "schedule": "Lun–Vie · 20:00–00:00",
+      "description": "La música más especial para acompañar la noche.",
+      "hosts": [
+        [
+          "VB",
+          "Valentina Bravo"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#b3d0f2,#0e1826)",
+      "emoji": "🌙"
+    },
+    {
+      "id": 7,
+      "name": "Duna Weekend",
+      "schedule": "Sáb · 9:00–12:00",
+      "description": "El magazine del fin de semana con temas de actualidad.",
+      "hosts": [
+        [
+          "IE",
+          "Ignacio Errázuriz"
+        ],
+        [
+          "BM",
+          "Bárbara Muñoz"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#c5aadc,#fcb78e)",
+      "emoji": "☀️"
+    },
+    {
+      "id": 8,
+      "name": "Duna Clásico",
+      "schedule": "Dom · 10:00–13:00",
+      "description": "Un recorrido por los grandes clásicos de la música.",
+      "hosts": [
+        [
+          "SI",
+          "Sebastián Irarrázaval"
+        ]
+      ],
+      "color": "linear-gradient(135deg,#85a9dd,#fcb78e)",
+      "emoji": "🎼"
+    }
+  ]
+};
+</script>
+<script>
+// ═══════════════════════════════════════════════════════
+// RADIO DUNA 89.7 — app.js
+// Carga contenido desde data/duna-content.json
+// ═══════════════════════════════════════════════════════
+
+// Estado global
+var _noticias    = [];
+var _entrevistas = [];
+var _podcasts    = [];
+var _programas   = [];
+var _streaming   = {};
+var FAVS         = JSON.parse(localStorage.getItem('duna_favs') || '[]'); // respaldo local mientras Supabase carga
+var NOTAS        = JSON.parse(localStorage.getItem('duna_notas') || '[]');
+var jSess        = null;
+var chatOpen     = false;
+
+// ═══════════════════════════════════════════════════════
+// SUPABASE
+// ═══════════════════════════════════════════════════════
+var SB_URL = 'https://tjfqgwgyoomuycyadpam.supabase.co';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqZnFnd2d5b29tdXljeWFkcGFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0Nzg5OTAsImV4cCI6MjA5ODA1NDk5MH0.tJSzog_u4S1R_Ix4tGNIl5elhMzOHQ9YdkNTlaehOa8';
+var DB = null;
+var SID = (function() {
+  var s = localStorage.getItem('duna_sid');
+  if (!s) { s = 'sid_' + Math.random().toString(36).slice(2); localStorage.setItem('duna_sid', s); }
+  return s;
+})();
+
+function initSupabase() {
+  if (window.location.protocol === 'file:') {
+    console.warn('[Supabase] Protocolo file:// detectado — Supabase no puede conectar. Usando localStorage.');
+    return;
+  }
+  if (!window.supabase || !window.supabase.createClient) {
+    console.warn('[Supabase] SDK no cargó aún, reintentando...');
+    setTimeout(initSupabase, 500);
+    return;
+  }
+  try {
+    DB = window.supabase.createClient(SB_URL, SB_KEY);
+    console.log('[Supabase] ✅ Cliente conectado:', SB_URL);
+    loadFavsFromDB();
+  } catch (e) {
+    console.error('[Supabase] Error al crear cliente:', e);
+  }
+}
+
+function loadFavsFromDB() {
+  DB.from('favoritos').select('*').eq('session_id', SID).order('created_at', { ascending:false })
+    .then(function(r) {
+      if (r.error) { console.warn('[Supabase] Error cargando favoritos:', r.error.message); return; }
+      console.log('[Supabase] Favoritos cargados:', r.data.length);
+      FAVS = r.data.map(function(f) {
+        return { id:f.id, tipo:f.tipo, titulo:f.titulo, fecha:new Date(f.created_at).toLocaleDateString('es-CL') };
+      });
+      localStorage.setItem('duna_favs', JSON.stringify(FAVS));
+      updateMetrics();
+      if (document.getElementById('v-favs').classList.contains('active')) renderFavs();
+    });
+}
+
+// Player real Mediastream — sin simulación de audio
+var STREAM_ID = '67f42f96e464d19a6eda3c7d';
+var PLAYER_ID = '661fe631fcec2d086bd55392';
+var GQL_URL = 'https://next.mediastream.co/graphql';
+var MS_LOADED = false;
+var P = { playing:false, requestId:0 };
+
+// ═══════════════════════════════════════════════════════
+// CARGA DE DATOS DESDE JSON
+// ═══════════════════════════════════════════════════════
+function loadContent() {
+  console.log('[App] Cargando contenido embebido (DUNA_CONTENT)...');
+  var data = window.DUNA_CONTENT || {};
+  console.log('[App] Noticias:',    data.noticias    ? data.noticias.length    : 0);
+  console.log('[App] Entrevistas:', data.entrevistas ? data.entrevistas.length : 0);
+  console.log('[App] Podcasts:',    data.podcasts    ? data.podcasts.length    : 0);
+  console.log('[App] Programas:',   data.programas   ? data.programas.length   : 0);
+
+  _streaming   = data.streaming   || {};
+  _noticias    = data.noticias    || [];
+  _entrevistas = data.entrevistas || [];
+  _podcasts    = data.podcasts    || [];
+  _programas   = data.programas   || [];
+
+  renderAll();
+}
+
+function renderAll() {
+  renderNoticias();
+  renderEntrevistas();
+  renderPodcasts();
+  renderProgramas();
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════
+function renderNoticias() {
+  var el = document.getElementById('h-news');
+  if (!_noticias.length) { el.innerHTML = '<div class="estado"><i class="ti ti-inbox"></i><p>No hay noticias disponibles</p></div>'; return; }
+  el.innerHTML = _noticias.map(function(a, i) {
+    var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '33,' + (a.color||'#85a9dd') + '66)';
+    return '<div class="nc" onclick="openArt(' + i + ')">' +
+      '<div class="nc-img" style="background:' + bg + '"><i class="ti ti-news" style="color:' + (a.color||'#85a9dd') + '"></i></div>' +
+      '<div class="nc-bod"><div class="nc-cat">' + (a.category||'') + '</div>' +
+      '<h3 class="nc-ttl">' + a.title + '</h3>' +
+      '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
+      '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.reading_time||'') + ' · ' + (a.date||'') + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function renderEntrevistas() {
+  var el = document.getElementById('h-ivs');
+  if (!_entrevistas.length) { el.innerHTML = '<div class="estado"><i class="ti ti-video"></i><p>No hay entrevistas disponibles</p></div>'; return; }
+  el.innerHTML = _entrevistas.map(function(a, i) {
+    var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '44,' + (a.color||'#85a9dd') + '22)';
+    return '<div class="nc" onclick="openEntrevista(' + i + ')">' +
+      '<div class="iv-thumb" style="background:' + bg + '">' +
+      '<i class="bgi ti ti-video" style="color:' + (a.color||'#85a9dd') + '"></i>' +
+      '<div class="iv-play"><i class="ti ti-player-play"></i></div></div>' +
+      '<div class="nc-bod"><div class="nc-cat">' + (a.category||'Entrevista') + '</div>' +
+      '<h3 class="nc-ttl">' + a.title + '</h3>' +
+      '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
+      '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.duration||'') + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function renderPodcasts() {
+  var el = document.getElementById('h-pods');
+  if (!_podcasts.length) { el.innerHTML = '<div class="estado"><i class="ti ti-microphone"></i><p>No hay podcasts disponibles</p></div>'; return; }
+  el.innerHTML = _podcasts.map(function(p, i) {
+    return '<div class="podc" onclick="openPod(' + i + ')">' +
+      '<div class="podc-art" style="background:' + (p.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
+      '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + p.title + '</div>' +
+      '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + (p.program||'') + '</div>' +
+      '<div style="font-size:11px;color:var(--cm)">' + (p.date||'') + ' · ' + (p.duration||'') + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function renderProgramas() {
+  var el = document.getElementById('h-prgs');
+  if (!_programas.length) { el.innerHTML = '<div class="estado"><i class="ti ti-radio"></i><p>No hay programas disponibles</p></div>'; return; }
+  el.innerHTML = _programas.map(function(p, i) {
+    var hosts = Array.isArray(p.hosts) ? p.hosts.map(function(h){return h[1]||h;}).join(' · ') : '';
+    return '<div class="prc" onclick="openProg(' + i + ')">' +
+      '<div class="prc-img" style="background:' + (p.color||'var(--cp)') + '">' + (p.emoji||'🎙') +
+      '<span class="prc-sched">' + (p.schedule||'') + '</span></div>' +
+      '<div class="prc-bod"><div class="prc-name">' + p.name + '</div>' +
+      '<div class="prc-hosts">' + hosts + '</div></div></div>';
+  }).join('');
+}
+
+function showMsgAll(msg) {
+  ['h-news','h-ivs','h-pods','h-prgs'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = '<div class="estado"><i class="ti ti-alert-circle"></i><p>' + msg + '</p></div>';
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// NAVEGACIÓN
+// ═══════════════════════════════════════════════════════
+function go(id) {
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (window.lucide) lucide.createIcons();
+}
+
+function navTo(el, sec) {
+  if (el) {
+    document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('on'); });
+    el.classList.add('on');
+  }
+  if (sec === 'home') { go('v-home'); return; }
+  go('v-home');
+  var map = { noticias:'h-news', entrevistas:'s-ent', podcast:'s-pod', programas:'s-prg', vocast:'s-pod' };
+  setTimeout(function() {
+    var e = document.getElementById(map[sec]);
+    if (e) e.scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 100);
+}
+
+// ═══════════════════════════════════════════════════════
+// LISTADO COMPLETO (Ver más → noticias / entrevistas / podcast / programas)
+// ═══════════════════════════════════════════════════════
+var LIST_CONFIG = {
+  noticias: {
+    icon: 'ti-news',
+    title: 'Noticias',
+    subtitle: 'Las últimas noticias de Radio Duna 89.7',
+    getItems: function(){ return _noticias; },
+    render: function(a, i) {
+      var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '33,' + (a.color||'#85a9dd') + '66)';
+      return '<div class="nc" onclick="openArt(' + i + ')">' +
+        '<div class="nc-img" style="background:' + bg + '"><i class="ti ti-news" style="color:' + (a.color||'#85a9dd') + '"></i></div>' +
+        '<div class="nc-bod"><div class="nc-cat">' + (a.category||'') + '</div>' +
+        '<h3 class="nc-ttl">' + a.title + '</h3>' +
+        '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
+        '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.reading_time||'') + ' · ' + (a.date||'') + '</div></div></div>';
+    }
+  },
+  entrevistas: {
+    icon: 'ti-video',
+    title: 'Entrevistas',
+    subtitle: 'Conversaciones completas con los protagonistas de la actualidad',
+    getItems: function(){ return _entrevistas; },
+    render: function(a, i) {
+      var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '44,' + (a.color||'#85a9dd') + '22)';
+      return '<div class="nc" onclick="openEntrevista(' + i + ')">' +
+        '<div class="iv-thumb" style="background:' + bg + '">' +
+        '<i class="bgi ti ti-video" style="color:' + (a.color||'#85a9dd') + '"></i>' +
+        '<div class="iv-play"><i class="ti ti-player-play"></i></div></div>' +
+        '<div class="nc-bod"><div class="nc-cat">' + (a.category||'Entrevista') + '</div>' +
+        '<h3 class="nc-ttl">' + a.title + '</h3>' +
+        '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
+        '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.duration||'') + '</div></div></div>';
+    }
+  },
+  podcast: {
+    icon: 'ti-microphone',
+    title: 'Podcast',
+    subtitle: 'Todos los episodios disponibles para escuchar cuando quieras',
+    getItems: function(){ return _podcasts; },
+    gridClass: 'pg',
+    render: function(p, i) {
+      return '<div class="podc" onclick="openPod(' + i + ')">' +
+        '<div class="podc-art" style="background:' + (p.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
+        '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + p.title + '</div>' +
+        '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + (p.program||'') + '</div>' +
+        '<div style="font-size:11px;color:var(--cm)">' + (p.date||'') + ' · ' + (p.duration||'') + '</div></div>';
+    }
+  },
+  programas: {
+    icon: 'ti-radio',
+    title: 'Programación Radio',
+    subtitle: 'Conoce toda la grilla de Radio Duna 89.7 FM',
+    getItems: function(){ return _programas; },
+    gridClass: 'prg',
+    render: function(p, i) {
+      var hosts = Array.isArray(p.hosts) ? p.hosts.map(function(h){ return h[1]||h; }).join(' · ') : '';
+      return '<div class="prc" onclick="openProg(' + i + ')">' +
+        '<div class="prc-img" style="background:' + (p.color||'var(--cp)') + '">' + (p.emoji||'🎙') +
+        '<span class="prc-sched">' + (p.schedule||'') + '</span></div>' +
+        '<div class="prc-bod"><div class="prc-name">' + p.name + '</div>' +
+        '<div class="prc-hosts">' + hosts + '</div></div></div>';
+    }
+  }
+};
+
+function openList(type) {
+  var cfg = LIST_CONFIG[type];
+  if (!cfg) return;
+
+  document.getElementById('list-icon').innerHTML = '<i class="ti ' + cfg.icon + '"></i>';
+  document.getElementById('list-title').textContent = cfg.title;
+  document.getElementById('list-subtitle').textContent = cfg.subtitle;
+
+  var items = cfg.getItems();
+  var grid = document.getElementById('list-grid');
+  grid.className = cfg.gridClass || 'ng';
+
+  document.getElementById('list-count').textContent =
+    items.length + ' elemento' + (items.length !== 1 ? 's' : '');
+
+  grid.innerHTML = items.length
+    ? items.map(cfg.render).join('')
+    : '<div class="estado"><i class="ti ti-inbox"></i><p>No hay contenido disponible todavía</p></div>';
+
+  document.querySelectorAll('#v-list .nav-item').forEach(function(n){ n.classList.remove('on'); });
+  var navEl = document.getElementById('lnav-' + type);
+  if (navEl) navEl.classList.add('on');
+
+  go('v-list');
+}
+
+// ═══════════════════════════════════════════════════════
+// TV EN VIVO (streaming de video)
+// ═══════════════════════════════════════════════════════
+var TV_ID = '67ed8a8d6db4af9a0188555c';
+var tvStarted = false;
+
+function openTV() {
+  go('v-tv');
+}
+
+function startTV() {
+  if (tvStarted) return;
+  tvStarted = true;
+  console.log('[TV] Cargando señal de video en vivo:', TV_ID);
+  var wrap = document.getElementById('tv-frame-wrap');
+  wrap.innerHTML =
+    '<iframe src="//mdstrm.com/live-stream/' + TV_ID + '?autoplay=true" ' +
+    'width="640" height="360" allow="autoplay; fullscreen; encrypted-media" ' +
+    'frameborder="0" allowfullscreen allowscriptaccess="always" scrolling="no"></iframe>';
+}
+
+function openArt(i) {
+  var a = _noticias[i]; if (!a) return;
+  document.getElementById('a-cat').textContent  = a.category || '';
+  document.getElementById('a-ttl').textContent  = a.title;
+  document.getElementById('a-baj').textContent  = a.bajada || '';
+  document.getElementById('a-auth').textContent = a.author || 'Redacción Duna';
+  document.getElementById('a-time').textContent = a.reading_time || '';
+  document.getElementById('a-date').textContent = a.date || '';
+  document.getElementById('a-body').innerHTML   = a.body || '<p>' + (a.bajada||'') + '</p>';
+  var hero = document.getElementById('art-hero');
+  hero.style.background = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '55,' + (a.color||'#85a9dd') + '22)';
+  go('v-art');
+}
+
+function openEntrevista(i) {
+  var a = _entrevistas[i]; if (!a) return;
+  document.getElementById('a-cat').textContent  = a.category || 'Entrevista';
+  document.getElementById('a-ttl').textContent  = a.title;
+  document.getElementById('a-baj').textContent  = a.bajada || '';
+  document.getElementById('a-auth').textContent = a.author || 'Redacción Duna';
+  document.getElementById('a-time').textContent = a.duration || '';
+  document.getElementById('a-date').textContent = '';
+  document.getElementById('a-body').innerHTML   = a.body || '<p>' + (a.bajada||'') + '</p>';
+  var hero = document.getElementById('art-hero');
+  hero.style.background = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '55,' + (a.color||'#85a9dd') + '22)';
+  go('v-art');
+}
+
+function openProg(i) {
+  var p = _programas[i]; if (!p) return;
+  document.getElementById('pr-name').textContent = p.name;
+  document.getElementById('pr-sch').textContent  = p.schedule || '';
+  document.getElementById('pr-desc').textContent = p.description || '';
+  document.getElementById('pr-img').style.background = p.color || 'var(--cp)';
+  document.getElementById('pr-img').textContent  = p.emoji || '🎙';
+  document.getElementById('pr-hosts').innerHTML  = Array.isArray(p.hosts) ? p.hosts.map(function(h) {
+    return '<div class="hchip"><div class="hav">' + (h[0]||'') + '</div><span style="font-size:13px;font-weight:500">' + (h[1]||h) + '</span></div>';
+  }).join('') : '';
+  document.getElementById('pr-eps').innerHTML = _podcasts.map(function(pod, i) {
+    return '<div class="podc" onclick="openPod(' + i + ')">' +
+      '<div class="podc-art" style="background:' + (pod.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
+      '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + pod.title + '</div>' +
+      '<div style="font-size:11px;color:var(--ca);font-weight:600">' + (pod.program||'') + '</div>' +
+      '<div style="font-size:11px;color:var(--cm)">' + (pod.duration||'') + '</div></div>';
+  }).join('');
+  document.getElementById('pr-news').innerHTML = _noticias.slice(0,3).map(function(a, i) {
+    var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '33,' + (a.color||'#85a9dd') + '66)';
+    return '<div class="nc" onclick="openArt(' + i + ')">' +
+      '<div class="nc-img" style="background:' + bg + '"><i class="ti ti-news" style="color:' + (a.color||'#85a9dd') + '"></i></div>' +
+      '<div class="nc-bod"><div class="nc-cat">' + (a.category||'') + '</div><h3 class="nc-ttl">' + a.title + '</h3><p class="nc-sub">' + (a.bajada||'') + '</p></div></div>';
+  }).join('');
+  go('v-prog');
+}
+
+function openPod(i) {
+  var p = _podcasts[i]; if (!p) return;
+  document.getElementById('pod-prog').textContent = p.program || '';
+  document.getElementById('pod-ttl').textContent  = p.title;
+  document.getElementById('pod-date').textContent = (p.date||'') + (p.duration ? ' · ' + p.duration : '');
+  document.getElementById('pod-sum').textContent  = p.summary || '';
+  document.getElementById('pod-art').style.background = p.color || 'var(--cp)';
+  go('v-pod');
+}
+
+// ═══════════════════════════════════════════════════════
+// FAVORITOS
+// ═══════════════════════════════════════════════════════
+function goFavs() { renderFavs(); go('v-favs'); }
+
+function saveFav(tipo) {
+  var ids    = { article:'a-ttl', podcast:'pod-ttl', program:'pr-name' };
+  var labels = { article:'noticia', podcast:'podcast', program:'programa' };
+  var el = document.getElementById(ids[tipo]);
+  if (!el) return;
+  var titulo = el.textContent;
+  if (FAVS.find(function(f){ return f.titulo === titulo; })) { toast('Ya está en favoritos'); return; }
+
+  var rec = { id:'local_'+Date.now(), tipo:labels[tipo], titulo:titulo, fecha:new Date().toLocaleDateString('es-CL') };
+  FAVS.unshift(rec);
+  localStorage.setItem('duna_favs', JSON.stringify(FAVS));
+  updateMetrics();
+  toast('Guardado en favoritos ♥');
+
+  if (DB) {
+    DB.from('favoritos').insert([{ session_id:SID, tipo:labels[tipo], titulo:titulo, referencia_id:null, metadata:{} }])
+      .select().single()
+      .then(function(r) {
+        if (r.error) { console.warn('[Supabase] Error guardando favorito:', r.error.message); return; }
+        console.log('[Supabase] Favorito guardado:', r.data.id);
+        rec.id = r.data.id; // reemplaza el ID local por el real de la DB
+        localStorage.setItem('duna_favs', JSON.stringify(FAVS));
+      });
+  } else {
+    console.warn('[Supabase] No conectado — favorito solo guardado en localStorage');
+  }
+}
+
+function rmFav(id) {
+  FAVS = FAVS.filter(function(f){ return f.id != id; });
+  localStorage.setItem('duna_favs', JSON.stringify(FAVS));
+  updateMetrics();
+  renderFavs();
+  toast('Eliminado de favoritos');
+
+  if (DB && String(id).indexOf('local_') !== 0) {
+    DB.from('favoritos').delete().eq('id', id).then(function(r) {
+      if (r.error) console.warn('[Supabase] Error eliminando favorito:', r.error.message);
+      else console.log('[Supabase] Favorito eliminado de la DB:', id);
+    });
+  }
+}
+
+function renderFavs() {
+  var el = document.getElementById('fav-list');
+  if (!FAVS.length) {
+    el.innerHTML = '<div class="empty"><i data-lucide="heart" class="lucide lucide-lg" style="margin:0 auto 14px;display:block;width:48px;height:48px;stroke-width:1.25"></i><h3>No tienes contenido guardado todavía</h3><p style="font-size:14px;color:var(--cm);margin-top:8px">Guarda noticias, podcast y programas para encontrarlos aquí.</p></div>'; if(window.lucide) lucide.createIcons();
+    return;
+  }
+  var ic = { noticia:'news', podcast:'microphone', programa:'radio' };
+  var html = '';
+  FAVS.forEach(function(f) {
+    html += '<div class="ri">';
+    html += '<div style="width:34px;height:34px;border-radius:6px;background:var(--cn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-' + (ic[f.tipo]||'heart') + '" style="font-size:17px;color:var(--ca)"></i></div>';
+    html += '<div style="flex:1"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--ca);margin-bottom:2px">' + f.tipo + '</div>';
+    html += '<div style="font-size:14px;font-weight:600">' + f.titulo + '</div></div>';
+    html += '<button data-id="' + f.id + '" onclick="rmFav(this.dataset.id)" style="background:none;border:none;cursor:pointer;color:var(--cm);padding:4px;display:flex;align-items:center"><i data-lucide="trash-2" class="lucide lucide-sm"></i></button>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+  if (window.lucide) lucide.createIcons();
+}
+
+function updateMetrics() {
+  var pods = FAVS.filter(function(f){ return f.tipo === 'podcast'; }).length;
+  var m1 = document.getElementById('m-favs'); if (m1) m1.textContent = FAVS.length;
+  var m2 = document.getElementById('m-pods'); if (m2) m2.textContent = pods;
+}
+
+// ═══════════════════════════════════════════════════════
+// BÚSQUEDA
+// ═══════════════════════════════════════════════════════
+function doSearch(q) {
+  if (!q || !q.trim()) return;
+  document.getElementById('s-ttl').textContent = 'Resultados para: "' + q + '"';
+  var all = [];
+  _noticias.forEach(function(a,i){    all.push({title:a.title, sub:a.bajada,       tipo:'Noticia',    fn:'openArt('+i+')'});        });
+  _entrevistas.forEach(function(a,i){ all.push({title:a.title, sub:a.bajada,       tipo:'Entrevista', fn:'openEntrevista('+i+')'});  });
+  _podcasts.forEach(function(p,i){    all.push({title:p.title, sub:p.summary,      tipo:'Podcast',    fn:'openPod('+i+')'});         });
+  _programas.forEach(function(p,i){   all.push({title:p.name,  sub:p.description,  tipo:'Programa',   fn:'openProg('+i+')'});        });
+  var lq  = q.toLowerCase();
+  var res = all.filter(function(c){ return c.title.toLowerCase().indexOf(lq) >= 0 || (c.sub||'').toLowerCase().indexOf(lq) >= 0; });
+  var ic  = { Noticia:'news', Entrevista:'video', Podcast:'microphone', Programa:'radio' };
+  var list = document.getElementById('s-list');
+  if (!res.length) {
+    list.innerHTML = '<div class="empty"><i data-lucide="search" class="lucide lucide-sm"></i><h3>No encontramos resultados para tu búsqueda</h3></div>';
+  } else {
+    var html = '';
+    res.forEach(function(r) {
+      html += '<div class="ri click" onclick="' + r.fn + '">';
+      html += '<div style="width:34px;height:34px;border-radius:6px;background:var(--cn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-' + (ic[r.tipo]||'file') + '" style="font-size:17px;color:var(--ca)"></i></div>';
+      html += '<div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--ca);margin-bottom:2px">' + r.tipo + '</div>';
+      html += '<div style="font-size:14px;font-weight:600;margin-bottom:2px">' + r.title + '</div>';
+      html += '<div style="font-size:12px;color:var(--cm)">' + (r.sub||'').slice(0,100) + '</div></div></div>';
+    });
+    list.innerHTML = html;
+  }
+  go('v-search');
+}
+
+// ═══════════════════════════════════════════════════════
+// LOGIN + DASHBOARD
+// ═══════════════════════════════════════════════════════
+function doLogin() {
+  var user  = document.getElementById('lu').value.trim();
+  var pass  = document.getElementById('lp').value;
+  var errEl = document.getElementById('lerr');
+  var errMsg= document.getElementById('lerr-msg');
+  if (!user || !pass) { errEl.style.display='flex'; errMsg.textContent='Completa usuario y contraseña.'; return; }
+  if (user !== 'periodista' || pass !== 'demo1234') { errEl.style.display='flex'; errMsg.textContent='Usuario o contraseña incorrectos.'; return; }
+  errEl.style.display = 'none';
+  jSess = { nombre:'Editor Duna', expires_at:new Date(Date.now()+8*3600000).toISOString() };
+  localStorage.setItem('duna_js', JSON.stringify(jSess));
+  document.getElementById('d-name').textContent = jSess.nombre;
+  startTimer(); updateMetrics(); renderNotas(); go('v-dash');
+}
+
+function doLogout() { localStorage.removeItem('duna_js'); jSess = null; go('v-home'); }
+
+function startTimer() {
+  var el = document.getElementById('d-timer');
+  function tick() {
+    if (!jSess) return;
+    var d = new Date(jSess.expires_at) - Date.now();
+    if (d <= 0) { doLogout(); return; }
+    el.textContent = Math.floor(d/3600000) + 'h ' + Math.floor((d%3600000)/60000) + 'm';
+  }
+  tick(); setInterval(tick, 60000);
+}
+
+function pubNote() {
+  var tit = document.getElementById('ed-t').value.trim();
+  var baj = document.getElementById('ed-b').value.trim();
+  var bod = document.getElementById('ed-c').value.trim();
+  if (!tit) { toast('Agrega un titular antes de publicar'); return; }
+  var nota = { id:Date.now(), titular:tit, bajada:baj, cuerpo:bod, autor:jSess?jSess.nombre:'Editor', fecha:new Date().toLocaleString('es-CL') };
+  var btn = document.getElementById('pbtn');
+  btn.disabled = true; btn.innerHTML = '<i data-lucide="loader-2" class="lucide lucide-sm lucide-white"></i> Publicando...'; if(window.lucide) lucide.createIcons();
+  NOTAS.unshift(nota);
+  localStorage.setItem('duna_notas', JSON.stringify(NOTAS));
+
+  if (DB) {
+    DB.from('notas').insert([{
+      titular: tit, bajada: baj, cuerpo: bod,
+      autor_nombre: jSess ? jSess.nombre : 'Editor',
+      publicado: true
+    }]).then(function(r) {
+      if (r.error) console.warn('[Supabase] Error publicando nota:', r.error.message);
+      else console.log('[Supabase] Nota publicada en la base de datos');
+    });
+  } else {
+    console.warn('[Supabase] No conectado — nota solo guardada en localStorage');
+  }
+
+  var ok = document.getElementById('pub-ok'); ok.style.display='flex';
+  toast('Nota publicada exitosamente');
+  document.getElementById('ed-t').value = '';
+  document.getElementById('ed-b').value = '';
+  document.getElementById('ed-c').value = '';
+  document.getElementById('tcnt').textContent = '0 / 120';
+  document.getElementById('upic').setAttribute('data-lucide', 'image-plus');
+  document.getElementById('upic').style.stroke = '';
+  if (window.lucide) lucide.createIcons();
+  document.getElementById('utxt').textContent = 'Subir fotografía de portada';
+  setTimeout(function(){ ok.style.display='none'; }, 4000);
+  btn.disabled = false; btn.innerHTML = '<i data-lucide="send" class="lucide lucide-sm lucide-white"></i>Publicar nota'; if(window.lucide) lucide.createIcons();
+  renderNotas();
+}
+
+function renderNotas() {
+  var el = document.getElementById('pub-notes'); if (!el) return;
+  if (!NOTAS.length) { el.innerHTML='<p style="color:var(--cm);font-size:13px">No hay notas publicadas aún.</p>'; return; }
+  el.innerHTML = NOTAS.map(function(n) {
+    return '<div class="ri"><div style="flex:1"><div style="font-size:14px;font-weight:600;margin-bottom:2px">' + n.titular + '</div>' +
+      '<div style="font-size:12px;color:var(--cm)">' + (n.bajada||'') + (n.bajada?' · ':'') + n.fecha + '</div></div>' +
+      '<span style="font-size:11px;background:rgba(197,170,220,.2);color:#6b4fa0;padding:3px 8px;border-radius:999px;font-weight:600;flex-shrink:0">Publicada</span></div>';
+  }).join('');
+}
+
+function switchTab(el, id) {
+  document.querySelectorAll('.dtab').forEach(function(t){ t.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById('tab-ed').style.display  = 'none';
+  document.getElementById('tab-met').style.display = 'none';
+  document.getElementById(id).style.display = 'block';
+  if (id === 'tab-met') { updateMetrics(); renderNotas(); }
+}
+
+// ═══════════════════════════════════════════════════════
+// PLAYER REAL — Mediastream
+// ═══════════════════════════════════════════════════════
+function playerInit() {
+  fetchNowPlaying();
+  setInterval(fetchNowPlaying, 15000);
+}
+
+function togglePlay() {
+  var icon = document.getElementById('playic');
+
+  if (P.playing) {
+    // Ya está reproduciendo (o intentando) → detener
+    P.requestId++; // invalida cualquier carga pendiente del player
+    stopAllAudio();
+    P.playing = false;
+    setPlayIcon('play');
+    document.getElementById('p-trk').textContent = 'Radio Duna';
+    document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
+  } else {
+    P.playing = true;
+    setPlayIcon('pause');
+    document.getElementById('p-art2').textContent = 'Conectando con la señal...';
+    loadMediastreamPlayer();
+  }
+}
+
+function setPlayIcon(name) {
+  var icon = document.getElementById('playic');
+  icon.setAttribute('data-lucide', name);
+  if (window.lucide) lucide.createIcons();
+}
+
+// Carga el embed oficial de Mediastream (Lightning Player)
+function loadMediastreamPlayer() {
+  console.log('[Mediastream] Intentando cargar player real:', STREAM_ID, PLAYER_ID);
+  var wrap = document.getElementById('ms-player-wrap');
+  wrap.innerHTML = '<div data-msp data-type="live" data-id="' + STREAM_ID + '" data-player="' + PLAYER_ID + '"></div>';
+  var requestId = ++P.requestId;
+
+  var script = document.createElement('script');
+  script.src = 'https://player.cdn.mdstrm.com/lightning_player/api.js';
+  script.onload = function() {
+    console.log('[Mediastream] Script de player cargado');
+    MS_LOADED = true;
+    setTimeout(function() {
+      if (requestId !== P.requestId || !P.playing) {
+        console.log('[Mediastream] Solicitud cancelada (usuario pausó antes de cargar)');
+        return;
+      }
+      var iframe = wrap.querySelector('iframe');
+      if (iframe) {
+        console.log('[Mediastream] ✅ Player real inicializado correctamente');
+        document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
+        toast('Reproduciendo señal real de Radio Duna');
+      } else {
+        console.warn('[Mediastream] El player no generó iframe — dominio no autorizado para CORS');
+        playerError();
+      }
+    }, 1500);
+  };
+  script.onerror = function() {
+    if (requestId !== P.requestId || !P.playing) return;
+    console.warn('[Mediastream] Error al cargar el script del player');
+    playerError();
+  };
+  document.body.appendChild(script);
+}
+
+function playerError() {
+  P.playing = false;
+  setPlayIcon('play');
+  document.getElementById('p-trk').textContent = 'Señal no disponible';
+  document.getElementById('p-art2').textContent = 'Disponible solo en duna.cl';
+  toast('La señal en vivo solo está disponible desde duna.cl');
+  stopAllAudio();
+}
+
+function stopAllAudio() {
+  var wrap = document.getElementById('ms-player-wrap');
+  wrap.innerHTML = '';
+  MS_LOADED = false;
+}
+
+function setVol(v) {
+  // El volumen del embed real de Mediastream se controla con sus propios controles internos
+  console.log('[Player] Volumen visual:', v);
+}
+
+
+function fetchNowPlaying() {
+  // Metadata real de Mediastream — solo para consola/registro, no sobreescribe la simulación visual
+  var q = 'query{getPlayerLive(id:"' + STREAM_ID + '"){currentTrack{title artist}isLive}}';
+  fetch(GQL_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({query:q}) })
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      var ct = j && j.data && j.data.getPlayerLive && j.data.getPlayerLive.currentTrack;
+      if (ct && ct.title) console.log('[Mediastream] Canción real al aire:', ct.title, '-', ct.artist);
+    })
+    .catch(function(e){ console.warn('[Player] No se pudo obtener metadata real:', e); });
+}
+
+// ═══════════════════════════════════════════════════════
+// DUNA IA
+// ═══════════════════════════════════════════════════════
+function toggleAI() {
+  chatOpen = !chatOpen;
+  document.getElementById('ai-wrap').classList.toggle('on', chatOpen);
+  if (chatOpen) setTimeout(function(){ document.getElementById('ai-in').focus(); }, 100);
+}
+
+function sendAI() {
+  var inp = document.getElementById('ai-in');
+  var msg = inp.value.trim(); if (!msg) return;
+  inp.value = '';
+  var box = document.getElementById('ai-msgs');
+  box.innerHTML += '<div class="ai-m u">' + msg + '</div>';
+  var tid = 't' + Date.now();
+  box.innerHTML += '<div class="ai-m b" id="' + tid + '" style="opacity:.5">...</div>';
+  box.scrollTop = box.scrollHeight;
+
+  setTimeout(function() {
+    var lm  = msg.toLowerCase();
+    var trk = document.getElementById('p-trk').textContent  || 'Radio Duna';
+    var art = document.getElementById('p-art2').textContent || '89.7 FM';
+    var R = [
+      [['hola','buenas'],        '¡Hola! Soy el asistente de Radio Duna 89.7. ¿En qué te puedo ayudar?'],
+      [['canción','cancion','suena','tocando'], 'Ahora suena: "' + trk + '" — ' + art],
+      [['hablemos','off'],       'Hablemos en Off va de lunes a viernes de 7:00 a 9:00, con Matías del Río y Nicolás Vergara.'],
+      [['podcast'],              'Tenemos episodios sobre salud pública, rock chileno, IA y geopolítica. ¿Cuál te interesa?'],
+      [['noticia','noticias'],   'Las últimas noticias cubren política, economía, internacional y cultura. ¿Sobre qué tema?'],
+      [['program','programas'],  'La grilla incluye 8 programas de lunes a domingo, desde las 7:00 hasta medianoche.'],
+      [['spotify'],              'Usa el botón verde "Spotify" en cada podcast para vincularlo.'],
+      [['favorito','guardar'],   'Presiona "Guardar" en cualquier noticia, podcast o programa para agregarlo a favoritos.'],
+      [['vivo','live','señal'],  'La señal de Radio Duna 89.7 FM está activa. Presiona Play en el reproductor.'],
+      [['gracias'],              '¡De nada! Estoy aquí cuando lo necesites.']
+    ];
+    var reply = 'No encontré información sobre eso. Puedo ayudarte con programas, noticias, podcast o entrevistas de Radio Duna.';
+    for (var i = 0; i < R.length; i++) {
+      if (R[i][0].some(function(k){ return lm.indexOf(k) >= 0; })) { reply = R[i][1]; break; }
+    }
+    var el = document.getElementById(tid);
+    if (el) { el.textContent = reply; el.style.opacity = '1'; }
+    box.scrollTop = box.scrollHeight;
+  }, 800);
+}
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function shareIt() { try { navigator.clipboard.writeText(window.location.href); } catch(e) {} toast('Enlace copiado al portapapeles'); }
+function toast(msg) { var t=document.getElementById('toast'); document.getElementById('tmsg').textContent=msg; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(function(){t.classList.remove('on');},2500); }
+function togglePw() {
+  var i = document.getElementById('lp'), ic = document.getElementById('pwic');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  ic.setAttribute('data-lucide', i.type === 'password' ? 'eye' : 'eye-off');
+  if (window.lucide) lucide.createIcons();
+}
+function cntT() { var n=document.getElementById('ed-t').value.length; var el=document.getElementById('tcnt'); el.textContent=n+' / 120'; el.style.color=n>100?'#e74c3c':'var(--cm)'; }
+function fakeUpload() {
+  var ic = document.getElementById('upic');
+  ic.setAttribute('data-lucide', 'check-circle-2');
+  ic.style.stroke = '#2ecc71';
+  if (window.lucide) lucide.createIcons();
+  document.getElementById('utxt').textContent = 'portada.jpg cargada';
+  toast('Fotografía cargada: 2.3 MB');
+}
+function dlWord() { var t=document.getElementById('ed-t').value||'sin_titulo',b=document.getElementById('ed-b').value||'',c=document.getElementById('ed-c').value||''; var blob=new Blob(['TITULAR: '+t+'\n\nBAJADA: '+b+'\n\n'+c],{type:'application/msword'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=t.slice(0,40).replace(/\s+/g,'_')+'.doc'; a.click(); toast('Descargando Word...'); }
+
+// ═══════════════════════════════════════════════════════
+// ARRANQUE
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[App] Iniciando Radio Duna...');
+
+  // Restaurar sesión periodista
+  try {
+    var saved = JSON.parse(localStorage.getItem('duna_js') || 'null');
+    if (saved && new Date(saved.expires_at) > new Date()) {
+      jSess = saved;
+      document.getElementById('d-name').textContent = jSess.nombre;
+      startTimer();
+    } else { localStorage.removeItem('duna_js'); }
+  } catch(e) {}
+
+  playerInit();
+  updateMetrics();
+
+  // Cargar contenido desde JSON
+  loadContent();
+
+  // Conectar Supabase (favoritos y notas en la nube)
+  initSupabase();
+
+  // Renderizar iconos Lucide (navegación, player, favoritos, IA, dashboard)
+  if (window.lucide) lucide.createIcons();
+});
+
+</script>
+</body>
+</html>
