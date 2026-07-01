@@ -1078,15 +1078,21 @@ function renderEntrevistas() {
   var el = document.getElementById('h-ivs');
   if (!_entrevistas.length) { el.innerHTML = '<div class="estado"><i class="ti ti-video"></i><p>No hay entrevistas disponibles</p></div>'; return; }
   el.innerHTML = _entrevistas.map(function(a, i) {
-    var bg = 'linear-gradient(135deg,' + (a.color||'#85a9dd') + '44,' + (a.color||'#85a9dd') + '22)';
+    var bg = a.imagen_url
+      ? 'url(' + a.imagen_url + ') center/cover'
+      : 'linear-gradient(135deg,#85a9dd44,#85a9dd22)';
+    var titulo = a.titulo || a.title || '';
+    var bajada = a.bajada || a.descripcion || '';
+    var programa = a.programa || a.program || '';
+    var fecha = a.fecha || a.duration || (a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '');
     return '<div class="nc" onclick="openEntrevista(' + i + ')">' +
       '<div class="iv-thumb" style="background:' + bg + '">' +
-      '<i class="bgi ti ti-video" style="color:' + (a.color||'#85a9dd') + '"></i>' +
+      (a.imagen_url ? '' : '<i class="bgi ti ti-video" style="color:#85a9dd"></i>') +
       '<div class="iv-play"><i class="ti ti-player-play"></i></div></div>' +
-      '<div class="nc-bod"><div class="nc-cat">' + (a.category||'Entrevista') + '</div>' +
-      '<h3 class="nc-ttl">' + a.title + '</h3>' +
-      '<p class="nc-sub">' + (a.bajada||'') + '</p>' +
-      '<div class="nc-meta"><i class="ti ti-clock"></i>' + (a.duration||'') + '</div>' +
+      '<div class="nc-bod"><div class="nc-cat">Entrevista</div>' +
+      '<h3 class="nc-ttl">' + titulo + '</h3>' +
+      '<p class="nc-sub">' + bajada + '</p>' +
+      '<div class="nc-meta"><i class="ti ti-radio"></i>' + programa + (fecha ? ' · ' + fecha : '') + '</div>' +
       '</div></div>';
   }).join('');
 }
