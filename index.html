@@ -523,7 +523,15 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
       <div class="ecard">
         <h2 style="font-size:18px;font-weight:700;margin-bottom:20px">Nueva nota</h2>
         <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="photo-drop" onclick="fakeUpload()"><i data-lucide="image-plus" id="upic" class="lucide lucide-lg" style="display:block;margin:0 auto 8px"></i><p id="utxt">Subir fotografía de portada</p><small>JPG o PNG · máx. 5 MB</small></div>
+          <div class="photo-drop" onclick="document.getElementById('foto-input').click()" id="pdrop">
+            <input type="file" id="foto-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="onFotoSelected(this)">
+            <i data-lucide="image-plus" id="upic" class="lucide lucide-lg" style="display:block;margin:0 auto 8px"></i>
+            <p id="utxt">Subir fotografía de portada</p>
+            <small>JPG, PNG o WebP · máx. 5 MB</small>
+            <div id="foto-preview" style="display:none;margin-top:12px">
+              <img id="foto-img" style="max-width:100%;max-height:180px;border-radius:6px;object-fit:cover">
+            </div>
+          </div>
           <div><label class="el">Titular (máx. 120 caracteres)</label><input class="ei" type="text" id="ed-t" maxlength="120" placeholder="Escribe el titular..." oninput="cntT()"><div style="text-align:right;font-size:11px;margin-top:3px" id="tcnt">0 / 120</div></div>
           <div><label class="el">Bajada</label><input class="ei" type="text" id="ed-b" placeholder="Resumen breve..."></div>
           <div><label class="el">Cuerpo del texto</label><textarea class="eta" id="ed-c" placeholder="Redacta el cuerpo de la nota..."></textarea></div>
@@ -1628,9 +1636,60 @@ function pubNote() {
   var baj = document.getElementById('ed-b').value.trim();
   var bod = document.getElementById('ed-c').value.trim();
   if (!tit) { toast('Agrega un titular antes de publicar'); return; }
-  var nota = { id:Date.now(), titular:tit, bajada:baj, cuerpo:bod, autor:jSess?jSess.nombre:'Editor', fecha:new Date().toLocaleString('es-CL') };
+
   var btn = document.getElementById('pbtn');
-  btn.disabled = true; btn.innerHTML = '<i data-lucide="loader-2" class="lucide lucide-sm lucide-white"></i> Publicando...'; if(window.lucide) lucide.createIcons();
+  btn.disabled = true;
+  btn.innerHTML = '<i data-lucide="loader-2" class="lucide lucide-sm lucide-white"></i> Publicando...';
+  if (window.lucide) lucide.createIcons();
+
+  // Si hay foto, subirla primero a Supabase Storage
+  if (_fotoFile && DB) {
+    btn.innerHTML = '<i data-lucide="loader-2" class="lucide lucide-sm lucide-white"></i> Subiendo imagen...';
+    if (window.lucide) lucide.createIcons();
+    subirFoto(_fotoFile)
+      .then(function(url) {
+        _fotoUrl = url;
+        console.log('[Storage] Imagen subida:', url);
+        insertarNota(tit, baj, bod, url, btn);
+      })
+      .catch(function(e) {
+        console.warn('[Storage] Error subiendo imagen:', e.message);
+        toast('Error al subir la imagen — publicando sin foto');
+        insertarNota(tit, baj, bod, '', btn);
+      });
+  } else {
+    insertarNota(tit, baj, bod, _fotoUrl, btn);
+  }
+}
+
+function subirFoto(file) {
+  var ext      = file.name.split('.').pop().toLowerCase();
+  var nombre   = 'nota_' + Date.now() + '.' + ext;
+  var endpoint = SB_URL + '/storage/v1/object/noticias-imagenes/' + nombre;
+
+  return fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Content-Type': file.type,
+      'x-upsert': 'true'
+    },
+    body: file
+  })
+  .then(function(r) {
+    if (!r.ok) return r.text().then(function(t){ throw new Error(t); });
+    return SB_URL + '/storage/v1/object/public/noticias-imagenes/' + nombre;
+  });
+}
+
+function insertarNota(tit, baj, bod, imagenUrl, btn) {
+  var nota = {
+    id: Date.now(), titular: tit, bajada: baj, cuerpo: bod,
+    autor: jSess ? jSess.nombre : 'Editor',
+    fecha: new Date().toLocaleString('es-CL'),
+    imagen_url: imagenUrl
+  };
   NOTAS.unshift(nota);
   localStorage.setItem('duna_notas', JSON.stringify(NOTAS));
 
@@ -1638,26 +1697,33 @@ function pubNote() {
     sbInsert('notas', {
       titular: tit, bajada: baj, cuerpo: bod,
       autor_nombre: jSess ? jSess.nombre : 'Editor',
+      imagen_url: imagenUrl || null,
       publicado: true
     })
-    .then(function() { console.log('[Supabase] Nota publicada en la base de datos'); })
+    .then(function() { console.log('[Supabase] Nota publicada con imagen:', imagenUrl || 'sin foto'); })
     .catch(function(e) { console.warn('[Supabase] Error publicando nota:', e.message); });
-  } else {
-    console.warn('[Supabase] No conectado — nota solo guardada en localStorage');
   }
 
-  var ok = document.getElementById('pub-ok'); ok.style.display='flex';
-  toast('Nota publicada exitosamente');
+  // Reset formulario
+  var ok = document.getElementById('pub-ok'); ok.style.display = 'flex';
+  toast('Nota publicada exitosamente' + (imagenUrl ? ' con foto' : ''));
   document.getElementById('ed-t').value = '';
   document.getElementById('ed-b').value = '';
   document.getElementById('ed-c').value = '';
   document.getElementById('tcnt').textContent = '0 / 120';
+  document.getElementById('foto-input').value = '';
+  document.getElementById('foto-preview').style.display = 'none';
+  document.getElementById('upic').style.display = 'block';
   document.getElementById('upic').setAttribute('data-lucide', 'image-plus');
   document.getElementById('upic').style.stroke = '';
-  if (window.lucide) lucide.createIcons();
   document.getElementById('utxt').textContent = 'Subir fotografía de portada';
-  setTimeout(function(){ ok.style.display='none'; }, 4000);
-  btn.disabled = false; btn.innerHTML = '<i data-lucide="send" class="lucide lucide-sm lucide-white"></i>Publicar nota'; if(window.lucide) lucide.createIcons();
+  if (window.lucide) lucide.createIcons();
+  _fotoFile = null; _fotoUrl = '';
+
+  setTimeout(function(){ ok.style.display = 'none'; }, 4000);
+  btn.disabled = false;
+  btn.innerHTML = '<i data-lucide="send" class="lucide lucide-sm lucide-white"></i>Publicar nota';
+  if (window.lucide) lucide.createIcons();
   renderNotas();
 }
 
@@ -2049,13 +2115,27 @@ function togglePw() {
   if (window.lucide) lucide.createIcons();
 }
 function cntT() { var n=document.getElementById('ed-t').value.length; var el=document.getElementById('tcnt'); el.textContent=n+' / 120'; el.style.color=n>100?'#e74c3c':'var(--cm)'; }
-function fakeUpload() {
-  var ic = document.getElementById('upic');
-  ic.setAttribute('data-lucide', 'check-circle-2');
-  ic.style.stroke = '#2ecc71';
-  if (window.lucide) lucide.createIcons();
-  document.getElementById('utxt').textContent = 'portada.jpg cargada';
-  toast('Fotografía cargada: 2.3 MB');
+var _fotoFile = null;
+var _fotoUrl  = '';
+
+function onFotoSelected(input) {
+  var file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { toast('La imagen supera los 5 MB'); input.value = ''; return; }
+
+  _fotoFile = file;
+  _fotoUrl  = '';
+
+  // Preview local inmediato
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('foto-img').src = e.target.result;
+    document.getElementById('foto-preview').style.display = 'block';
+    document.getElementById('upic').style.display = 'none';
+    document.getElementById('utxt').textContent = file.name + ' (' + (file.size/1024).toFixed(0) + ' KB)';
+  };
+  reader.readAsDataURL(file);
+  toast('Foto seleccionada — se subirá al publicar');
 }
 function dlWord() { var t=document.getElementById('ed-t').value||'sin_titulo',b=document.getElementById('ed-b').value||'',c=document.getElementById('ed-c').value||''; var blob=new Blob(['TITULAR: '+t+'\n\nBAJADA: '+b+'\n\n'+c],{type:'application/msword'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=t.slice(0,40).replace(/\s+/g,'_')+'.doc'; a.click(); toast('Descargando Word...'); }
 
