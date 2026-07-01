@@ -107,7 +107,7 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 .btn-j{display:flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:6px;padding:7px 14px;font-family:var(--f);font-size:12px;font-weight:500;cursor:pointer}
 .btn-j:hover{background:rgba(255,255,255,.08);color:#fff}
 /* DETAIL VIEWS */
-.art-hero{width:100%;min-height:220px;display:flex;align-items:center;justify-content:center}
+.art-hero{display:none}
 .art-hero i{font-size:64px;color:rgba(255,255,255,.3)}
 .art-wrap{max-width:760px;margin:0 auto;padding:32px 32px 60px}
 .art-cat{display:inline-flex;background:rgba(94,106,192,.1);color:var(--ca);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;margin-bottom:12px}
@@ -116,16 +116,21 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 .art-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--cm);padding:13px 0;border-top:1px solid var(--cb);border-bottom:1px solid var(--cb);margin-bottom:20px}
 .art-txt p{font-size:16px;line-height:1.75;margin-bottom:18px}
 .art-actions{display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--cb);flex-wrap:wrap}
-.prog-hero{background:linear-gradient(135deg,var(--cd),#1a2a3e);padding:44px 32px;color:#fff}
+.prog-hero{background:var(--cv);border-bottom:1px solid var(--cb);padding:24px 32px;color:var(--cd)}
 .prog-hero-in{max-width:1280px;margin:0 auto;display:flex;gap:28px;align-items:flex-start}
 .prog-img-h{width:190px;height:190px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:60px}
 .prog-hero-info h1{font-size:28px;font-weight:700;margin-bottom:8px}
 .hosts-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.hchip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:999px;padding:5px 12px}
+.hchip{display:flex;align-items:center;gap:8px;background:var(--cn);border-radius:999px;padding:5px 12px}
 .hav{width:26px;height:26px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
 .pod-player{background:var(--cv);border:1px solid var(--cb);border-radius:8px;padding:24px;max-width:720px;margin:0 auto 28px;display:flex;gap:20px;align-items:flex-start}
 .pod-art-lg{width:110px;height:110px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .pod-art-lg i{font-size:44px;color:rgba(255,255,255,.7)}
+/* INNER PAGE HEADER — reemplaza heroes oscuros en vistas interiores */
+.inner-page-hdr{background:var(--cv);border-bottom:1px solid var(--cb);padding:18px 32px}
+.inner-page-hdr-in{max-width:1280px;margin:0 auto}
+.inner-page-hdr .back{margin-bottom:10px}
+
 /* TV EN VIVO */
 .tv-hero{background:linear-gradient(135deg,var(--cd),#1a2a3e);padding:40px 32px 36px;color:#fff}
 .tv-hero-in{max-width:1280px;margin:0 auto}
@@ -319,7 +324,7 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 
 <!-- ARTICLE / ENTREVISTA -->
 <div class="view" id="v-art">
-    <div class="art-hero" id="art-hero"><i class="ti ti-photo"></i></div>
+    <div class="art-hero" id="art-hero" style="display:none"></div>
   <div class="art-wrap">
     <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button>
     <div class="art-cat" id="a-cat"></div>
@@ -338,16 +343,16 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 
 <!-- PROGRAM -->
 <div class="view" id="v-prog">
-    <div class="prog-hero"><div class="prog-hero-in">
+    <div class="inner-page-hdr"><div class="prog-hero-in" style="max-width:1280px;margin:0 auto">
     <div class="prog-img-h" id="pr-img"></div>
     <div class="prog-hero-info">
-      <div style="font-size:13px;color:var(--cs);display:flex;align-items:center;gap:6px;margin-bottom:5px"><i class="ti ti-clock"></i><span id="pr-sch"></span></div>
+      <div style="font-size:13px;color:var(--ca);display:flex;align-items:center;gap:6px;margin-bottom:5px"><i class="ti ti-clock"></i><span id="pr-sch"></span></div>
       <h1 id="pr-name"></h1>
-      <p style="color:rgba(255,255,255,.6);font-size:14px;margin-top:5px;margin-bottom:12px" id="pr-desc"></p>
+      <p style="color:var(--cm);font-size:14px;margin-top:5px;margin-bottom:12px" id="pr-desc"></p>
       <div class="hosts-row" id="pr-hosts"></div>
       <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn bp" onclick="saveFav('program')"><i data-lucide="heart" class="lucide lucide-sm lucide-white"></i>Guardar</button>
-        <button class="btn bo" style="border-color:rgba(255,255,255,.3);color:#fff" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
+        <button class="btn bo" style="border-color:var(--cb);color:var(--cd)" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
       </div>
     </div>
   </div></div>
@@ -408,12 +413,14 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 <!-- LIST VIEW (Noticias / Entrevistas / Podcast / Programas) -->
 <div class="view" id="v-list">
   
-  <div class="list-hero" id="list-hero">
-    <div class="list-hero-in">
-      <button class="back" onclick="go('v-home')" style="color:rgba(255,255,255,.7);margin-bottom:14px"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
-      <div class="list-icon" id="list-icon"><i class="ti ti-news"></i></div>
-      <h1 id="list-title">Noticias</h1>
-      <p id="list-subtitle">Las últimas noticias de Radio Duna 89.7</p>
+  <div class="inner-page-hdr">
+    <div class="inner-page-hdr-in">
+      <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="list-icon" id="list-icon"><i class="ti ti-news"></i></div>
+        <h1 id="list-title" style="font-size:22px;font-weight:700">Noticias</h1>
+      </div>
+      <p id="list-subtitle" style="font-size:13px;color:var(--cm);margin-top:2px"></p>
     </div>
   </div>
 
@@ -438,15 +445,14 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 <!-- TV EN VIVO -->
 <div class="view" id="v-tv">
   
-  <div class="tv-hero">
-    <div class="tv-hero-in">
-      <button class="back" onclick="go('v-home')" style="color:rgba(255,255,255,.7);margin-bottom:14px"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+  <div class="inner-page-hdr">
+    <div class="inner-page-hdr-in">
+      <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver al inicio</button>
+      <div style="display:flex;align-items:center;gap:10px">
+        <h1 style="font-size:22px;font-weight:700">En Vivo TV</h1>
         <span class="live-badge"><span class="ldot"></span>EN VIVO</span>
-        <span style="font-size:12px;color:rgba(255,255,255,.5)">Transmisión en tiempo real</span>
       </div>
-      <h1>Duna TV — Señal en Vivo</h1>
-      <p>Mira en directo lo que está ocurriendo en cabina, entrevistas y programas especiales.</p>
+      <p style="font-size:13px;color:var(--cm);margin-top:2px">Transmisión en tiempo real desde los estudios de Radio Duna</p>
     </div>
   </div>
 
