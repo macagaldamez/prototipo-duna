@@ -1629,23 +1629,55 @@ function doSearch(q) {
   if (!q || !q.trim()) return;
   document.getElementById('s-ttl').textContent = 'Resultados para: "' + q + '"';
   var all = [];
-  _noticias.forEach(function(a,i){    all.push({title:a.title, sub:a.bajada,       tipo:'Noticia',    fn:'openArt('+i+')'});        });
-  _entrevistas.forEach(function(a,i){ all.push({title:a.title, sub:a.bajada,       tipo:'Entrevista', fn:'openEntrevista('+i+')'});  });
-  _podcasts.forEach(function(p,i){    all.push({title:p.title, sub:p.summary,      tipo:'Podcast',    fn:'openPod('+i+')'});         });
-  _programas.forEach(function(p,i){   all.push({title:p.name,  sub:p.description,  tipo:'Programa',   fn:'openProg('+i+')'});        });
+
+  _noticias.forEach(function(a, i) {
+    var title = a.titulo || a.title || '';
+    var sub   = a.bajada || '';
+    var extra = (a.categoria || '') + ' ' + (a.autor || '');
+    all.push({ title:title, sub:sub, extra:extra, tipo:'Noticia', fn:'openArt('+i+')' });
+  });
+
+  _entrevistas.forEach(function(a, i) {
+    var title = a.titulo || a.title || '';
+    var sub   = a.bajada || a.descripcion || '';
+    var extra = a.programa || '';
+    all.push({ title:title, sub:sub, extra:extra, tipo:'Entrevista', fn:'openEntrevista('+i+')' });
+  });
+
+  _podcasts.forEach(function(p, i) {
+    var title = p.titulo || p.title || '';
+    var sub   = p.descripcion || p.summary || '';
+    var extra = p.programa || p.program || '';
+    all.push({ title:title, sub:sub, extra:extra, tipo:'Podcast', fn:'openPod('+i+')' });
+  });
+
+  _programas.forEach(function(p, i) {
+    var title = p.titulo || p.name || '';
+    var sub   = p.descripcion || p.description || '';
+    var extra = (p.conductor || '') + ' ' + (p.horario || '') + ' ' + (p.dias || '');
+    all.push({ title:title, sub:sub, extra:extra, tipo:'Programa', fn:'openProg('+i+')' });
+  });
+
   var lq  = q.toLowerCase();
-  var res = all.filter(function(c){ return c.title.toLowerCase().indexOf(lq) >= 0 || (c.sub||'').toLowerCase().indexOf(lq) >= 0; });
-  var ic  = { Noticia:'news', Entrevista:'video', Podcast:'microphone', Programa:'radio' };
+  var res = all.filter(function(c) {
+    return (c.title||'').toLowerCase().indexOf(lq) >= 0 ||
+           (c.sub||'').toLowerCase().indexOf(lq) >= 0 ||
+           (c.extra||'').toLowerCase().indexOf(lq) >= 0;
+  });
+
+  var ic   = { Noticia:'news', Entrevista:'video', Podcast:'microphone', Programa:'radio' };
   var list = document.getElementById('s-list');
+
   if (!res.length) {
-    list.innerHTML = '<div class="empty"><i data-lucide="search" class="lucide lucide-sm"></i><h3>No encontramos resultados para tu búsqueda</h3></div>';
+    list.innerHTML = '<div class="empty"><i data-lucide="search" class="lucide lucide-sm" style="width:48px;height:48px;display:block;margin:0 auto 14px;stroke:var(--cb)"></i><h3>No encontramos resultados para tu búsqueda</h3></div>';
+    if (window.lucide) lucide.createIcons();
   } else {
     var html = '';
     res.forEach(function(r) {
       html += '<div class="ri click" onclick="' + r.fn + '">';
       html += '<div style="width:34px;height:34px;border-radius:6px;background:var(--cn);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-' + (ic[r.tipo]||'file') + '" style="font-size:17px;color:var(--ca)"></i></div>';
       html += '<div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--ca);margin-bottom:2px">' + r.tipo + '</div>';
-      html += '<div style="font-size:14px;font-weight:600;margin-bottom:2px">' + r.title + '</div>';
+      html += '<div style="font-size:14px;font-weight:600;margin-bottom:2px">' + (r.title||'') + '</div>';
       html += '<div style="font-size:12px;color:var(--cm)">' + (r.sub||'').slice(0,100) + '</div></div></div>';
     });
     list.innerHTML = html;
