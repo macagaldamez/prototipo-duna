@@ -236,6 +236,7 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 @media(max-width:900px){.ng{grid-template-columns:repeat(2,1fr)}.pg,.prg{grid-template-columns:repeat(2,1fr)}.met-grid{grid-template-columns:repeat(2,1fr)}.f-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.hdr-top{padding:10px 16px}.ng,.pg,.prg{grid-template-columns:1fr}.page{padding:20px 16px}.f-grid{grid-template-columns:1fr}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
 </head>
 <body>
 <!-- HEADER GLOBAL — siempre visible en todas las vistas -->
@@ -331,19 +332,27 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 
 <!-- ARTICLE / ENTREVISTA -->
 <div class="view" id="v-art">
-    <div class="art-hero" id="art-hero" style="display:none"></div>
   <div class="art-wrap">
     <button class="back" onclick="go('v-home')"><i class="ti ti-arrow-left"></i>Volver</button>
     <div class="art-cat" id="a-cat"></div>
     <h1 class="art-ttl" id="a-ttl"></h1>
     <p class="art-baj" id="a-baj"></p>
     <div class="art-meta"><span><i class="ti ti-user"></i><span id="a-auth"></span></span><span><i class="ti ti-clock"></i><span id="a-time"></span></span><span><i class="ti ti-calendar"></i><span id="a-date"></span></span></div>
+    <!-- VIDEO PLAYER — solo visible en entrevistas con video_url -->
+    <div id="a-video-wrap" style="display:none;margin-bottom:28px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--cm);margin-bottom:10px">Extracto en video</div>
+      <div style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:10px;overflow:hidden">
+        <video id="a-video" controls playsinline
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
+          poster="">
+          Tu navegador no soporta reproducción de video.
+        </video>
+      </div>
+    </div>
     <div class="art-txt" id="a-body"></div>
     <div class="art-actions">
       <button class="btn bp" onclick="saveFav('article')"><i data-lucide="heart" class="lucide lucide-sm lucide-white"></i>Guardar</button>
       <button class="btn bs" onclick="shareIt()"><i class="ti ti-share"></i>Compartir</button>
-      <button class="btn bspot" onclick="toast('Abriendo en Spotify...')"><i class="ti ti-brand-spotify"></i>Spotify</button>
-      <button class="btn byt" onclick="toast('Abriendo en YouTube...')"><i class="ti ti-brand-youtube"></i>YouTube</button>
     </div>
   </div>
 </div>
@@ -1169,6 +1178,11 @@ function showMsgAll(msg) {
 // NAVEGACIÓN
 // ═══════════════════════════════════════════════════════
 function go(id) {
+  // Pausar video si se sale de v-art
+  if (id !== 'v-art') {
+    var v = document.getElementById('a-video');
+    if (v) { v.pause(); }
+  }
   document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   window.scrollTo(0, 0);
@@ -1338,8 +1352,39 @@ function openEntrevista(i) {
   document.getElementById('a-time').textContent = a.fecha || '';
   document.getElementById('a-date').textContent = a.created_at ? new Date(a.created_at).toLocaleDateString('es-CL') : '';
   document.getElementById('a-body').innerHTML   = a.cuerpo ? '<p>' + a.cuerpo.replace(/\n/g,'</p><p>') + '</p>' : '<p>' + (a.descripcion||a.bajada||'') + '</p>';
-  var hero = document.getElementById('art-hero');
-  hero.style.background = a.imagen_url ? 'url(' + a.imagen_url + ') center/cover' : 'linear-gradient(135deg,#85a9dd55,#85a9dd22)';
+
+  // Cargar video HLS si existe video_url
+  var videoWrap = document.getElementById('a-video-wrap');
+  var videoEl   = document.getElementById('a-video');
+  if (a.video_url) {
+    videoWrap.style.display = 'block';
+    // Detener video anterior
+    videoEl.pause();
+    videoEl.src = '';
+    if (videoEl._hls) { videoEl._hls.destroy(); videoEl._hls = null; }
+
+    if (a.imagen_url) videoEl.setAttribute('poster', a.imagen_url);
+
+    // Safari soporta HLS nativo; Chrome/Firefox necesitan HLS.js
+    if (videoEl.canPlayType('application/vnd.apple.mpegurl')) {
+      videoEl.src = a.video_url;
+      console.log('[Video] HLS nativo (Safari):', a.video_url);
+    } else if (window.Hls && Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(a.video_url);
+      hls.attachMedia(videoEl);
+      videoEl._hls = hls;
+      console.log('[Video] HLS.js cargado:', a.video_url);
+    } else {
+      videoEl.src = a.video_url;
+      console.warn('[Video] HLS no soportado en este navegador');
+    }
+  } else {
+    videoWrap.style.display = 'none';
+    videoEl.pause();
+    videoEl.src = '';
+  }
+
   go('v-art');
 }
 
