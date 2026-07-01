@@ -1092,11 +1092,19 @@ function renderPodcasts() {
   var el = document.getElementById('h-pods');
   if (!_podcasts.length) { el.innerHTML = '<div class="estado"><i class="ti ti-microphone"></i><p>No hay podcasts disponibles</p></div>'; return; }
   el.innerHTML = _podcasts.map(function(p, i) {
+    var titulo = p.titulo || p.title || '';
+    var programa = p.programa || p.program || '';
+    var duracion = p.duracion || p.duration || '';
+    var fecha = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CL') : (p.date||'');
+    var art = p.imagen_url
+      ? '<img src="' + p.imagen_url + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'
+      : '<i class="ti ti-microphone"></i>';
+    var bg = p.imagen_url ? '#edeef2' : (p.color || 'linear-gradient(135deg,var(--cp),var(--ca))');
     return '<div class="podc" onclick="openPod(' + i + ')">' +
-      '<div class="podc-art" style="background:' + (p.color||'var(--cp)') + '"><i class="ti ti-microphone"></i></div>' +
-      '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + p.title + '</div>' +
-      '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + (p.program||'') + '</div>' +
-      '<div style="font-size:11px;color:var(--cm)">' + (p.date||'') + ' · ' + (p.duration||'') + '</div>' +
+      '<div class="podc-art" style="background:' + bg + '">' + art + '</div>' +
+      '<div style="font-size:13px;font-weight:600;margin-bottom:3px">' + titulo + '</div>' +
+      '<div style="font-size:11px;color:var(--ca);font-weight:600;margin-bottom:2px">' + programa + '</div>' +
+      '<div style="font-size:11px;color:var(--cm)">' + fecha + (duracion ? ' · ' + duracion : '') + '</div>' +
       '</div>';
   }).join('');
 }
@@ -1105,12 +1113,18 @@ function renderProgramas() {
   var el = document.getElementById('h-prgs');
   if (!_programas.length) { el.innerHTML = '<div class="estado"><i class="ti ti-radio"></i><p>No hay programas disponibles</p></div>'; return; }
   el.innerHTML = _programas.map(function(p, i) {
-    var hosts = Array.isArray(p.hosts) ? p.hosts.map(function(h){return h[1]||h;}).join(' · ') : '';
+    var titulo = p.titulo || p.name || '';
+    var sched = p.dias && p.horario ? p.dias + ' · ' + p.horario : (p.dias || p.horario || p.schedule || '');
+    var conductor = p.conductor || (Array.isArray(p.hosts) ? p.hosts.map(function(h){return h[1]||h;}).join(' · ') : '');
+    var bg = p.imagen_url
+      ? 'url(' + p.imagen_url + ') center/cover'
+      : (p.color || 'linear-gradient(135deg,var(--cp),var(--ca))');
+    var emoji = p.imagen_url ? '' : (p.emoji || '🎙');
     return '<div class="prc" onclick="openProg(' + i + ')">' +
-      '<div class="prc-img" style="background:' + (p.color||'var(--cp)') + '">' + (p.emoji||'🎙') +
-      '<span class="prc-sched">' + (p.schedule||'') + '</span></div>' +
-      '<div class="prc-bod"><div class="prc-name">' + p.name + '</div>' +
-      '<div class="prc-hosts">' + hosts + '</div></div></div>';
+      '<div class="prc-img" style="background:' + bg + '">' + emoji +
+      '<span class="prc-sched">' + sched + '</span></div>' +
+      '<div class="prc-bod"><div class="prc-name">' + titulo + '</div>' +
+      '<div class="prc-hosts">' + conductor + '</div></div></div>';
   }).join('');
 }
 
