@@ -1970,7 +1970,26 @@ function fetchNowPlaying() {
 function toggleAI() {
   chatOpen = !chatOpen;
   document.getElementById('ai-wrap').classList.toggle('on', chatOpen);
-  if (chatOpen) setTimeout(function(){ document.getElementById('ai-in').focus(); }, 100);
+  if (chatOpen) {
+    // Mostrar aviso si los datos aún no cargaron de Supabase
+    if (!DB) {
+      addAIMsg('b', '⚠️ Conectando con la base de datos... Los datos de programas y noticias estarán disponibles en unos segundos.');
+    } else {
+      console.log('[DunaIA] Datos disponibles — programas:', _programas.length, '| noticias:', _noticias.length, '| podcasts:', _podcasts.length);
+      // Primer programa como muestra
+      if (_programas.length) console.log('[DunaIA] Ejemplo programa[0]:', JSON.stringify(_programas[0]).slice(0,200));
+    }
+    setTimeout(function(){ document.getElementById('ai-in').focus(); }, 100);
+  }
+}
+
+function addAIMsg(type, text) {
+  var box = document.getElementById('ai-msgs');
+  var div = document.createElement('div');
+  div.className = 'ai-m ' + type;
+  div.innerHTML = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
 }
 
 function sendAI() {
@@ -2061,112 +2080,112 @@ function procesarMensaje(q) {
 
 // ── Helpers de programación ──────────────────────────────────
 
+// ── Helpers para acceder a campos con nombres distintos (Supabase vs fallback local)
+function pNombre(p)   { return p.titulo || p.name || ''; }
+function pHorario(p)  { return p.horario || p.schedule || ''; }
+function pDias(p)     { return p.dias || ''; }
+function pConductor(p){ return p.conductor || (Array.isArray(p.hosts) ? p.hosts.map(function(h){return h[1]||h;}).join(', ') : '') || ''; }
+function pDesc(p)     { return p.descripcion || p.description || ''; }
+function pSched(p)    { return [pDias(p), pHorario(p)].filter(Boolean).join(' · '); }
+
 function armarParrilla() {
   if (!_programas.length) return 'La programación no está disponible en este momento.';
   var lineas = _programas.map(function(p) {
-    var nombre = p.titulo || p.name || '';
-    var sched  = [p.horario, p.dias].filter(Boolean).join(' · ');
-    var cond   = p.conductor ? ' — ' + p.conductor : '';
-    return '📻 <strong>' + escHtml(nombre) + '</strong> · ' + escHtml(sched) + escHtml(cond);
+    var cond = pConductor(p);
+    return '📻 <strong>' + escHtml(pNombre(p)) + '</strong>' +
+      (pSched(p) ? ' · ' + escHtml(pSched(p)) : '') +
+      (cond ? ' — ' + escHtml(cond) : '');
   });
   return 'Programación de Radio Duna 89.7:<br><br>' + lineas.join('<br>');
 }
 
 function horarioDelDia(q) {
   if (!_programas.length) return 'La programación no está disponible ahora.';
-  var diasMap = {
-    lunes:'lunes a viernes', martes:'lunes a viernes', miércoles:'lunes a viernes',
-    'miercoles':'lunes a viernes', jueves:'jueves', viernes:'lunes a viernes',
-    sábado:'sábado', sabado:'sábado', domingo:'domingo'
-  };
-  var dia = '';
-  Object.keys(diasMap).forEach(function(k){ if (q.indexOf(k) >= 0) dia = diasMap[k]; });
-  if (!dia) return null;
+  var dias = ['lunes','martes','miércoles','miercoles','jueves','viernes','sábado','sabado','domingo'];
+  var diaBuscado = '';
+  dias.forEach(function(d){ if (q.indexOf(d) >= 0) diaBuscado = d.replace('miercoles','miércoles').replace('sabado','sábado'); });
+  if (!diaBuscado) return null;
 
+  var esFinde = diaBuscado === 'sábado' || diaBuscado === 'domingo';
   var progs = _programas.filter(function(p) {
-    var d = (p.dias||'').toLowerCase();
-    return d.indexOf(dia) >= 0 || (dia === 'lunes a viernes' && /lunes a viernes/.test(d));
+    var d = (pDias(p) + ' ' + pHorario(p)).toLowerCase();
+    if (d.indexOf(diaBuscado) >= 0) return true;
+    if (!esFinde && /lunes a viernes/.test(d)) return true;
+    return false;
   });
-  if (!progs.length) return 'No encontré programas para ese día.';
+  if (!progs.length) return 'No encontré programas para ' + diaBuscado + '.';
   var lineas = progs.map(function(p){
-    return '🕐 <strong>' + escHtml(p.horario||'') + '</strong> — ' + escHtml(p.titulo||p.name||'') + (p.conductor ? ' (' + p.conductor + ')' : '');
+    var cond = pConductor(p);
+    return '🕐 <strong>' + escHtml(pHorario(p)) + '</strong> — ' + escHtml(pNombre(p)) + (cond ? ' (' + escHtml(cond) + ')' : '');
   });
-  return 'Programación del ' + dia + ':<br><br>' + lineas.join('<br>');
+  return 'Programación del ' + diaBuscado + ':<br><br>' + lineas.join('<br>');
 }
 
 function buscarHorarioPrograma(q) {
   var prog = encontrarPrograma(q);
   if (prog) {
-    var nombre = prog.titulo || prog.name || '';
-    var sched  = [prog.dias, prog.horario].filter(Boolean).join(', ');
-    return '<strong>' + escHtml(nombre) + '</strong> va los <strong>' + escHtml(sched) + '</strong>' +
-           (prog.conductor ? ', conducido por ' + escHtml(prog.conductor) : '') + '.';
+    return '<strong>' + escHtml(pNombre(prog)) + '</strong> va los <strong>' + escHtml(pSched(prog)) + '</strong>' +
+           (pConductor(prog) ? ', conducido por ' + escHtml(pConductor(prog)) : '') + '.';
   }
   return busquedaLibre(q) || 'No encontré ese programa. ¿Puedes darme el nombre exacto?';
 }
 
 function buscarConductor(q) {
-  // Buscar por nombre de conductor
+  var search = q.replace(/qui[eé]n conduce|conductor de|presenta|conduce|animador/g,'').replace(/[¿?¡!]/g,'').trim();
   var porConductor = _programas.filter(function(p){
-    return (p.conductor||'').toLowerCase().indexOf(q.replace(/qui[eé]n conduce|conductor de|presenta/g,'').trim()) >= 0;
+    return search.length > 2 && pConductor(p).toLowerCase().indexOf(search) >= 0;
   });
   if (porConductor.length) {
-    var lineas = porConductor.map(function(p){
-      return '<strong>' + escHtml(p.titulo||p.name||'') + '</strong>: ' + escHtml(p.conductor||'');
-    });
-    return lineas.join('<br>');
+    return porConductor.map(function(p){
+      return '<strong>' + escHtml(pNombre(p)) + '</strong>: ' + escHtml(pConductor(p));
+    }).join('<br>');
   }
-  // Buscar por nombre de programa
   var prog = encontrarPrograma(q);
-  if (prog && prog.conductor) {
-    return '<strong>' + escHtml(prog.titulo||prog.name||'') + '</strong> es conducido por <strong>' + escHtml(prog.conductor) + '</strong>.';
+  if (prog && pConductor(prog)) {
+    return '<strong>' + escHtml(pNombre(prog)) + '</strong> es conducido por <strong>' + escHtml(pConductor(prog)) + '</strong>.';
   }
   return 'No encontré esa información. Pregúntame por el nombre del programa, por ejemplo: "¿quién conduce Hablemos en Off?"';
 }
 
 function programaAhora() {
   if (!_programas.length) return 'No puedo determinar el programa actual en este momento.';
-  var now   = new Date();
-  var hours = now.getHours();
-  var mins  = now.getMinutes();
+  var now = new Date(), h = now.getHours(), m = now.getMinutes();
   var actual = null;
   _programas.forEach(function(p) {
-    if (!p.horario) return;
-    var m = p.horario.match(/(\d+)[:\.](\d*)\s*hrs?/i);
-    if (!m) return;
-    var ph = parseInt(m[1]), pm = parseInt(m[2]||0);
-    if (hours === ph || (hours === ph && mins >= pm)) actual = p;
+    var horStr = pHorario(p);
+    if (!horStr) return;
+    var match = horStr.match(/(\d+)[:\.]?(\d*)\s*h/i);
+    if (!match) return;
+    var ph = parseInt(match[1]), pm = parseInt(match[2]||0);
+    if (h > ph || (h === ph && m >= pm)) actual = p;
   });
   if (actual) {
-    return 'En este momento debería estar al aire <strong>' + escHtml(actual.titulo||actual.name||'') + '</strong>' +
-           (actual.conductor ? ', conducido por ' + escHtml(actual.conductor) : '') +
-           '. La programación exacta puede variar.';
+    return 'En este momento debería estar al aire <strong>' + escHtml(pNombre(actual)) + '</strong>' +
+           (pConductor(actual) ? ', conducido por ' + escHtml(pConductor(actual)) : '') + '. La programación exacta puede variar.';
   }
-  return 'No pude determinar el programa exacto de este momento. Revisa la sección Programación para la grilla completa.';
+  return 'No pude determinar el programa exacto. Revisa la sección Programación para la grilla completa.';
 }
 
 function encontrarPrograma(q) {
   if (!_programas.length) return null;
-  // Palabras clave a ignorar
   var ignore = /horario|conductor|qu[eé]|cu[aá]ndo|a qu[eé] hora|conduce|presenta|programa de|el programa/g;
-  var search = q.replace(ignore, '').replace(/[¿?¡!]/g, '').trim();
+  var search = q.replace(ignore,'').replace(/[¿?¡!]/g,'').trim();
   if (search.length < 3) return null;
   return _programas.find(function(p) {
-    var nombre = (p.titulo || p.name || '').toLowerCase();
-    var cond   = (p.conductor || '').toLowerCase();
-    var desc   = (p.descripcion || '').toLowerCase();
-    return nombre.indexOf(search) >= 0 || search.indexOf(nombre) >= 0 ||
+    var nombre = pNombre(p).toLowerCase();
+    var cond   = pConductor(p).toLowerCase();
+    var desc   = pDesc(p).toLowerCase();
+    return nombre.indexOf(search) >= 0 || search.indexOf(nombre.split(' ')[0]) >= 0 ||
            cond.indexOf(search) >= 0 || desc.indexOf(search) >= 0;
   }) || null;
 }
 
 function infoPrograma(p) {
-  var nombre = p.titulo || p.name || '';
-  var sched  = [p.dias, p.horario].filter(Boolean).join(', ');
-  var out = '📻 <strong>' + escHtml(nombre) + '</strong><br>';
-  if (sched)        out += '🕐 ' + escHtml(sched) + '<br>';
-  if (p.conductor)  out += '🎤 ' + escHtml(p.conductor) + '<br>';
-  if (p.descripcion) out += '<br>' + escHtml(p.descripcion.slice(0,150)) + (p.descripcion.length > 150 ? '...' : '');
+  var out = '📻 <strong>' + escHtml(pNombre(p)) + '</strong><br>';
+  if (pSched(p))     out += '🕐 ' + escHtml(pSched(p)) + '<br>';
+  if (pConductor(p)) out += '🎤 ' + escHtml(pConductor(p)) + '<br>';
+  var desc = pDesc(p);
+  if (desc) out += '<br>' + escHtml(desc.slice(0,150)) + (desc.length > 150 ? '...' : '');
   return out;
 }
 
@@ -2203,7 +2222,7 @@ function listarEntrevistas() {
 function busquedaLibre(q) {
   var resultados = [];
   _programas.forEach(function(p) {
-    var txt = ((p.titulo||p.name||'') + ' ' + (p.conductor||'') + ' ' + (p.descripcion||'')).toLowerCase();
+    var txt = (pNombre(p) + ' ' + pConductor(p) + ' ' + pDesc(p) + ' ' + pHorario(p)).toLowerCase();
     if (txt.indexOf(q) >= 0) resultados.push(infoPrograma(p));
   });
   _noticias.forEach(function(n) {
