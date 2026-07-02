@@ -333,6 +333,10 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
     <div class="live-badge"><span class="ldot"></span>EN VIVO</div>
 
     <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none"></div>
+    <audio id="radio-audio" preload="none" style="display:none">
+      <source src="https://mdstrm.com/audio/67f42f96e464d19a6eda3c7d/manifest.mpd" type="audio/mpeg">
+      <source src="https://cl-a9-p-e-pt11-audio.cdn.mdstrm.com/live-audio-aw/67f42f96e464d19a6eda3c7d/playlist.m3u8" type="application/x-mpegURL">
+    </audio>
   </div>
 </div>
 
@@ -1990,21 +1994,30 @@ function parseHora(horStr) {
 }
 
 function togglePlay() {
-  var icon = document.getElementById('playic');
+  var audio = document.getElementById('radio-audio');
 
   if (P.playing) {
-    // Ya está reproduciendo (o intentando) → detener
-    P.requestId++; // invalida cualquier carga pendiente del player
-    stopAllAudio();
+    audio.pause();
     P.playing = false;
     setPlayIcon('play');
-    document.getElementById('p-trk').textContent = 'Radio Duna';
     document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
+    console.log('[Player] Pausado');
   } else {
     P.playing = true;
     setPlayIcon('pause');
-    document.getElementById('p-art2').textContent = 'Conectando con la señal...';
-    loadMediastreamPlayer();
+    document.getElementById('p-art2').textContent = 'Conectando...';
+    audio.load();
+    audio.play()
+      .then(function() {
+        console.log('[Player] ✅ Reproduciendo:', audio.currentSrc);
+        document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
+      })
+      .catch(function(e) {
+        console.warn('[Player] Error al reproducir:', e.message);
+        // Intentar con Mediastream embed como fallback
+        P.requestId++;
+        loadMediastreamPlayer();
+      });
   }
 }
 
@@ -2067,19 +2080,25 @@ function loadMediastreamPlayer() {
 function playerError() {
   P.playing = false;
   setPlayIcon('play');
-  document.getElementById('p-trk').textContent = 'Señal no disponible';
-  document.getElementById('p-art2').textContent = 'Disponible solo en duna.cl';
-  toast('La señal en vivo solo está disponible desde duna.cl');
+  document.getElementById('p-art2').textContent = 'No se pudo conectar al stream';
+  toast('No se pudo reproducir la señal. Intenta de nuevo.');
   stopAllAudio();
 }
 
 function stopAllAudio() {
+  var audio = document.getElementById('radio-audio');
+  if (audio) { audio.pause(); audio.currentTime = 0; }
   var wrap = document.getElementById('ms-player-wrap');
-  wrap.innerHTML = '';
+  if (wrap) wrap.innerHTML = '';
   MS_LOADED = false;
 }
 
 function setVol(v) {
+  // Controlar volumen del audio real
+  var audio = document.getElementById('radio-audio');
+  if (audio) audio.volume = Math.min(Math.max(v / 100, 0), 1);
+
+  // Actualizar ícono
   var ic = document.getElementById('vol-ic');
   if (!ic) return;
   var name = v == 0 ? 'volume-x' : v < 40 ? 'volume-1' : 'volume-2';
@@ -2093,13 +2112,16 @@ var _volBeforeMute = 80;
 
 function toggleMute() {
   var slider = document.getElementById('vol');
+  var audio  = document.getElementById('radio-audio');
   if (_muted) {
     _muted = false;
     slider.value = _volBeforeMute;
+    if (audio) audio.muted = false;
     setVol(_volBeforeMute);
   } else {
     _muted = true;
-    _volBeforeMute = parseInt(slider.value);
+    _volBeforeMute = parseInt(slider.value) || 80;
+    if (audio) audio.muted = true;
     slider.value = 0;
     setVol(0);
   }
