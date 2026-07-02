@@ -37,46 +37,22 @@ body{font-family:var(--f);background:var(--cn);color:var(--cd);font-size:15px;li
 /* PLAYER */
 .player{background:var(--cd);padding:0 32px;position:sticky;top:103px;z-index:90}
 .p-inn{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 0}
-/* ── PLAYER REDISEÑADO ─────────────────────── */
-.player{background:#0e1826;border-bottom:1px solid rgba(255,255,255,.06)}
-.p-inn{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto auto auto;align-items:center;gap:0;padding:0}
-/* Artwork */
-.p-art{width:64px;height:64px;flex-shrink:0;overflow:hidden;position:relative}
-.p-art img{width:100%;height:100%;object-fit:cover}
-.p-art-ph{width:100%;height:100%;background:linear-gradient(135deg,var(--cp),var(--ca));display:flex;align-items:center;justify-content:center}
-.p-art-ph i{font-size:22px;color:#fff}
-/* Track info */
-.p-info{padding:0 18px;min-width:0}
-.p-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:2px;display:flex;align-items:center;gap:6px}
-.p-trk{font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px}
-.p-art2{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-/* Center controls */
-.p-center{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 24px;min-width:280px}
-.p-btns{display:flex;align-items:center;gap:16px}
+.p-art{width:44px;height:44px;border-radius:6px;background:linear-gradient(135deg,var(--cp),var(--ca));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.p-art i{font-size:20px;color:#fff}
+.p-info{flex:1;min-width:0}
+.p-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+.p-trk{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-art2{font-size:12px;color:rgba(255,255,255,.55)}
+.p-controls{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .pbtn{width:40px;height:40px;border-radius:50%;border:none;background:var(--ca);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,transform .1s}
-.pbtn:hover{background:#4a56a8;transform:scale(1.05)}.pbtn i{pointer-events:none}
-.p-progress{width:100%;display:flex;align-items:center;gap:8px}
-.p-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.12);border-radius:2px;cursor:pointer;position:relative}
-.p-bar-wrap:hover .p-bar-fill{background:#fff}
-.p-bar-fill{height:100%;background:var(--ca);border-radius:2px;transition:width .3s linear;position:relative}
-.p-bar-fill::after{content:'';position:absolute;right:-4px;top:-3px;width:10px;height:10px;border-radius:50%;background:#fff;opacity:0;transition:opacity .15s}
-.p-bar-wrap:hover .p-bar-fill::after{opacity:1}
-.p-time{font-size:10px;color:rgba(255,255,255,.35);flex-shrink:0;font-variant-numeric:tabular-nums}
-/* Next track */
-.p-next-wrap{padding:0 18px;min-width:0;border-left:1px solid rgba(255,255,255,.06)}
-.p-next-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:2px}
-.p-next-trk{font-size:12px;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
-/* Volume */
-.p-vol-wrap{display:flex;align-items:center;gap:8px;padding:0 18px;border-left:1px solid rgba(255,255,255,.06)}
-.p-vol-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.5);display:flex;align-items:center;padding:4px;transition:color .15s}
-.p-vol-btn:hover{color:#fff}
-input.vslide{-webkit-appearance:none;width:80px;height:3px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer}
-input.vslide::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,.3)}
-input.vslide:hover{background:rgba(255,255,255,.25)}
-/* Live badge */
-.live-badge{background:#e74c3c;color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;padding:3px 8px;border-radius:999px;display:flex;align-items:center;gap:4px;flex-shrink:0;margin-right:16px}
-@media(max-width:900px){.p-next-wrap{display:none}.p-center{min-width:200px}.p-inn{grid-template-columns:auto 1fr auto auto}}
-@media(max-width:640px){.p-art{width:48px;height:48px}.p-info{padding:0 10px}.p-center{min-width:140px;padding:8px 10px}.p-vol-wrap{display:none}}
+.pbtn:hover{background:#4a56a8;transform:scale(1.05)}.pbtn i{font-size:18px;pointer-events:none}
+.p-bar-wrap{width:180px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;cursor:pointer}
+.p-bar-fill{height:100%;background:var(--ca);border-radius:2px;transition:width .5s linear}
+.pvol{display:flex;align-items:center;gap:6px}
+.pvol i{color:rgba(255,255,255,.4);font-size:15px}
+input.vslide{-webkit-appearance:none;width:70px;height:3px;border-radius:2px;background:rgba(255,255,255,.2);outline:none}
+input.vslide::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--ca);cursor:pointer}
+.live-badge{background:#e74c3c;color:#fff;font-size:10px;font-weight:700;letter-spacing:.07em;padding:3px 10px;border-radius:999px;display:flex;align-items:center;gap:4px;flex-shrink:0}
 /* PAGE */
 .page{max-width:1280px;margin:0 auto;padding:32px}
 .sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
@@ -283,59 +259,18 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
 <!-- PLAYER GLOBAL — siempre visible -->
 <div class="player" id="global-player">
   <div class="p-inn">
-
-    <!-- Artwork -->
-    <div class="p-art" id="p-art-wrap">
-      <div class="p-art-ph"><i class="ti ti-music"></i></div>
-    </div>
-
-    <!-- Track info -->
+    <div class="p-art"><i class="ti ti-music"></i></div>
     <div class="p-info">
-      <div class="p-lbl">
-        <span class="ldot"></span>
-        <span>Ahora en vivo · 89.7 FM</span>
-      </div>
+      <div class="p-lbl">Ahora en vivo · 89.7 FM</div>
       <div class="p-trk" id="p-trk">Radio Duna</div>
       <div class="p-art2" id="p-art2">Presiona play para escuchar</div>
     </div>
-
-    <!-- Controls + progress bar -->
-    <div class="p-center">
-      <div class="p-btns">
-        <button class="pbtn" id="playbtn" onclick="togglePlay()" style="width:44px;height:44px">
-          <i data-lucide="play" id="playic" class="lucide lucide-white" style="width:22px;height:22px"></i>
-        </button>
-      </div>
-      <div class="p-progress">
-        <span class="p-time" id="p-cur-time">0:00</span>
-        <div class="p-bar-wrap" id="p-bar" onclick="seekBar(event)">
-          <div class="p-bar-fill" id="p-fill" style="width:0%"></div>
-        </div>
-        <span class="p-time" id="p-dur-time">EN VIVO</span>
-      </div>
+    <div class="p-controls">
+      <button class="pbtn" id="playbtn" onclick="togglePlay()"><i data-lucide="play" id="playic" class="lucide lucide-sm lucide-white"></i></button>
+      <div class="pvol"><i data-lucide="volume-2" class="lucide lucide-sm lucide-white"></i><input type="range" class="vslide" id="vol" min="0" max="100" value="80" oninput="setVol(this.value)"></div>
     </div>
-
-    <!-- Next track -->
-    <div class="p-next-wrap">
-      <div class="p-next-lbl">A continuación</div>
-      <div class="p-next-trk" id="p-next">—</div>
-    </div>
-
-    <!-- Volume -->
-    <div class="p-vol-wrap">
-      <button class="p-vol-btn" id="vol-btn" onclick="toggleMute()">
-        <i data-lucide="volume-2" id="vol-ic" class="lucide" style="width:18px;height:18px;stroke:rgba(255,255,255,.6)"></i>
-      </button>
-      <input type="range" class="vslide" id="vol" min="0" max="100" value="80" oninput="setVol(this.value)">
-    </div>
-
-    <!-- Live badge -->
     <div class="live-badge"><span class="ldot"></span>EN VIVO</div>
-
-    <!-- Mediastream Lightning Player embed oficial -->
-    <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none">
-      <div data-msp data-type="live" data-id="67f42f96e464d19a6eda3c7d" data-player="661fe631fcec2d086bd55392" id="ms-embed"></div>
-    </div>
+    <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none"></div>
   </div>
 </div>
 
@@ -474,7 +409,7 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
               <button onclick="cyclePodSpeed()" style="background:var(--cn);border:1px solid var(--cb);border-radius:4px;padding:2px 7px;font-size:11px;cursor:pointer;font-family:var(--f)" id="pod-speed">1x</button>
             </div>
           </div>
-          <audio id="pod-audio" style="display:none" crossorigin="anonymous" preload="none"></audio>
+          <audio id="pod-audio" style="display:none"></audio>
         </div>
         <div id="pod-no-audio" style="font-size:12px;color:var(--cm);margin-bottom:12px;display:none">
           <i class="ti ti-info-circle"></i> Audio no disponible para este episodio
@@ -1111,7 +1046,6 @@ function loadContentFromDB() {
       console.log('[Supabase] Programas:', data.length);
       _programas = data;
       renderProgramas();
-      updatePlayerProgramInfo(); // actualizar info en el player
     })
     .catch(function(e) { console.warn('[Supabase] Error en programas:', e.message); });
 }
@@ -1559,10 +1493,8 @@ function openPod(i) {
   var noAudio   = document.getElementById('pod-no-audio');
   var audioEl   = document.getElementById('pod-audio');
 
-  var audioUrl = p.audio_url || p.url_audio || p.audio || '';
-  console.log('[Podcast] audio_url:', audioUrl, '| titulo:', p.titulo);
-  if (audioUrl) {
-    audioEl.src = audioUrl;
+  if (p.audio_url) {
+    audioEl.src = p.audio_url;
     audioEl.load();
     _podAudio = audioEl;
     _podAudio.playbackRate = 1;
@@ -1609,32 +1541,17 @@ function togglePodcastPlay() {
   if (_podPlaying) {
     _podAudio.pause();
     _podPlaying = false;
-    resetPodIcon();
   } else {
-    // Pausar radio si está sonando
-    if (P.playing) {
-      msCommand('pause');
-      P.playing = false;
-      setPlayIcon('play');
-      document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
-    }
-    _podAudio.play()
-      .then(function() {
-        _podPlaying = true;
-        resetPodIcon();
-        console.log('[Podcast] ✅ Reproduciendo:', _podAudio.src);
-      })
-      .catch(function(e) {
-        console.warn('[Podcast] Error al reproducir:', e.message);
-        toast('No se pudo reproducir el audio de este episodio');
-      });
+    _podAudio.play();
+    _podPlaying = true;
   }
+  resetPodIcon();
 }
 
 function resetPodIcon() {
-  var btn = document.getElementById('pod-play-btn');
-  if (!btn) return;
-  btn.innerHTML = '<i data-lucide="' + (_podPlaying ? 'pause' : 'play') + '" class="lucide lucide-sm lucide-white"></i>';
+  var ic = document.getElementById('pod-play-ic');
+  if (!ic) return;
+  ic.setAttribute('data-lucide', _podPlaying ? 'pause' : 'play');
   if (window.lucide) lucide.createIcons();
 }
 
@@ -1949,212 +1866,89 @@ function switchTab(el, id) {
 // PLAYER REAL — Mediastream
 // ═══════════════════════════════════════════════════════
 function playerInit() {
-  // Mostrar programa actual y próximo según la hora
-  updatePlayerProgramInfo();
-
   var isDuna = window.location.hostname === 'duna.cl' || window.location.hostname.endsWith('.duna.cl');
   if (isDuna) { fetchNowPlaying(); setInterval(fetchNowPlaying, 15000); }
-
-  // Actualizar info de programa cada minuto
-  setInterval(updatePlayerProgramInfo, 60000);
-}
-
-function updatePlayerProgramInfo() {
-  if (!_programas.length) return;
-
-  var now = new Date();
-  var h   = now.getHours();
-  var m   = now.getMinutes();
-  var hDec = h + m/60;
-
-  // Ordenar programas por hora
-  var ordenados = _programas.slice().sort(function(a, b) {
-    return parseHora(pHorario(a)) - parseHora(pHorario(b));
-  });
-
-  var actual = null, siguiente = null;
-  for (var i = 0; i < ordenados.length; i++) {
-    var hP = parseHora(pHorario(ordenados[i]));
-    if (hP <= hDec) {
-      actual = ordenados[i];
-      siguiente = ordenados[i+1] || ordenados[0];
-    }
-  }
-
-  if (actual) {
-    var nombre = pNombre(actual);
-    var cond   = pConductor(actual);
-    document.getElementById('p-trk').textContent  = nombre;
-    document.getElementById('p-art2').textContent = cond || pHorario(actual) || '89.7 FM';
-
-    // Artwork del programa
-    var artWrap = document.getElementById('p-art-wrap');
-    if (actual.imagen_url) {
-      artWrap.innerHTML = '<img src="' + actual.imagen_url + '" alt="' + nombre + '">';
-    } else {
-      artWrap.innerHTML = '<div class="p-art-ph"><i class="ti ti-music"></i></div>';
-    }
-  }
-
-  if (siguiente) {
-    var nextEl = document.getElementById('p-next');
-    if (nextEl) nextEl.textContent = pNombre(siguiente) + ' · ' + pHorario(siguiente);
-  }
-}
-
-function parseHora(horStr) {
-  if (!horStr) return 0;
-  var m = horStr.match(/(\d+)[:\.]?(\d*)\s*h/i);
-  if (!m) return 0;
-  return parseInt(m[1]) + (parseInt(m[2]||0)/60);
 }
 
 function togglePlay() {
+  var icon = document.getElementById('playic');
+
   if (P.playing) {
-    // PAUSAR
-    msCommand('pause');
+    // Ya está reproduciendo (o intentando) → detener
+    P.requestId++; // invalida cualquier carga pendiente del player
+    stopAllAudio();
     P.playing = false;
     setPlayIcon('play');
+    document.getElementById('p-trk').textContent = 'Radio Duna';
     document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
-    console.log('[Player] Pausado');
   } else {
-    // Pausar podcast si está sonando
-    if (_podAudio && !_podAudio.paused) {
-      _podAudio.pause();
-      _podPlaying = false;
-      resetPodIcon();
-    }
-    // PLAY
-    if (!MS_LOADED) {
-      loadMediastreamPlayer();
-    } else {
-      msCommand('play');
-      P.playing = true;
-      setPlayIcon('pause');
-      document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
-    }
-  }
-}
-
-// Envía comandos al iframe de Mediastream via postMessage
-function msCommand(cmd) {
-  var wrap = document.getElementById('ms-player-wrap');
-  if (!wrap) return;
-  var iframe = wrap.querySelector('iframe');
-  if (iframe && iframe.contentWindow) {
-    iframe.contentWindow.postMessage(JSON.stringify({ type: cmd }), '*');
-    console.log('[Mediastream] Comando enviado:', cmd);
+    P.playing = true;
+    setPlayIcon('pause');
+    document.getElementById('p-art2').textContent = 'Conectando con la señal...';
+    loadMediastreamPlayer();
   }
 }
 
 function setPlayIcon(name) {
-  var btn = document.getElementById('playbtn');
-  if (!btn) return;
-  btn.innerHTML = '<i data-lucide="' + name + '" class="lucide lucide-white" style="width:22px;height:22px"></i>';
+  var icon = document.getElementById('playic');
+  icon.setAttribute('data-lucide', name);
   if (window.lucide) lucide.createIcons();
 }
 
-function updatePlayerTime(current, duration) {
-  var cur = document.getElementById('p-cur-time');
-  var dur = document.getElementById('p-dur-time');
-  if (cur) cur.textContent = duration > 0 ? fmtTime(current) : '0:00';
-  if (dur) dur.textContent = duration > 0 ? fmtTime(duration) : 'EN VIVO';
-  var fill = document.getElementById('p-fill');
-  if (fill && duration > 0) fill.style.width = Math.min((current/duration)*100, 100) + '%';
-}
-
-function fmtTime(s) {
-  var m = Math.floor(s/60);
-  return m + ':' + ('0'+Math.floor(s%60)).slice(-2);
-}
-
-// Carga el Lightning Player oficial de Mediastream
+// Carga el embed oficial de Mediastream (Lightning Player)
 function loadMediastreamPlayer() {
-  console.log('[Mediastream] Cargando Lightning Player:', STREAM_ID, PLAYER_ID);
+  console.log('[Mediastream] Intentando cargar player real:', STREAM_ID, PLAYER_ID);
+  var wrap = document.getElementById('ms-player-wrap');
+  wrap.innerHTML = '<div data-msp data-type="live" data-id="' + STREAM_ID + '" data-player="' + PLAYER_ID + '"></div>';
   var requestId = ++P.requestId;
 
-  // Verificar si el script ya está cargado
-  if (document.querySelector('script[src*="lightning_player"]')) {
-    console.log('[Mediastream] Script ya presente, inicializando embed...');
-    initMSEmbed(requestId);
-    return;
-  }
-
-  // Inyectar el script oficial
   var script = document.createElement('script');
-  script.type = 'text/javascript';
   script.src = 'https://player.cdn.mdstrm.com/lightning_player/api.js';
   script.onload = function() {
-    console.log('[Mediastream] ✅ Script cargado');
-    initMSEmbed(requestId);
+    console.log('[Mediastream] Script de player cargado');
+    MS_LOADED = true;
+    setTimeout(function() {
+      if (requestId !== P.requestId || !P.playing) {
+        console.log('[Mediastream] Solicitud cancelada (usuario pausó antes de cargar)');
+        return;
+      }
+      var iframe = wrap.querySelector('iframe');
+      if (iframe) {
+        console.log('[Mediastream] ✅ Player real inicializado correctamente');
+        document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
+        toast('Reproduciendo señal real de Radio Duna');
+      } else {
+        console.warn('[Mediastream] El player no generó iframe — dominio no autorizado para CORS');
+        playerError();
+      }
+    }, 1500);
   };
   script.onerror = function() {
-    console.warn('[Mediastream] Error cargando script');
-    if (requestId === P.requestId && P.playing) playerError();
+    if (requestId !== P.requestId || !P.playing) return;
+    console.warn('[Mediastream] Error al cargar el script del player');
+    playerError();
   };
   document.body.appendChild(script);
-}
-
-function initMSEmbed(requestId) {
-  setTimeout(function() {
-    if (requestId !== P.requestId || !P.playing) return;
-
-    var wrap   = document.getElementById('ms-player-wrap');
-    var iframe = wrap ? wrap.querySelector('iframe') : null;
-
-    if (iframe) {
-      console.log('[Mediastream] ✅ iframe detectado — player activo');
-      MS_LOADED = true;
-      P.playing = true;
-      setPlayIcon('pause');
-      document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
-      // Enviar play al iframe
-      msCommand('play');
-    } else {
-      console.warn('[Mediastream] iframe no generado — dominio no autorizado');
-      playerError();
-    }
-  }, 2000);
 }
 
 function playerError() {
   P.playing = false;
   setPlayIcon('play');
-  document.getElementById('p-art2').textContent = 'No se pudo conectar al stream';
-  toast('No se pudo reproducir la señal. Intenta de nuevo.');
+  document.getElementById('p-trk').textContent = 'Señal no disponible';
+  document.getElementById('p-art2').textContent = 'Disponible solo en duna.cl';
+  toast('La señal en vivo solo está disponible desde duna.cl');
   stopAllAudio();
 }
 
 function stopAllAudio() {
-  msCommand('pause');
+  var wrap = document.getElementById('ms-player-wrap');
+  wrap.innerHTML = '';
   MS_LOADED = false;
 }
 
 function setVol(v) {
-  msCommand('volume:' + (v/100).toFixed(2));
-  var btn = document.getElementById('vol-btn');
-  if (!btn) return;
-  var name = v == 0 ? 'volume-x' : v < 40 ? 'volume-1' : 'volume-2';
-  btn.innerHTML = '<i data-lucide="' + name + '" class="lucide" style="width:18px;height:18px;stroke:rgba(255,255,255,.6)"></i>';
-  document.getElementById('vol').value = v;
-  if (window.lucide) lucide.createIcons();
-}
-
-var _muted = false;
-var _volBeforeMute = 80;
-
-function toggleMute() {
-  var slider = document.getElementById('vol');
-  if (_muted) {
-    _muted = false;
-    slider.value = _volBeforeMute;
-    setVol(_volBeforeMute);
-  } else {
-    _muted = true;
-    _volBeforeMute = parseInt(slider.value) || 80;
-    slider.value = 0;
-    setVol(0);
-  }
+  // El volumen del embed real de Mediastream se controla con sus propios controles internos
+  console.log('[Player] Volumen visual:', v);
 }
 
 
