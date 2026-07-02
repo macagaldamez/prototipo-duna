@@ -474,7 +474,7 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
               <button onclick="cyclePodSpeed()" style="background:var(--cn);border:1px solid var(--cb);border-radius:4px;padding:2px 7px;font-size:11px;cursor:pointer;font-family:var(--f)" id="pod-speed">1x</button>
             </div>
           </div>
-          <audio id="pod-audio" style="display:none"></audio>
+          <audio id="pod-audio" style="display:none" crossorigin="anonymous" preload="none"></audio>
         </div>
         <div id="pod-no-audio" style="font-size:12px;color:var(--cm);margin-bottom:12px;display:none">
           <i class="ti ti-info-circle"></i> Audio no disponible para este episodio
@@ -1559,8 +1559,10 @@ function openPod(i) {
   var noAudio   = document.getElementById('pod-no-audio');
   var audioEl   = document.getElementById('pod-audio');
 
-  if (p.audio_url) {
-    audioEl.src = p.audio_url;
+  var audioUrl = p.audio_url || p.url_audio || p.audio || '';
+  console.log('[Podcast] audio_url:', audioUrl, '| titulo:', p.titulo);
+  if (audioUrl) {
+    audioEl.src = audioUrl;
     audioEl.load();
     _podAudio = audioEl;
     _podAudio.playbackRate = 1;
@@ -1610,9 +1612,8 @@ function togglePodcastPlay() {
     resetPodIcon();
   } else {
     // Pausar radio si está sonando
-    var radio = document.getElementById('radio-audio');
-    if (radio && !radio.paused) {
-      radio.pause();
+    if (P.playing) {
+      msCommand('pause');
       P.playing = false;
       setPlayIcon('play');
       document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
@@ -1621,6 +1622,7 @@ function togglePodcastPlay() {
       .then(function() {
         _podPlaying = true;
         resetPodIcon();
+        console.log('[Podcast] ✅ Reproduciendo:', _podAudio.src);
       })
       .catch(function(e) {
         console.warn('[Podcast] Error al reproducir:', e.message);
