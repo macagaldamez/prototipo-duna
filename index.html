@@ -332,11 +332,10 @@ hr.div{border:none;border-top:1px solid var(--cb);margin:34px 0}
     <!-- Live badge -->
     <div class="live-badge"><span class="ldot"></span>EN VIVO</div>
 
-    <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none"></div>
-    <audio id="radio-audio" preload="none" style="display:none">
-      <source src="https://mdstrm.com/audio/67f42f96e464d19a6eda3c7d/manifest.mpd" type="audio/mpeg">
-      <source src="https://cl-a9-p-e-pt11-audio.cdn.mdstrm.com/live-audio-aw/67f42f96e464d19a6eda3c7d/playlist.m3u8" type="application/x-mpegURL">
-    </audio>
+    <!-- Mediastream Lightning Player embed oficial -->
+    <div id="ms-player-wrap" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none">
+      <div data-msp data-type="live" data-id="67f42f96e464d19a6eda3c7d" data-player="661fe631fcec2d086bd55392" id="ms-embed"></div>
+    </div>
   </div>
 </div>
 
@@ -2009,10 +2008,9 @@ function parseHora(horStr) {
 }
 
 function togglePlay() {
-  var audio = document.getElementById('radio-audio');
-
   if (P.playing) {
-    audio.pause();
+    // PAUSAR
+    msCommand('pause');
     P.playing = false;
     setPlayIcon('play');
     document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
@@ -2024,21 +2022,26 @@ function togglePlay() {
       _podPlaying = false;
       resetPodIcon();
     }
-    P.playing = true;
-    setPlayIcon('pause');
-    document.getElementById('p-art2').textContent = 'Conectando...';
-    audio.load();
-    audio.play()
-      .then(function() {
-        console.log('[Player] ✅ Reproduciendo:', audio.currentSrc);
-        document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
-      })
-      .catch(function(e) {
-        console.warn('[Player] Error al reproducir:', e.message);
-        // Intentar con Mediastream embed como fallback
-        P.requestId++;
-        loadMediastreamPlayer();
-      });
+    // PLAY
+    if (!MS_LOADED) {
+      loadMediastreamPlayer();
+    } else {
+      msCommand('play');
+      P.playing = true;
+      setPlayIcon('pause');
+      document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
+    }
+  }
+}
+
+// Envía comandos al iframe de Mediastream via postMessage
+function msCommand(cmd) {
+  var wrap = document.getElementById('ms-player-wrap');
+  if (!wrap) return;
+  var iframe = wrap.querySelector('iframe');
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage(JSON.stringify({ type: cmd }), '*');
+    console.log('[Mediastream] Comando enviado:', cmd);
   }
 }
 
@@ -2062,40 +2065,53 @@ function fmtTime(s) {
   return m + ':' + ('0'+Math.floor(s%60)).slice(-2);
 }
 
-// Carga el embed oficial de Mediastream (Lightning Player)
+// Carga el Lightning Player oficial de Mediastream
 function loadMediastreamPlayer() {
-  console.log('[Mediastream] Intentando cargar player real:', STREAM_ID, PLAYER_ID);
-  var wrap = document.getElementById('ms-player-wrap');
-  wrap.innerHTML = '<div data-msp data-type="live" data-id="' + STREAM_ID + '" data-player="' + PLAYER_ID + '"></div>';
+  console.log('[Mediastream] Cargando Lightning Player:', STREAM_ID, PLAYER_ID);
   var requestId = ++P.requestId;
 
+  // Verificar si el script ya está cargado
+  if (document.querySelector('script[src*="lightning_player"]')) {
+    console.log('[Mediastream] Script ya presente, inicializando embed...');
+    initMSEmbed(requestId);
+    return;
+  }
+
+  // Inyectar el script oficial
   var script = document.createElement('script');
+  script.type = 'text/javascript';
   script.src = 'https://player.cdn.mdstrm.com/lightning_player/api.js';
   script.onload = function() {
-    console.log('[Mediastream] Script de player cargado');
-    MS_LOADED = true;
-    setTimeout(function() {
-      if (requestId !== P.requestId || !P.playing) {
-        console.log('[Mediastream] Solicitud cancelada (usuario pausó antes de cargar)');
-        return;
-      }
-      var iframe = wrap.querySelector('iframe');
-      if (iframe) {
-        console.log('[Mediastream] ✅ Player real inicializado correctamente');
-        document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
-        toast('Reproduciendo señal real de Radio Duna');
-      } else {
-        console.warn('[Mediastream] El player no generó iframe — dominio no autorizado para CORS');
-        playerError();
-      }
-    }, 1500);
+    console.log('[Mediastream] ✅ Script cargado');
+    initMSEmbed(requestId);
   };
   script.onerror = function() {
-    if (requestId !== P.requestId || !P.playing) return;
-    console.warn('[Mediastream] Error al cargar el script del player');
-    playerError();
+    console.warn('[Mediastream] Error cargando script');
+    if (requestId === P.requestId && P.playing) playerError();
   };
   document.body.appendChild(script);
+}
+
+function initMSEmbed(requestId) {
+  setTimeout(function() {
+    if (requestId !== P.requestId || !P.playing) return;
+
+    var wrap   = document.getElementById('ms-player-wrap');
+    var iframe = wrap ? wrap.querySelector('iframe') : null;
+
+    if (iframe) {
+      console.log('[Mediastream] ✅ iframe detectado — player activo');
+      MS_LOADED = true;
+      P.playing = true;
+      setPlayIcon('pause');
+      document.getElementById('p-art2').textContent = 'En vivo · 89.7 FM';
+      // Enviar play al iframe
+      msCommand('play');
+    } else {
+      console.warn('[Mediastream] iframe no generado — dominio no autorizado');
+      playerError();
+    }
+  }, 2000);
 }
 
 function playerError() {
@@ -2107,17 +2123,13 @@ function playerError() {
 }
 
 function stopAllAudio() {
-  var audio = document.getElementById('radio-audio');
-  if (audio) { audio.pause(); audio.currentTime = 0; }
-  var wrap = document.getElementById('ms-player-wrap');
-  if (wrap) wrap.innerHTML = '';
+  msCommand('pause');
   MS_LOADED = false;
 }
 
 function setVol(v) {
-  // Controlar volumen del audio real
-  var audio = document.getElementById('radio-audio');
-  if (audio) audio.volume = Math.min(Math.max(v / 100, 0), 1);
+  // Intentar controlar volumen via postMessage al iframe de Mediastream
+  msCommand('volume:' + (v/100).toFixed(2));
 
   // Actualizar ícono
   var ic = document.getElementById('vol-ic');
@@ -2133,16 +2145,13 @@ var _volBeforeMute = 80;
 
 function toggleMute() {
   var slider = document.getElementById('vol');
-  var audio  = document.getElementById('radio-audio');
   if (_muted) {
     _muted = false;
     slider.value = _volBeforeMute;
-    if (audio) audio.muted = false;
     setVol(_volBeforeMute);
   } else {
     _muted = true;
     _volBeforeMute = parseInt(slider.value) || 80;
-    if (audio) audio.muted = true;
     slider.value = 0;
     setVol(0);
   }
