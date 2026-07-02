@@ -1632,9 +1632,9 @@ function togglePodcastPlay() {
 }
 
 function resetPodIcon() {
-  var ic = document.getElementById('pod-play-ic');
-  if (!ic) return;
-  ic.setAttribute('data-lucide', _podPlaying ? 'pause' : 'play');
+  var btn = document.getElementById('pod-play-btn');
+  if (!btn) return;
+  btn.innerHTML = '<i data-lucide="' + (_podPlaying ? 'pause' : 'play') + '" class="lucide lucide-sm lucide-white"></i>';
   if (window.lucide) lucide.createIcons();
 }
 
@@ -2048,8 +2048,9 @@ function msCommand(cmd) {
 }
 
 function setPlayIcon(name) {
-  var icon = document.getElementById('playic');
-  icon.setAttribute('data-lucide', name);
+  var btn = document.getElementById('playbtn');
+  if (!btn) return;
+  btn.innerHTML = '<i data-lucide="' + name + '" class="lucide lucide-white" style="width:22px;height:22px"></i>';
   if (window.lucide) lucide.createIcons();
 }
 
@@ -2130,14 +2131,11 @@ function stopAllAudio() {
 }
 
 function setVol(v) {
-  // Intentar controlar volumen via postMessage al iframe de Mediastream
   msCommand('volume:' + (v/100).toFixed(2));
-
-  // Actualizar ícono
-  var ic = document.getElementById('vol-ic');
-  if (!ic) return;
+  var btn = document.getElementById('vol-btn');
+  if (!btn) return;
   var name = v == 0 ? 'volume-x' : v < 40 ? 'volume-1' : 'volume-2';
-  ic.setAttribute('data-lucide', name);
+  btn.innerHTML = '<i data-lucide="' + name + '" class="lucide" style="width:18px;height:18px;stroke:rgba(255,255,255,.6)"></i>';
   document.getElementById('vol').value = v;
   if (window.lucide) lucide.createIcons();
 }
