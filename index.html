@@ -1608,11 +1608,26 @@ function togglePodcastPlay() {
   if (_podPlaying) {
     _podAudio.pause();
     _podPlaying = false;
+    resetPodIcon();
   } else {
-    _podAudio.play();
-    _podPlaying = true;
+    // Pausar radio si está sonando
+    var radio = document.getElementById('radio-audio');
+    if (radio && !radio.paused) {
+      radio.pause();
+      P.playing = false;
+      setPlayIcon('play');
+      document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
+    }
+    _podAudio.play()
+      .then(function() {
+        _podPlaying = true;
+        resetPodIcon();
+      })
+      .catch(function(e) {
+        console.warn('[Podcast] Error al reproducir:', e.message);
+        toast('No se pudo reproducir el audio de este episodio');
+      });
   }
-  resetPodIcon();
 }
 
 function resetPodIcon() {
@@ -2003,6 +2018,12 @@ function togglePlay() {
     document.getElementById('p-art2').textContent = 'Presiona play para escuchar';
     console.log('[Player] Pausado');
   } else {
+    // Pausar podcast si está sonando
+    if (_podAudio && !_podAudio.paused) {
+      _podAudio.pause();
+      _podPlaying = false;
+      resetPodIcon();
+    }
     P.playing = true;
     setPlayIcon('pause');
     document.getElementById('p-art2').textContent = 'Conectando...';
